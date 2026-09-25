@@ -3,17 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>lineage2-crow | リネ２クロウにゃん</title>
     <style>
-        body { font-family: sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; line-height: 1.6; }
-        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
-        .card { background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; margin-top: 20px; }
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --border-color: #e9ecef;
+            --bg-color: #f8f9fa;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f6f8;
+            line-height: 1.6;
+        }
+
+        /* 1. 上部ヘッダー */
+        header {
+            background-color: #fff;
+            border-bottom: 2px solid var(--accent-color);
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .site-title span {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-left: 8px;
+            font-weight: normal;
+        }
+
+        .update-badge {
+            background-color: #e8f4fc;
+            color: var(--accent-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* 2. メインレイアウト（左メニュー＋右コンテンツ） */
+        .wrapper {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+            display: flex;
+            gap: 20px;
+        }
+
+        /* 左側サイドバー */
+        aside {
+            width: 260px;
+            flex-shrink: 0;
+        }
+
+        .menu-box {
+            background: #fff;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+
+        .menu-title {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 12px 15px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .menu-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-list li {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .menu-list li:last-child {
+            border-bottom: none;
+        }
+
+        .menu-list a {
+            display: block;
+            padding: 12px 15px;
+            color: #333;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .menu-list a:hover {
+            background-color: #f0f7ff;
+            color: var(--accent-color);
+        }
+
+        /* 右側メインコンテンツ */
+        main {
+            flex-grow: 1;
+            min-width: 0;
+        }
+
+        .content-card {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            margin-bottom: 20px;
+        }
+
+        .content-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 8px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        /* フッター */
+        footer {
+            text-align: center;
+            padding: 30px 15px;
+            margin-top: 40px;
+            border-top: 1px solid var(--border-color);
+            color: #7f8c8d;
+            font-size: 0.85rem;
+            background-color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .wrapper {
+                flex-direction: column;
+            }
+            aside {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h3>お知らせ</h3>
-        <p>サイトを開設しました！これからコンテンツを順次追加していきます。</p>
+
+    <!-- 上部ヘッダー -->
+    <header>
+        <div class="header-container">
+            <div class="site-title">lineage2-crow <span>- リネ２クロウにゃん -</span></div>
+            <div class="update-badge">⚡ 本日準備中</div>
+        </div>
+    </header>
+
+    <!-- メインレイアウトエリア -->
+    <div class="wrapper">
+
+        <!-- 左側：攻略メニュー -->
+        <aside>
+            <div class="menu-box">
+                <div class="menu-title">攻略メニュー</div>
+                <ul class="menu-list">
+                    <li><a href="#coupon">クーポン</a></li>
+                    <li><a href="#faq">よくある質問</a></li>
+                    <li><a href="#invasion">モンスター侵攻</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- 右側：メインコンテンツ -->
+        <main>
+            <div class="content-card">
+                <h1 class="content-title">ようこそ！</h1>
+                <p class="intro-text">
+                    リネージュ２クロウで遊んでて<br>
+                    役に立ちそうなことをまとめることにしました。
+                </p>
+            </div>
+        </main>
+
     </div>
+
+    <!-- フッター -->
+    <footer>
+        &copy; 2026 lineage2-crow All Rights Reserved.<br>
+        <small style="display:inline-block; margin-top:5px; font-size:0.75rem;">※当サイトは個人のファンサイトであり、NCSoftおよびNC Japanとは一切関係ありません。</small>
+    </footer>
+
 </body>
 </html>

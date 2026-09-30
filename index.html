@@ -120,9 +120,15 @@
             transition: background-color 0.2s, color 0.2s;
         }
 
-        .menu-list a:hover {
+        .menu-list a:hover,
+        .menu-list a.is-active {
             background-color: #f0f7ff;
             color: var(--accent-color);
+        }
+
+        .site-title a {
+            color: inherit;
+            text-decoration: none;
         }
 
         /* 右側メインコンテンツ */
@@ -155,6 +161,38 @@
             color: #444;
         }
 
+        .content-subtitle {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin: 28px 0 12px;
+        }
+
+        .howto-list {
+            margin: 0 0 16px;
+            padding-left: 1.3em;
+        }
+
+        .howto-list li {
+            margin-bottom: 6px;
+        }
+
+        .note-box {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 14px 16px;
+            margin: 0 0 16px;
+        }
+
+        .official-link {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        .page[hidden] {
+            display: none !important;
+        }
+
         /* フッター */
         footer {
             text-align: center;
@@ -181,7 +219,7 @@
     <!-- 上部ヘッダー -->
     <header>
         <div class="header-container">
-            <div class="site-title">lineage2-crow <span>- リネ２クロウにゃん -</span></div>
+            <div class="site-title"><a href="#home">lineage2-crow <span>- リネ２クロウにゃん -</span></a></div>
             <div class="update-badge">⚡ 本日準備中</div>
         </div>
     </header>
@@ -194,7 +232,7 @@
             <div class="menu-box">
                 <div class="menu-title">攻略メニュー</div>
                 <ul class="menu-list">
-                    <li><a href="#coupon">クーポン</a></li>
+                    <li><a href="#coupon" data-page="coupon">クーポン</a></li>
                     <li><a href="#faq">よくある質問</a></li>
                     <li><a href="#invasion">モンスター侵攻</a></li>
                 </ul>
@@ -203,13 +241,43 @@
 
         <!-- 右側：メインコンテンツ -->
         <main>
-            <div class="content-card">
-                <h1 class="content-title">ようこそ！</h1>
-                <p class="intro-text">
-                    リネージュ２クロウで遊んでて<br>
-                    役に立ちそうなことをまとめることにしました。
-                </p>
-            </div>
+            <section id="page-home" class="page">
+                <div class="content-card">
+                    <h1 class="content-title">ようこそ！</h1>
+                    <p class="intro-text">
+                        リネージュ２クロウで遊んでて<br>
+                        役に立ちそうなことをまとめることにしました。
+                    </p>
+                </div>
+            </section>
+
+            <section id="page-coupon" class="page" hidden>
+                <div class="content-card">
+                    <h1 class="content-title">クーポン</h1>
+                    <p class="intro-text">
+                        クロウサーバー向けのクーポン情報です。<br>
+                        コードはサーバーごとに違うことがあるので、クロウ用を使ってください。
+                    </p>
+
+                    <h2 class="content-subtitle">受け取り方</h2>
+                    <ol class="howto-list">
+                        <li>ゲーム内でウォレットを開く</li>
+                        <li>クーポンボックスを選ぶ</li>
+                        <li>「+クーポン登録」にコードを入力する</li>
+                    </ol>
+                    <p class="intro-text">各コードはアカウントにつき1回までです。</p>
+
+                    <h2 class="content-subtitle">掲載中のコード</h2>
+                    <div class="note-box">
+                        いまこのページに載せられる、有効期限が確認できたコードはありません。<br>
+                        新しいものが公開されたら、ここに追加します。
+                    </div>
+                    <p>
+                        最新の配布は公式のお知らせで確認できます。<br>
+                        <a class="official-link" href="https://lounge.plaync.com/" target="_blank" rel="noopener noreferrer">PURPLE Lounge（公式）</a>
+                    </p>
+                </div>
+            </section>
         </main>
 
     </div>
@@ -219,6 +287,32 @@
         &copy; 2026 lineage2-crow All Rights Reserved.<br>
         <small style="display:inline-block; margin-top:5px; font-size:0.75rem;">※当サイトは個人のファンサイトであり、NCSoftおよびNC Japanとは一切関係ありません。</small>
     </footer>
+
+    <script>
+        (function () {
+            var pages = {
+                home: document.getElementById('page-home'),
+                coupon: document.getElementById('page-coupon')
+            };
+            var couponLink = document.querySelector('a[data-page="coupon"]');
+
+            function showPage(name) {
+                Object.keys(pages).forEach(function (key) {
+                    pages[key].hidden = key !== name;
+                });
+                if (couponLink) {
+                    couponLink.classList.toggle('is-active', name === 'coupon');
+                }
+            }
+
+            function syncFromHash() {
+                showPage(location.hash === '#coupon' ? 'coupon' : 'home');
+            }
+
+            window.addEventListener('hashchange', syncFromHash);
+            syncFromHash();
+        })();
+    </script>
 
 </body>
 </html>

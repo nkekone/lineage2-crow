@@ -167,6 +167,63 @@
             background: #fff;
         }
 
+        /* FAQ用のスタイル */
+        .faq-item {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: #fff;
+        }
+
+        .faq-question {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .faq-question span {
+            background-color: var(--accent-color);
+            color: #fff;
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .faq-answer {
+            background: var(--bg-color);
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.7;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .faq-answer span {
+            background-color: #7f8c8d;
+            color: #fff;
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
         .page[hidden] {
             display: none !important;
         }
@@ -210,14 +267,15 @@
                 <div class="menu-title">攻略メニュー</div>
                 <ul class="menu-list">
                     <li><a href="#coupon" data-page="coupon">クーポン</a></li>
-                    <li><a href="#faq">よくある質問</a></li>
-                    <li><a href="#invasion">モンスター侵攻</a></li>
+                    <li><a href="#faq" data-page="faq">よくある疑問（Q&A）</a></li>
+                    <li><a href="#invasion" data-page="invasion">モンスター侵攻</a></li>
                 </ul>
             </div>
         </aside>
 
         <!-- 右側：メインコンテンツ -->
         <main>
+            <!-- ホーム -->
             <section id="page-home" class="page">
                 <div class="content-card">
                     <h1 class="content-title">ようこそ！</h1>
@@ -228,6 +286,7 @@
                 </div>
             </section>
 
+            <!-- クーポン -->
             <section id="page-coupon" class="page" hidden>
                 <div class="content-card">
                     <h1 class="content-title">クーポン</h1>
@@ -304,6 +363,39 @@
                     </p>
                 </div>
             </section>
+
+            <!-- よくある疑問（Q&A） -->
+            <section id="page-faq" class="page" hidden>
+                <div class="content-card">
+                    <h1 class="content-title">よくある疑問（Q&A）</h1>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Q</span>
+                            魔法書はどうやったら手に入りますか？
+                        </div>
+                        <div class="faq-answer">
+                            <span>A</span>
+                            <div>
+                                お店では売ってません。特殊制作が一番簡単ですが、高いです。<br>
+                                まだ買っていなかったらL2ストアで「成長支援ボックス：クロウ」を100アデナで買ってみて、LV86で高級、LV87で最高級、LV88で特級が貰えるよ。<br>
+                                あとはLV90になったとき、一回性ミッションの報償として特級がもらえるよ。
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- モンスター侵攻（仮） -->
+            <section id="page-invasion" class="page" hidden>
+                <div class="content-card">
+                    <h1 class="content-title">モンスター侵攻</h1>
+                    <p class="intro-text">
+                        準備中だよ。もうちょっと待ってね！
+                    </p>
+                </div>
+            </section>
         </main>
 
     </div>
@@ -318,25 +410,36 @@
         (function () {
             var pages = {
                 home: document.getElementById('page-home'),
-                coupon: document.getElementById('page-coupon')
+                coupon: document.getElementById('page-coupon'),
+                faq: document.getElementById('page-faq'),
+                invasion: document.getElementById('page-invasion')
             };
-            var couponLink = document.querySelector('a[data-page="coupon"]');
 
-            function showPage(name) {
-                Object.keys(pages).forEach(function (key) {
-                    pages[key].hidden = key !== name;
+            function updateActiveMenu(hash) {
+                var current = hash.replace('#', '') || 'home';
+                document.querySelectorAll('.menu-list a').forEach(function (link) {
+                    var targetPage = link.getAttribute('data-page');
+                    link.classList.toggle('is-active', targetPage === current);
                 });
-                if (couponLink) {
-                    couponLink.classList.toggle('is-active', name === 'coupon');
+            }
+
+            function showPage() {
+                var hash = location.hash || '#home';
+                var key = hash.replace('#', '');
+                
+                if (!pages[key]) {
+                    key = 'home';
                 }
+
+                Object.keys(pages).forEach(function (pageKey) {
+                    pages[pageKey].hidden = pageKey !== key;
+                });
+
+                updateActiveMenu(hash);
             }
 
-            function syncFromHash() {
-                showPage(location.hash === '#coupon' ? 'coupon' : 'home');
-            }
-
-            window.addEventListener('hashchange', syncFromHash);
-            syncFromHash();
+            window.addEventListener('hashchange', showPage);
+            showPage();
         })();
     </script>
 

@@ -1,371 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="V5AcE0vT8AaHmwCyEwjVIlt817WPQnrcBrQM85848Vc">
-    <title>lineage2-crow | リネ２クロウにゃん</title>
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --accent-color: #3498db;
-            --border-color: #e9ecef;
-            --bg-color: #f8f9fa;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            background-color: #f5f6f8;
-            line-height: 1.6;
-        }
-
-        /* 1. 上部ヘッダー */
-        header {
-            background-color: #fff;
-            border-bottom: 2px solid var(--accent-color);
-            padding: 15px 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .site-title {
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin: 0;
-        }
-
-        .site-title span {
-            font-size: 0.9rem;
-            color: #7f8c8d;
-            margin-left: 8px;
-            font-weight: normal;
-        }
-
-        .site-title a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        /* 2. メインレイアウト（左メニュー＋右コンテンツ） */
-        .wrapper {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 15px;
-            display: flex;
-            gap: 20px;
-        }
-
-        /* 左側サイドバー */
-        aside {
-            width: 260px;
-            flex-shrink: 0;
-        }
-
-        .menu-box {
-            background: #fff;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-        }
-
-        .menu-title {
-            background-color: var(--primary-color);
-            color: #fff;
-            padding: 12px 15px;
-            font-weight: bold;
-            font-size: 0.95rem;
-            margin: 0;
-        }
-
-        .menu-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .menu-list li {
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .menu-list li:last-child {
-            border-bottom: none;
-        }
-
-        .menu-list a {
-            display: block;
-            padding: 12px 15px;
-            color: #333;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: background-color 0.2s, color 0.2s;
-        }
-
-        .menu-list a:hover,
-        .menu-list a.is-active {
-            background-color: #f0f7ff;
-            color: var(--accent-color);
-        }
-
-        /* 右側メインコンテンツ */
-        main {
-            flex-grow: 1;
-            min-width: 0;
-        }
-
-        .content-card {
-            background: #fff;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 25px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-            margin-bottom: 20px;
-        }
-
-        .content-title {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 8px;
-            margin-top: 0;
-            margin-bottom: 20px;
-        }
-
-        .intro-text {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: #444;
-        }
-
-        .content-subtitle {
-            font-size: 1.1rem;
-            color: var(--primary-color);
-            margin: 0 0 16px;
-        }
-
-        .coupon-item {
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            background: #fff;
-        }
-
-        /* FAQ用のスタイル */
-        .faq-item {
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            background: #fff;
-        }
-
-        .faq-question {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-        }
-
-        .faq-question span {
-            background-color: var(--accent-color);
-            color: #fff;
-            width: 24px;
-            height: 24px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            flex-shrink: 0;
-        }
-
-        .faq-answer {
-            background: var(--bg-color);
-            padding: 15px;
-            border-radius: 6px;
-            font-size: 0.95rem;
-            color: #444;
-            line-height: 1.7;
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-        }
-
-        .faq-answer span {
-            background-color: #7f8c8d;
-            color: #fff;
-            width: 24px;
-            height: 24px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            flex-shrink: 0;
-        }
-
-        .page[hidden] {
-            display: none !important;
-        }
-
-        /* フッター */
-        footer {
-            text-align: center;
-            padding: 30px 15px;
-            margin-top: 40px;
-            border-top: 1px solid var(--border-color);
-            color: #7f8c8d;
-            font-size: 0.85rem;
-            background-color: #fff;
-        }
-
-        @media (max-width: 768px) {
-            .wrapper {
-                flex-direction: column;
-            }
-            aside {
-                width: 100%;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- 上部ヘッダー -->
-    <header>
-        <div class="header-container">
-            <div class="site-title"><a href="#home">lineage2-crow <span>- リネ２クロウにゃん -</span></a></div>
-        </div>
-    </header>
-
-    <!-- メインレイアウトエリア -->
-    <div class="wrapper">
-
-        <!-- 左側：攻略メニュー -->
-        <aside>
-            <div class="menu-box">
-                <div class="menu-title">攻略メニュー</div>
-                <ul class="menu-list">
-                    <li><a href="#coupon" data-page="coupon">クーポン</a></li>
-                    <li><a href="#faq" data-page="faq">よくある疑問（Q&A）</a></li>
-                    <li><a href="#invasion" data-page="invasion">モンスター侵攻</a></li>
-                    <li><a href="#crowpass" data-page="crowpass">CROW PASS</a></li>
-                </ul>
-            </div>
-        </aside>
-
-        <!-- 右側：メインコンテンツ -->
-        <main>
-            <!-- ホーム -->
-            <section id="page-home" class="page">
-                <div class="content-card">
-                    <h1 class="content-title">ようこそ！</h1>
-                    <p class="intro-text">
-                        リネージュ２クロウで遊んでて<br>
-                        役に立ちそうなことをまとめることにしました。[cite: 2]
-                    </p>
-                </div>
-            </section>
-
-            <!-- クーポン -->
-            <section id="page-coupon" class="page" hidden>
-                <div class="content-card">
-                    <h1 class="content-title">クーポン</h1>
-
-                    <h2 class="content-subtitle">クーポン一覧</h2>
-
-                    <!-- ▼ 新しいクーポンはここを一番上に追加していく ▼ -->
-                    <div class="coupon-item">
-                        <div style="font-size: 1.1rem; font-weight: bold; color: var(--primary-color); margin-bottom: 12px; border-bottom: 2px solid var(--accent-color); padding-bottom: 6px;">
-                            シルバーウィーク記念クーポン
-                        </div>
-
-                        <div style="margin-bottom: 15px; background: var(--bg-color); padding: 12px; border-radius: 6px;">
-                            <span style="font-size: 0.85rem; color: #555; display: block; margin-bottom: 2px;">クロウサーバー専用コード</span>
-                            <code style="background:#fff; padding:4px 10px; border:1px solid #ccc; font-weight:bold; color:var(--primary-color); font-size:1.1rem; user-select:all;">SILVER2026CROW</code>
-                        </div>
-
-                        <div style="font-size: 0.9rem; margin-bottom: 15px; color: #555; line-height: 1.5;">
-                            <div><strong>有効期限：</strong> 2026年9月18日(金) 9:00 〜 9月23日(水) 23:59</div>
-                            <div><strong>アイテム削除日：</strong> 2026年9月30日(水) 定期メンテナンス時</div>
-                        </div>
-
-                        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
-                            <thead>
-                                <tr style="background-color: var(--primary-color); color: #fff;">
-                                    <th style="padding: 8px; text-align: left;">アイテム名</th>
-                                    <th style="padding: 8px; text-align: center; width: 60px;">個数</th>
-                                    <th style="padding: 8px; text-align: center; width: 130px;">削除日</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr style="border-bottom: 1px solid var(--border-color);">
-                                    <td style="padding: 8px;">人形召喚券(一般〜英雄)：11回(期間限定)[刻印]</td>
-                                    <td style="padding: 8px; text-align: center;">5</td>
-                                    <td style="padding: 8px; text-align: center;">2026/9/30(水)</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid var(--border-color);">
-                                    <td style="padding: 8px;">アデン研究日誌[刻印]</td>
-                                    <td style="padding: 8px; text-align: center;">2</td>
-                                    <td style="padding: 8px; text-align: center;">-</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid var(--border-color);">
-                                    <td style="padding: 8px;">成長のルーンの欠片[刻印]</td>
-                                    <td style="padding: 8px; text-align: center;">100</td>
-                                    <td style="padding: 8px; text-align: center;">-</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid var(--border-color);">
-                                    <td style="padding: 8px;">バーサーカースクロール(期間制)[刻印]</td>
-                                    <td style="padding: 8px; text-align: center;">100</td>
-                                    <td style="padding: 8px; text-align: center;">2026/9/30(水)</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid var(--border-color);">
-                                    <td style="padding: 8px;">アインハザードの祝福スクロール(期間制)[刻印]</td>
-                                    <td style="padding: 8px; text-align: center;">100</td>
-                                    <td style="padding: 8px; text-align: center;">2026/9/30(水)</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid var(--border-color);">
-                                    <td style="padding: 8px;">HPポーション</td>
-                                    <td style="padding: 8px; text-align: center;">3,000</td>
-                                    <td style="padding: 8px; text-align: center;">-</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid var(--border-color);">
-                                    <td style="padding: 8px;">ルーンストーン[刻印]</td>
-                                    <td style="padding: 8px; text-align: center;">30,000</td>
-                                    <td style="padding: 8px; text-align: center;">-</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- ▲ ここまで ▲ -->
-
-                    <p style="margin-top: 24px; font-size: 0.9rem; color: #666;">
-                        クーポンの情報は気をつけていますが、間違えている場合があります。間違えていても許してください。
-                    </p>
-                </div>
-            </section>
-
-            <!-- よくある疑問（Q&A） -->
+<!-- よくある疑問（Q&A） -->
             <section id="page-faq" class="page" hidden>
                 <div class="content-card">
                     <h1 class="content-title">よくある疑問（Q&A）</h1>
@@ -378,9 +11,9 @@
                         <div class="faq-answer">
                             <span>A</span>
                             <div>
-                                お店では売ってません。特殊制作が一番簡単ですが、高いです。<br>
-                                まだ買っていなかったらL2ストアで「成長支援ボックス：クロウ」を100アデナで買ってみて、LV86で高級、LV87で最高級、LV88で特級が貰えるよ。<br>
-                                あとはLV90になったとき、一回性ミッションの報償として特級がもらえるよ。
+                                お店では売っていないんですよね。特殊制作がいちばん手軽ですが、コストがかかっちゃいます。<br>
+                                まだでしたら、L2ストアで「成長支援ボックス：クロウ」を100アデナで買ってみてください。Lv86で高級、Lv87で最高級、Lv88で特級が手に入ります。<br>
+                                あとは、Lv90になったときの1回性ミッションの報酬でも特級がもらえます。
                             </div>
                         </div>
                     </div>
@@ -388,12 +21,12 @@
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>Q</span>
-                            名前の上に肩書とか座右の銘？マークとかつけている人がいる。アレどうやるの？
+                            名前の上に称号やマークをつけている人がいますが、どうやるんですか？
                         </div>
                         <div class="faq-answer">
                             <span>A</span>
                             <div>
-                                血盟に入ってタイトルをつけると好きなことが書けます。ちなみに一人でも血盟は作れます。
+                                血盟に入ってタイトルを設定すると、好きな言葉を表示できるようになります。ちなみに、血盟は1人でも作れます。
                             </div>
                         </div>
                     </div>
@@ -401,12 +34,12 @@
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>Q</span>
-                            何もしてないのに「非推薦権を1手に入れました。」って出た。誰かにディスられた？気づかないうちにマナー違反してた？
+                            何もしてないのに「非推薦権を1手に入れました。」と出ました。何かペナルティですか？
                         </div>
                         <div class="faq-answer">
                             <span>A</span>
                             <div>
-                                非推薦権はあなたが、ほかのプレイヤーを非推薦するための権利です。時間経過で取得できます。あなたが、誰かから何かされたわけではありません。安心してね。
+                                非推薦権は、自分がほかのプレイヤーを非推薦にするための権利で、時間が経つと自動でもらえるものです。誰かから何かされたわけではないので安心してください。
                             </div>
                         </div>
                     </div>
@@ -414,12 +47,12 @@
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>Q</span>
-                            ペット（ガーディアン）の名前がみんな、元気ななんとか、かしこいなんとかだよね？流行ってるの？
+                            ペット（ガーディアン）の名前がみんな似たような感じなのは流行りですか？
                         </div>
                         <div class="faq-answer">
                             <span>A</span>
                             <div>
-                                ゲームの仕様です。「ガーディアンの熟練書：1次」を使うとランダムに付与されるステータスによって決まります。名前も自動的に決まります。NPCガーディアン管理人が売っている「ガーディアンの熟練書：1次」をみると全部載っています。
+                                あれはゲームの仕様なんです。「ガーディアンの熟練書：1次」を使うとランダムでステータスがついて、名前も自動で決まる仕組みになっています。NPCのガーディアン管理人が売っている同アイテムを見ると、中身が全部載っています。
                             </div>
                         </div>
                     </div>
@@ -427,12 +60,12 @@
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>Q</span>
-                            「（キャラクター名）が（クラス名）の英雄になりました！」って突然表示された！何した人なの？自分も英雄になれる？
+                            「（キャラクター名）が（クラス名）の英雄になりました！」って出ました。どういう人がなれるんですか？
                         </div>
                         <div class="faq-answer">
                             <span>A</span>
                             <div>
-                                月～金曜日21:30～に開催される3vs3オリンピアードで各クラス１位の成績の人が英雄になれます。英雄になると光る羽がついて、１週間、栄光のサークレットという強いアイテムを装備できます。人気のあるクラスだと強い人がたくさんいるので難しいです。ただ、人気のないクラスだと、一週間に１０戦するだけで、勝敗に関係なく英雄になれます。
+                                月〜金曜日の21:30からやっている3対3のオリンピアードで、各クラス1位の成績だった人が英雄になれます。英雄になると光る羽がついて、1週間「栄光のサークレット」という強いアイテムが装備できます。人気クラスだとライバルが多くて大変ですが、参加者が少ないクラスなら、規定の試合数をこなすだけでなれちゃったりもします。
                             </div>
                         </div>
                     </div>
@@ -440,12 +73,12 @@
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>Q</span>
-                            修練ダンジョンに入った途端、モンスター侵攻が始まった！傲慢の塔に行ってたら、モンスター侵攻がいつ発生したかすらわからないよ！
+                            修練ダンジョンに入ったらモンスター侵攻が始まってしまいました。ほかにいると気づきにくいのですが？
                         </div>
                         <div class="faq-answer">
                             <span>A</span>
                             <div>
-                                リネ2時間の00:00にモンスター侵攻は発生します。（10:00～23:00の間くらい）リネ2時間はマップを開いて（Alt+Mを押して）、左下に出ているよ。ちなみにリネ2時間の1分が、リアル時間の10秒だよ。リネ2時間の1時間が10分。修練ダンジョンに入る前とか、傲慢の塔にいるときは、マップを開いてリネ2時間を確認しましょう。18:00をすぎてたら、1時間以内にモンスター侵攻が発生する。
+                                モンスター侵攻はゲーム内時間の00:00（大体10:00〜23:00の間）に始まります。ゲーム内時間はマップ（Alt+M）の左下に出ているので、そこで確認できます（ゲーム内時間の1分はリアルタイムの約10秒、1時間は約10分です）。別の場所にいるときは、こまめにマップを覗いて時間を確認しておくと安心です。
                             </div>
                         </div>
                     </div>
@@ -453,13 +86,13 @@
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>Q</span>
-                            次元のボスってなに？参加していいの？自分でも次元のボス召喚できるの？
+                            次元のボスって参加しても大丈夫ですか？自分でも召喚できますか？
                         </div>
                         <div class="faq-answer">
                             <span>A</span>
                             <div>
-                                今のところ、クロウサーバでは誰でも参加してよいです。血盟独占とかはないです。LV85以上だったかな？デイリーミッションの次元の扉のボス討伐が達成できます。あとは、一定量ダメージを与えたタイミングに幸運賞がもらえます。とどめをさせたら、宝箱が貰えます。どんどん参加しましょう。[cite: 2]<br>
-                                召喚石は、モンスター侵攻のリーダーのとどめをさした場合、オーク要塞のアマドのとどめを最多場合にゲットできます。ギラン城の次元の扉で使いましょう。（ハルベルってNPCに話しかけても開かないです。）
+                                今のところクロウサーバーでは誰でも気軽に参加してOKです。血盟の独占なども特にありません。Lv85以上などであれば、デイリーミッションの「次元の扉のボス討伐」も達成できます。一定以上ダメージを与えると幸運賞がもらえて、とどめを刺せば宝箱がゲットできるので、ぜひ参加してみてください。<br>
+                                ちなみに召喚石は、モンスター侵攻のリーダーにとどめを刺したり、オーク要塞のアマドに一番ダメージを与えたりすると手に入ります。ギラン城の次元の扉で使えます（※NPCのハルベルに話しかけても開かないので注意です）。
                             </div>
                         </div>
                     </div>
@@ -467,232 +100,15 @@
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>Q</span>
-                            オーク要塞戦攻略っていうデイリーミッション！あんなに人いっぱいいたら100匹倒すの無理だよ！火力強い人に横取りされるし！
+                            「オーク要塞戦攻略」のデイリーミッションで、たくさんの敵を倒すのが大変です。
                         </div>
                         <div class="faq-answer">
                             <span>A</span>
                             <div>
-                                PT募集があったら参加してみましょう。PTを組んであまり距離を離れずに敵を倒せば、PTメンバーが倒したモンスター数が合算されます。ただ、ちょっと最近はＰＴ募集が少ないかも。。。パーティー要請してみると誰か入れてくれるかも！血盟に入ってPTを組んでみるのもいいかもしれません。
+                                パーティを組んで、あまり離れないようにして敵を倒すと、メンバーが倒した数も一緒にカウントされます。もし募集が見つからなかったら、自分からパーティ申請してみたり、血盟のメンバーにお願いしてみるのもおすすめです。
                             </div>
                         </div>
                     </div>
 
                 </div>
             </section>
-
-            <!-- モンスター侵攻（仮） -->
-            <section id="page-invasion" class="page" hidden>
-                <div class="content-card">
-                    <h1 class="content-title">モンスター侵攻</h1>
-                    <p class="intro-text" style="margin-bottom: 20px;">
-                        モンスター侵攻のスケジュールや、各地域に出現するリーダー、雑魚敵、暗黒軍団の段階パターンなどのメモ。
-                    </p>
-
-                    <!-- 全体スケジュール -->
-                    <div style="background: var(--bg-color); padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-                        <h2 class="content-subtitle" style="margin-bottom: 10px;">侵攻タイムチャート</h2>
-                        <ul style="margin: 0; padding-left: 20px; font-size: 0.95rem; line-height: 1.8;">
-                            <li>00:00 モンスター侵攻開始</li>
-                            <li>00:30くらい 指揮官１出現</li>
-                            <li>01:30くらい 指揮官２出現</li>
-                            <li>02:30 リーダー出現</li>
-                        </ul>
-                    </div>
-
-                    <!-- メラートリザードマン占領地 -->
-                    <div class="coupon-item" style="margin-bottom: 20px;">
-                        <h2 class="content-subtitle" style="border-bottom: 2px solid var(--accent-color); padding-bottom: 6px; margin-bottom: 12px;">
-                            メラートリザードマン占領地 <span style="font-size: 0.85rem; font-weight: normal; color: #666;">（激怒したリザードマン軍団）</span>
-                        </h2>
-                        
-                        <div style="font-weight: bold; color: var(--primary-color); margin-bottom: 6px; font-size: 0.95rem;">リーダー格</div>
-                        <ul style="margin: 0 0 15px 0; padding-left: 20px; font-size: 0.9rem; line-height: 1.6;">
-                            <li>大司教 イーフォス <span style="color: #666; font-size: 0.85rem;">（ちょい東 / ゼンタ修道会？29）</span></li>
-                            <li>最高祭司長 イシル <span style="color: #666; font-size: 0.85rem;">（ちょい東）</span></li>
-                            <li>先鋒隊長 スキラー</li>
-                        </ul>
-
-                        <div style="font-weight: bold; color: var(--primary-color); margin-bottom: 6px; font-size: 0.95rem;">モンスター</div>
-                        <p style="font-size: 0.9rem; color: #555; line-height: 1.6; margin: 0 0 12px 0;">
-                            激怒したリザードマン（ウォーリア / バーサーカー / サマナー）、激怒したレットリザードマン ファイター
-                        </p>
-
-                        <div style="font-weight: bold; color: var(--primary-color); margin-bottom: 6px; font-size: 0.95rem;">指揮官</div>
-                        <p style="font-size: 0.9rem; color: #555; line-height: 1.6; margin: 0;">
-                            リザードマン傭兵隊（助言者：門からまっすぐ奥のほう / 参謀：ちょい東）、リザードマンレンジャー（捜索隊長：ちょい西 / 強襲隊長）、ゼンタ修道会（警備隊長：ちょい西 / 司教：ちょい西）
-                        </p>
-                    </div>
-
-                    <!-- 幻想の蜃気楼 -->
-                    <div class="coupon-item" style="margin-bottom: 20px;">
-                        <h2 class="content-subtitle" style="border-bottom: 2px solid var(--accent-color); padding-bottom: 6px; margin-bottom: 12px;">
-                            幻想の蜃気楼
-                        </h2>
-                        
-                        <div style="background: #fff3cd; color: #856404; padding: 8px 12px; border-radius: 6px; font-size: 0.9rem; margin-bottom: 12px;">
-                            <strong>特殊仕様：</strong> 闘心がついているため、30,000のダメージキャップがかかります。
-                        </div>
-
-                        <div style="font-weight: bold; color: var(--primary-color); margin-bottom: 6px; font-size: 0.95rem;">リーダー格</div>
-                        <ul style="margin: 0 0 15px 0; padding-left: 20px; font-size: 0.9rem; line-height: 1.6;">
-                            <li>荒地の王 タウロス</li>
-                            <li>砂漠の恐怖 タナス</li>
-                            <li>湿地の土竜 トルンバ</li>
-                            <li>アリヨン</li>
-                            <li>水の精霊 アベル</li>
-                        </ul>
-
-                        <div style="font-weight: bold; color: var(--primary-color); margin-bottom: 6px; font-size: 0.95rem;">モンスター</div>
-                        <p style="font-size: 0.9rem; color: #555; line-height: 1.6; margin: 0 0 12px 0;">
-                            砂漠の闇 サンドスパイダー、砂漠のギロチン Sand Scorpion、ビースト ケンタウロスウォーロード、ビースト 湿地の土竜
-                        </p>
-
-                        <div style="font-weight: bold; color: var(--primary-color); margin-bottom: 6px; font-size: 0.95rem;">指揮官</div>
-                        <p style="font-size: 0.9rem; color: #555; line-height: 1.6; margin: 0;">
-                            荒地の王 タウロス、砂漠の恐怖 タナス、湿地の土竜 トルンバ、アリヨン、水の精霊 アベル
-                        </p>
-                    </div>
-
-                    <!-- タイガ駐屯地 -->
-                    <div class="coupon-item" style="margin-bottom: 20px;">
-                        <h2 class="content-subtitle" style="border-bottom: 2px solid var(--accent-color); padding-bottom: 6px; margin-bottom: 12px;">
-                            タイガ駐屯地 <span style="font-size: 0.85rem; font-weight: normal; color: #666;">（勇猛なマフム連合）</span>
-                        </h2>
-                        
-                        <div style="font-weight: bold; color: var(--primary-color); margin-bottom: 6px; font-size: 0.9rem;">リーダー・幹部クラス</div>
-                        <ul style="margin: 0 0 15px 0; padding-left: 20px; font-size: 0.9rem; line-height: 1.6;">
-                            <li>リーダー、補給官 カストール（セルマフム？）、作戦将校 キトゥス</li>
-                            <li>セル マフム親衛隊 軍団長（入口の近く） / 高位魔道士</li>
-                            <li>オル マフム傭兵隊 騎士団長（一番奥） / 探索隊長 / 強襲隊長</li>
-                        </ul>
-
-                        <div style="font-weight: bold; color: var(--primary-color); margin-bottom: 6px; font-size: 0.95rem;">モンスター</div>
-                        <p style="font-size: 0.9rem; color: #555; line-height: 1.6; margin: 0 0 12px 0;">
-                            勇猛なオル マフム（ファイター / 上級ファイター / 幹部）、オエル マフム レンジャー（長老 / 攻撃隊長 / 突撃隊長）
-                        </p>
-
-                        <div style="font-weight: bold; color: var(--primary-color); margin-bottom: 6px; font-size: 0.95rem;">指揮官</div>
-                        <p style="font-size: 0.9rem; color: #555; line-height: 1.6; margin: 0;">
-                            セル マフム親衛隊（軍団長 / 高位魔道士）、オル マフム傭兵隊（騎士団長 / 探索隊長 / 強襲隊長）、補給官 カストール、作戦将校 キトゥス
-                        </p>
-                    </div>
-
-                    <!-- 暗黒軍団の段階とパターン -->
-                    <div class="coupon-item">
-                        <h2 class="content-subtitle" style="border-bottom: 2px solid var(--accent-color); padding-bottom: 6px; margin-bottom: 12px;">
-                            暗黒軍団の段階と出現パターン
-                        </h2>
-
-                        <div style="margin-bottom: 12px; font-size: 0.9rem; line-height: 1.6;">
-                            <strong>段階ごとの分類：</strong>
-                            <ul style="margin: 5px 0 0 0; padding-left: 20px;">
-                                <li><strong>1段階：</strong> 暗黒軍団 監視者 ／ 暗黒軍団 破壊者</li>
-                                <li><strong>2段階：</strong> 暗黒軍団 執政官 ／ 暗黒軍団 司令官</li>
-                                <li><strong>3段階：</strong> 暗黒軍団 大君主 ／ 暗黒軍団 大戦士</li>
-                            </ul>
-                        </div>
-
-                        <div style="background: var(--bg-color); padding: 12px; border-radius: 6px; font-size: 0.9rem; line-height: 1.6;">
-                            <strong>出現バリエーションのメモ：</strong>
-                            <ul style="margin: 5px 0 0 0; padding-left: 20px; color: #555;">
-                                <li>監視者しか出ないことがある</li>
-                                <li>監視者や破壊者のあとに司令官が出ることがある</li>
-                                <li>司令官しか出なかったり、司令官のあと執政官が出たりする（執政官 → 司令官のパターンもあり）</li>
-                                <li>大君主 → 大戦士のときがある</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-            <!-- CROW PASS -->
-            <section id="page-crowpass" class="page" hidden>
-                <div class="content-card">
-                    <h1 class="content-title">CROW PASS</h1>
-                    <p class="intro-text" style="margin-bottom: 20px;">
-                        クロウパス（CROW PASS）の過去の販売・構成情報のリンクまとめ。
-                    </p>
-
-                    <!-- 2026年 -->
-                    <div class="coupon-item" style="margin-bottom: 20px;">
-                        <h2 class="content-subtitle" style="border-bottom: 2px solid var(--accent-color); padding-bottom: 6px; margin-bottom: 12px;">
-                            2026年
-                        </h2>
-                        <ul style="margin: 0; padding-left: 20px; font-size: 0.95rem; line-height: 1.8;">
-                            <li><a href="https://lineage2.ncsoft.jp/news/news/lineage2/news/f26/2610_crowpass" target="_blank" rel="noopener">「[10月]CROW PASS」販売のお知らせ</a></li>
-                            <li><a href="https://lineage2.ncsoft.jp/news/news/lineage2/news/f26/crowpass2609" target="_blank" rel="noopener">「[9月]CROW PASS」販売のお知らせ</a></li>
-                            <li><a href="https://lineage2.ncsoft.jp/news/news/lineage2/news/f26/2608crowpass" target="_blank" rel="noopener">「[8月]CROW PASS」販売のお知らせ</a></li>
-                            <li><a href="https://lineage2.ncsoft.jp/news/news/lineage2/news/f26/202607crowpass" target="_blank" rel="noopener">「[7月]CROW PASS」販売のお知らせ</a></li>
-                            <li><a href="https://lineage2.ncsoft.jp/news/news/lineage2/news/f26/2606crowpass" target="_blank" rel="noopener">「[6月]CROW PASS」販売のお知らせ</a></li>
-                            <li><a href="https://lineage2.ncsoft.jp/news/news/lineage2/news/f26/260501surcoupon" target="_blank" rel="noopener">【追記】「[5月]EVA/CROW PASS」購入者向けボーナス特典のご案内</a></li>
-                            <li><a href="https://lineage2.ncsoft.jp/news/news/lineage2/news/f26/2605crowpass" target="_blank" rel="noopener">「[5月]CROW PASS」販売のお知らせ</a></li>
-                            <li><a href="https://press.ncsoft.jp/notice/lineage2eva/crow2604pass/" target="_blank" rel="noopener">[4月]CROW PASSの構成</a></li>
-                            <li><a href="https://press.ncsoft.jp/notice/lineage2eva/2603crowpass/" target="_blank" rel="noopener">[3月]CROW PASSの構成</a></li>
-                            <li><a href="https://press.ncsoft.jp/notice/lineage2eva/2602crowpass/" target="_blank" rel="noopener">[2月]CROW PASSの構成</a></li>
-                            <li><a href="https://press.ncsoft.jp/notice/lineage2eva/2601crowpass/" target="_blank" rel="noopener">[1月]CROW PASS</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- 2025年 -->
-                    <div class="coupon-item">
-                        <h2 class="content-subtitle" style="border-bottom: 2px solid var(--accent-color); padding-bottom: 6px; margin-bottom: 12px;">
-                            2025年
-                        </h2>
-                        <ul style="margin: 0; padding-left: 20px; font-size: 0.95rem; line-height: 1.8;">
-                            <li><a href="https://press.ncsoft.jp/notice/lineage2eva/2512crowpass/" target="_blank" rel="noopener">[12月]CROW PASSの構成</a></li>
-                            <li><a href="https://press.ncsoft.jp/notice/lineage2eva/2511crow/" target="_blank" rel="noopener">[11月]CROW PASSの構成</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-    </div>
-
-    <!-- フッター -->
-    <footer>
-        &copy; 2026 lineage2-crow All Rights Reserved.<br>
-        <small style="display:inline-block; margin-top:5px; font-size:0.75rem;">※当サイトは個人のファンサイトであり、NCSoftおよびNC Japanとは一切関係ありません。</small>
-    </footer>
-
-    <script>
-        (function () {
-            var pages = {
-                home: document.getElementById('page-home'),
-                coupon: document.getElementById('page-coupon'),
-                faq: document.getElementById('page-faq'),
-                invasion: document.getElementById('page-invasion'),
-                crowpass: document.getElementById('page-crowpass')
-            };
-
-            function updateActiveMenu(hash) {
-                var current = hash.replace('#', '') || 'home';
-                document.querySelectorAll('.menu-list a').forEach(function (link) {
-                    var targetPage = link.getAttribute('data-page');
-                    link.classList.toggle('is-active', targetPage === current);
-                });
-            }
-
-            function showPage() {
-                var hash = location.hash || '#home';
-                var key = hash.replace('#', '');
-                
-                if (!pages[key]) {
-                    key = 'home';
-                }
-
-                Object.keys(pages).forEach(function (pageKey) {
-                    pages[pageKey].hidden = pageKey !== key;
-                });
-
-                updateActiveMenu(hash);
-            }
-
-            window.addEventListener('hashchange', showPage);
-            showPage();
-        })();
-    </script>
-
-</body>
-</html>

@@ -125,12 +125,10 @@
 
         /* 右側メインコンテンツ */
         main {
-            flex-grow: 1;
-            min-width: 0;
-            
-            /* ▼ 追加：右側エリアの幅をきっちり固定して、ページごとのガタつきを防ぐ ▼ */
-            width: 880px;
+            flex-basis: 880px;
+            flex-grow: 0;
             flex-shrink: 0;
+            min-width: 0;
         }
 
         .content-card {

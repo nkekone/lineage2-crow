@@ -230,6 +230,193 @@
             display: none !important;
         }
 
+        /* CROW PASS タイムライン用のスタイル */
+        .timeline-year-group {
+            margin-bottom: 28px;
+        }
+
+        .timeline-year-group:last-child {
+            margin-bottom: 10px;
+        }
+
+        .timeline-year-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .timeline-year-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--primary-color);
+            color: #fff;
+            font-size: 0.95rem;
+            font-weight: bold;
+            padding: 5px 14px;
+            border-radius: 20px;
+            box-shadow: 0 2px 4px rgba(44, 62, 80, 0.15);
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-year-line {
+            flex-grow: 1;
+            height: 1px;
+            background: linear-gradient(to right, #cbd5e1, transparent);
+        }
+
+        .timeline-list {
+            position: relative;
+            padding-left: 60px;
+            margin: 0;
+        }
+
+        .timeline-list::before {
+            content: '';
+            position: absolute;
+            left: 23px;
+            top: 14px;
+            bottom: 14px;
+            width: 2px;
+            background: #e2e8f0;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-node {
+            position: absolute;
+            left: -60px;
+            top: 10px;
+            width: 48px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .timeline-month {
+            background: #fff;
+            border: 2px solid var(--accent-color);
+            color: var(--primary-color);
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            white-space: nowrap;
+        }
+
+        .timeline-content {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .timeline-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px 16px;
+            text-decoration: none;
+            color: #333;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .timeline-card:hover {
+            border-color: var(--accent-color);
+            background: #fbfdff;
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.12);
+            color: var(--accent-color);
+        }
+
+        .timeline-card-main {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            transition: color 0.2s;
+        }
+
+        .timeline-link-icon {
+            color: #94a3b8;
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .timeline-card:hover .timeline-link-icon {
+            color: var(--accent-color);
+            transform: translate(2px, -2px);
+        }
+
+        .timeline-sub-card {
+            margin-left: 14px;
+            padding: 8px 14px;
+            background: #fffbeb;
+            border: 1px solid #fef3c7;
+            border-left: 3px solid #f59e0b;
+            border-radius: 0 6px 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .timeline-sub-card:hover {
+            background: #fef3c7;
+        }
+
+        .sub-card-badge {
+            background: #f59e0b;
+            color: #fff;
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .sub-card-link {
+            color: #92400e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+            flex-grow: 1;
+        }
+
+        .sub-card-link:hover {
+            text-decoration: underline;
+        }
+
+        .sub-card-link svg {
+            color: #b45309;
+            flex-shrink: 0;
+        }
+
         /* フッター */
         footer {
             text-align: center;
@@ -247,6 +434,32 @@
             }
             aside {
                 width: 100%;
+            }
+            .timeline-list {
+                padding-left: 52px;
+            }
+            .timeline-list::before {
+                left: 19px;
+            }
+            .timeline-node {
+                left: -52px;
+                width: 42px;
+            }
+            .timeline-month {
+                font-size: 0.72rem;
+                padding: 1px 5px;
+            }
+            .timeline-card {
+                padding: 10px 12px;
+            }
+            .timeline-title {
+                font-size: 0.88rem;
+            }
+            .timeline-sub-card {
+                margin-left: 6px;
+                padding: 7px 10px;
+                font-size: 0.8rem;
+                flex-wrap: wrap;
             }
         }
     </style>
@@ -618,34 +831,186 @@
                     </p>
 
                     <!-- 2026年 -->
-                    <div class="coupon-item" style="margin-bottom: 20px;">
-                        <h2 class="content-subtitle" style="border-bottom: 2px solid var(--accent-color); padding-bottom: 6px; margin-bottom: 12px;">
-                            2026年
-                        </h2>
-                        <ul style="margin: 0; padding-left: 20px; font-size: 0.95rem; line-height: 1.8;">
-                            <li><a href="https://lineage2.ncsoft.jp/news/news/lineage2/news/f26/2610_crowpass" target="_blank" rel="noopener">「[10月]CROW PASS」販売のお知らせ</a></li>
-                            <li><a href="https://lineage2.ncsoft.jp/news/news/lineage2/news/f26/crowpass2609" target="_blank" rel="noopener">「[9月]CROW PASS」販売のお知らせ</a></li>
-                            <li><a href="https://lineage2.ncsoft.jp/news/news/lineage2/news/f26/2608crowpass" target="_blank" rel="noopener">「[8月]CROW PASS」販売のお知らせ</a></li>
-                            <li><a href="https://lineage2.ncsoft.jp/news/news/lineage2/news/f26/202607crowpass" target="_blank" rel="noopener">「[7月]CROW PASS」販売のお知らせ</a></li>
-                            <li><a href="https://lineage2.ncsoft.jp/news/news/lineage2/news/f26/2606crowpass" target="_blank" rel="noopener">「[6月]CROW PASS」販売のお知らせ</a></li>
-                            <li><a href="https://lineage2.ncsoft.jp/news/news/lineage2/news/f26/260501surcoupon" target="_blank" rel="noopener">【追記】「[5月]EVA/CROW PASS」購入者向けボーナス特典のご案内</a></li>
-                            <li><a href="https://lineage2.ncsoft.jp/news/news/lineage2/news/f26/2605crowpass" target="_blank" rel="noopener">「[5月]CROW PASS」販売のお知らせ</a></li>
-                            <li><a href="https://press.ncsoft.jp/notice/lineage2eva/crow2604pass/" target="_blank" rel="noopener">[4月]CROW PASSの構成</a></li>
-                            <li><a href="https://press.ncsoft.jp/notice/lineage2eva/2603crowpass/" target="_blank" rel="noopener">[3月]CROW PASSの構成</a></li>
-                            <li><a href="https://press.ncsoft.jp/notice/lineage2eva/2602crowpass/" target="_blank" rel="noopener">[2月]CROW PASSの構成</a></li>
-                            <li><a href="https://press.ncsoft.jp/notice/lineage2eva/2601crowpass/" target="_blank" rel="noopener">[1月]CROW PASS</a></li>
-                        </ul>
+                    <div class="timeline-year-group">
+                        <div class="timeline-year-header">
+                            <span class="timeline-year-badge">2026年</span>
+                            <div class="timeline-year-line"></div>
+                        </div>
+                        <div class="timeline-list">
+                            <div class="timeline-item">
+                                <div class="timeline-node"><span class="timeline-month">10月</span></div>
+                                <div class="timeline-content">
+                                    <a href="https://lineage2.ncsoft.jp/news/news/lineage2/news/f26/2610_crowpass" target="_blank" rel="noopener noreferrer" class="timeline-card">
+                                        <div class="timeline-card-main">
+                                            <span class="timeline-title">「[10月]CROW PASS」販売のお知らせ</span>
+                                        </div>
+                                        <span class="timeline-link-icon" aria-hidden="true">
+                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-node"><span class="timeline-month">9月</span></div>
+                                <div class="timeline-content">
+                                    <a href="https://lineage2.ncsoft.jp/news/news/lineage2/news/f26/crowpass2609" target="_blank" rel="noopener noreferrer" class="timeline-card">
+                                        <div class="timeline-card-main">
+                                            <span class="timeline-title">「[9月]CROW PASS」販売のお知らせ</span>
+                                        </div>
+                                        <span class="timeline-link-icon" aria-hidden="true">
+                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-node"><span class="timeline-month">8月</span></div>
+                                <div class="timeline-content">
+                                    <a href="https://lineage2.ncsoft.jp/news/news/lineage2/news/f26/2608crowpass" target="_blank" rel="noopener noreferrer" class="timeline-card">
+                                        <div class="timeline-card-main">
+                                            <span class="timeline-title">「[8月]CROW PASS」販売のお知らせ</span>
+                                        </div>
+                                        <span class="timeline-link-icon" aria-hidden="true">
+                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-node"><span class="timeline-month">7月</span></div>
+                                <div class="timeline-content">
+                                    <a href="https://lineage2.ncsoft.jp/news/news/lineage2/news/f26/202607crowpass" target="_blank" rel="noopener noreferrer" class="timeline-card">
+                                        <div class="timeline-card-main">
+                                            <span class="timeline-title">「[7月]CROW PASS」販売のお知らせ</span>
+                                        </div>
+                                        <span class="timeline-link-icon" aria-hidden="true">
+                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-node"><span class="timeline-month">6月</span></div>
+                                <div class="timeline-content">
+                                    <a href="https://lineage2.ncsoft.jp/news/news/lineage2/news/f26/2606crowpass" target="_blank" rel="noopener noreferrer" class="timeline-card">
+                                        <div class="timeline-card-main">
+                                            <span class="timeline-title">「[6月]CROW PASS」販売のお知らせ</span>
+                                        </div>
+                                        <span class="timeline-link-icon" aria-hidden="true">
+                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-node"><span class="timeline-month">5月</span></div>
+                                <div class="timeline-content">
+                                    <a href="https://lineage2.ncsoft.jp/news/news/lineage2/news/f26/2605crowpass" target="_blank" rel="noopener noreferrer" class="timeline-card">
+                                        <div class="timeline-card-main">
+                                            <span class="timeline-title">「[5月]CROW PASS」販売のお知らせ</span>
+                                        </div>
+                                        <span class="timeline-link-icon" aria-hidden="true">
+                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                        </span>
+                                    </a>
+                                    <div class="timeline-sub-card">
+                                        <span class="sub-card-badge">特典・追記</span>
+                                        <a href="https://lineage2.ncsoft.jp/news/news/lineage2/news/f26/260501surcoupon" target="_blank" rel="noopener noreferrer" class="sub-card-link">
+                                            <span>【追記】「[5月]EVA/CROW PASS」購入者向けボーナス特典のご案内</span>
+                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-node"><span class="timeline-month">4月</span></div>
+                                <div class="timeline-content">
+                                    <a href="https://press.ncsoft.jp/notice/lineage2eva/crow2604pass/" target="_blank" rel="noopener noreferrer" class="timeline-card">
+                                        <div class="timeline-card-main">
+                                            <span class="timeline-title">[4月]CROW PASSの構成</span>
+                                        </div>
+                                        <span class="timeline-link-icon" aria-hidden="true">
+                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-node"><span class="timeline-month">3月</span></div>
+                                <div class="timeline-content">
+                                    <a href="https://press.ncsoft.jp/notice/lineage2eva/2603crowpass/" target="_blank" rel="noopener noreferrer" class="timeline-card">
+                                        <div class="timeline-card-main">
+                                            <span class="timeline-title">[3月]CROW PASSの構成</span>
+                                        </div>
+                                        <span class="timeline-link-icon" aria-hidden="true">
+                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-node"><span class="timeline-month">2月</span></div>
+                                <div class="timeline-content">
+                                    <a href="https://press.ncsoft.jp/notice/lineage2eva/2602crowpass/" target="_blank" rel="noopener noreferrer" class="timeline-card">
+                                        <div class="timeline-card-main">
+                                            <span class="timeline-title">[2月]CROW PASSの構成</span>
+                                        </div>
+                                        <span class="timeline-link-icon" aria-hidden="true">
+                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-node"><span class="timeline-month">1月</span></div>
+                                <div class="timeline-content">
+                                    <a href="https://press.ncsoft.jp/notice/lineage2eva/2601crowpass/" target="_blank" rel="noopener noreferrer" class="timeline-card">
+                                        <div class="timeline-card-main">
+                                            <span class="timeline-title">[1月]CROW PASS</span>
+                                        </div>
+                                        <span class="timeline-link-icon" aria-hidden="true">
+                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- 2025年 -->
-                    <div class="coupon-item">
-                        <h2 class="content-subtitle" style="border-bottom: 2px solid var(--accent-color); padding-bottom: 6px; margin-bottom: 12px;">
-                            2025年
-                        </h2>
-                        <ul style="margin: 0; padding-left: 20px; font-size: 0.95rem; line-height: 1.8;">
-                            <li><a href="https://press.ncsoft.jp/notice/lineage2eva/2512crowpass/" target="_blank" rel="noopener">[12月]CROW PASSの構成</a></li>
-                            <li><a href="https://press.ncsoft.jp/notice/lineage2eva/2511crow/" target="_blank" rel="noopener">[11月]CROW PASSの構成</a></li>
-                        </ul>
+                    <div class="timeline-year-group">
+                        <div class="timeline-year-header">
+                            <span class="timeline-year-badge">2025年</span>
+                            <div class="timeline-year-line"></div>
+                        </div>
+                        <div class="timeline-list">
+                            <div class="timeline-item">
+                                <div class="timeline-node"><span class="timeline-month">12月</span></div>
+                                <div class="timeline-content">
+                                    <a href="https://press.ncsoft.jp/notice/lineage2eva/2512crowpass/" target="_blank" rel="noopener noreferrer" class="timeline-card">
+                                        <div class="timeline-card-main">
+                                            <span class="timeline-title">[12月]CROW PASSの構成</span>
+                                        </div>
+                                        <span class="timeline-link-icon" aria-hidden="true">
+                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-node"><span class="timeline-month">11月</span></div>
+                                <div class="timeline-content">
+                                    <a href="https://press.ncsoft.jp/notice/lineage2eva/2511crow/" target="_blank" rel="noopener noreferrer" class="timeline-card">
+                                        <div class="timeline-card-main">
+                                            <span class="timeline-title">[11月]CROW PASSの構成</span>
+                                        </div>
+                                        <span class="timeline-link-icon" aria-hidden="true">
+                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>

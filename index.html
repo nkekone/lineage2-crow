@@ -417,6 +417,203 @@
             flex-shrink: 0;
         }
 
+        /* モンスター侵攻用のスタイル */
+        .section-main-heading {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            border-left: 4px solid var(--accent-color);
+            padding-left: 10px;
+            margin: 30px 0 16px 0;
+            font-weight: bold;
+        }
+
+        .section-main-heading:first-of-type {
+            margin-top: 10px;
+        }
+
+        .invasion-card {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        .invasion-card-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 14px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .invasion-card-title span.sub-text {
+            font-size: 0.85rem;
+            font-weight: normal;
+            color: #64748b;
+        }
+
+        .invasion-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            margin: 10px 0 16px 0;
+        }
+
+        .invasion-table th, .invasion-table td {
+            border: 1px solid var(--border-color);
+            padding: 9px 12px;
+        }
+
+        .invasion-table th {
+            background-color: var(--primary-color);
+            color: #fff;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .invasion-table tr:nth-child(even) {
+            background-color: var(--bg-color);
+        }
+
+        .invasion-table tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        .schedule-list {
+            list-style: none;
+            padding: 0;
+            margin: 8px 0 14px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .schedule-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9rem;
+        }
+
+        .schedule-time {
+            background: #e2e8f0;
+            color: var(--primary-color);
+            font-weight: bold;
+            font-family: monospace;
+            font-size: 0.88rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            min-width: 70px;
+            text-align: center;
+        }
+
+        .monster-group {
+            margin-bottom: 16px;
+        }
+
+        .monster-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .monster-role-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .monster-role-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: #fff;
+        }
+
+        .badge-mob {
+            background: #64748b;
+        }
+
+        .badge-commander {
+            background: #3b82f6;
+        }
+
+        .badge-leader {
+            background: #e11d48;
+        }
+
+        .badge-chest {
+            background: #f59e0b;
+        }
+
+        .monster-role-title {
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .monster-role-sub {
+            font-size: 0.82rem;
+            color: #64748b;
+            font-weight: normal;
+        }
+
+        .monster-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .monster-chip {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.88rem;
+            color: #334155;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .monster-chip.highlight-leader {
+            background: #fff1f2;
+            border-color: #fecdd3;
+            color: #9f1239;
+            font-weight: 600;
+        }
+
+        .monster-chip.highlight-commander {
+            background: #eff6ff;
+            border-color: #bfdbfe;
+            color: #1e40af;
+        }
+
+        .invasion-alert {
+            background: #fffbeb;
+            border: 1px solid #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 10px 14px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: #92400e;
+            margin: 12px 0;
+            line-height: 1.5;
+        }
+
         /* フッター */
         footer {
             text-align: center;
@@ -696,126 +893,381 @@
                 </div>
             </section>
 
-            <!-- モンスター侵攻（仮） -->
+            <!-- モンスター侵攻 -->
             <section id="page-invasion" class="page" hidden>
                 <div class="content-card">
                     <h1 class="content-title">モンスター侵攻</h1>
+
+                    <!-- 概要 -->
+                    <h2 class="section-main-heading">概要</h2>
                     <p class="intro-text" style="margin-bottom: 20px;">
-                        モンスター侵攻のスケジュールや、各地域に出現するリーダー、雑魚敵、暗黒軍団の段階パターンなどのメモ。
+                        リネ２時間の00:00に発生する。<br>
+                        発生する場所はランダム。
                     </p>
 
-                    <!-- 全体スケジュール -->
-                    <div style="background: var(--bg-color); padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-                        <h2 class="content-subtitle" style="margin-bottom: 10px;">侵攻タイムチャート</h2>
-                        <ul style="margin: 0; padding-left: 20px; font-size: 0.95rem; line-height: 1.8;">
-                            <li>00:00 モンスター侵攻開始</li>
-                            <li>00:30くらい 指揮官１出現</li>
-                            <li>01:30くらい 指揮官２出現</li>
-                            <li>02:30 リーダー出現</li>
+                    <!-- デイリーミッション -->
+                    <div class="invasion-card">
+                        <div class="invasion-card-title">
+                            デイリーミッション
+                        </div>
+                        <table class="invasion-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 35%;">ミッション名</th>
+                                    <th>達成条件</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>侵攻モンスターの討伐</strong></td>
+                                    <td>モンスター150体を倒す</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>モンスターの進行阻止</strong></td>
+                                    <td>リーダーを倒す</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>暗黒軍団のボス討伐</strong></td>
+                                    <td>リーダーを倒した後、ランダムに出現する暗黒軍団を倒す</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- 発生する場所と推奨レベル -->
+                    <div class="invasion-card">
+                        <div class="invasion-card-title">
+                            発生する場所と推奨レベル
+                        </div>
+                        <table class="invasion-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 35%;">推奨レベル</th>
+                                    <th>発生する場所</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>87～89</strong></td>
+                                    <td>メラート リザードマンの駐屯地</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>88～90</strong></td>
+                                    <td>タイガ駐屯地</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>87～89</strong></td>
+                                    <td>幻想の蜃気楼</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- メラート リザードマンの駐屯地、タイガ駐屯地の概要 -->
+                    <div class="invasion-card">
+                        <div class="invasion-card-title">
+                            メラート リザードマンの駐屯地、タイガ駐屯地の概要
+                        </div>
+                        <div style="font-weight: bold; color: var(--primary-color); margin-bottom: 8px; font-size: 0.95rem;">タイムスケジュール</div>
+                        <ul class="schedule-list">
+                            <li class="schedule-item">
+                                <span class="schedule-time">00:00</span>
+                                <span>開始</span>
+                            </li>
+                            <li class="schedule-item">
+                                <span class="schedule-time">00:30頃</span>
+                                <span>指揮官1登場</span>
+                            </li>
+                            <li class="schedule-item">
+                                <span class="schedule-time">01:30頃</span>
+                                <span>指揮官2登場</span>
+                            </li>
+                            <li class="schedule-item">
+                                <span class="schedule-time">02:30</span>
+                                <span>リーダー登場</span>
+                            </li>
+                        </ul>
+                        <ul style="margin: 0; padding-left: 20px; font-size: 0.92rem; color: #475569; line-height: 1.8;">
+                            <li>指揮官が2人登場</li>
+                            <li>02:30にリーダーが登場する</li>
                         </ul>
                     </div>
+
+                    <!-- 幻想の蜃気楼の概要 -->
+                    <div class="invasion-card">
+                        <div class="invasion-card-title">
+                            幻想の蜃気楼の概要
+                        </div>
+                        <div style="font-weight: bold; color: var(--primary-color); margin-bottom: 8px; font-size: 0.95rem;">タイムスケジュール</div>
+                        <ul class="schedule-list">
+                            <li class="schedule-item">
+                                <span class="schedule-time">00:00</span>
+                                <span>開始</span>
+                            </li>
+                            <li class="schedule-item">
+                                <span class="schedule-time">02:30</span>
+                                <span>リーダー出現</span>
+                            </li>
+                        </ul>
+                        <ul style="margin: 0 0 10px 0; padding-left: 20px; font-size: 0.92rem; color: #475569; line-height: 1.8;">
+                            <li>開始、リーダー出現時間は他と同様。</li>
+                            <li>指揮官が４体（５体？）発生する。</li>
+                            <li>リーダーに一定ダメージ与えるごとに宝箱を入手出来る。</li>
+                        </ul>
+                        <div class="invasion-alert">
+                            <strong>⚠️ 特殊仕様：</strong> 指揮官、リーダー共にスキル「闘争心」がついており、与えられるダメージが<strong>30,000に制限</strong>されます。
+                        </div>
+                    </div>
+
+                    <!-- 暗黒軍団の概要 -->
+                    <div class="invasion-card">
+                        <div class="invasion-card-title">
+                            暗黒軍団の概要
+                        </div>
+                        <ul style="margin: 0; padding-left: 20px; font-size: 0.92rem; color: #475569; line-height: 1.8;">
+                            <li>メラート リザードマンの駐屯地、タイガ駐屯地のリーダー討伐後にランダムで出現。</li>
+                            <li>リーダーに一定ダメージ与えるごとに宝箱を入手出来る。</li>
+                            <li>リーダーは最大２体出現する。</li>
+                        </ul>
+                    </div>
+
+                    <!-- それぞれの特徴 -->
+                    <h2 class="section-main-heading">それぞれの特徴</h2>
 
                     <!-- メラートリザードマン占領地 -->
-                    <div class="coupon-item" style="margin-bottom: 20px;">
-                        <h2 class="content-subtitle" style="border-bottom: 2px solid var(--accent-color); padding-bottom: 6px; margin-bottom: 12px;">
-                            メラートリザードマン占領地 <span style="font-size: 0.85rem; font-weight: normal; color: #666;">（激怒したリザードマン軍団）</span>
-                        </h2>
-                        
-                        <div style="font-weight: bold; color: var(--primary-color); margin-bottom: 6px; font-size: 0.95rem;">リーダー格</div>
-                        <ul style="margin: 0 0 15px 0; padding-left: 20px; font-size: 0.9rem; line-height: 1.6;">
-                            <li>大司教 イーフォス <span style="color: #666; font-size: 0.85rem;">（ちょい東 / ゼンタ修道会？29）</span></li>
-                            <li>最高祭司長 イシル <span style="color: #666; font-size: 0.85rem;">（ちょい東）</span></li>
-                            <li>先鋒隊長 スキラー</li>
-                        </ul>
-
-                        <div style="font-weight: bold; color: var(--primary-color); margin-bottom: 6px; font-size: 0.95rem;">モンスター</div>
-                        <p style="font-size: 0.9rem; color: #555; line-height: 1.6; margin: 0 0 12px 0;">
-                            激怒したリザードマン（ウォーリア / バーサーカー / サマナー）、激怒したレットリザードマン ファイター
-                        </p>
-
-                        <div style="font-weight: bold; color: var(--primary-color); margin-bottom: 6px; font-size: 0.95rem;">指揮官</div>
-                        <p style="font-size: 0.9rem; color: #555; line-height: 1.6; margin: 0;">
-                            リザードマン傭兵隊（助言者：門からまっすぐ奥のほう / 参謀：ちょい東）、リザードマンレンジャー（捜索隊長：ちょい西 / 強襲隊長）、ゼンタ修道会（警備隊長：ちょい西 / 司教：ちょい西）
-                        </p>
-                    </div>
-
-                    <!-- 幻想の蜃気楼 -->
-                    <div class="coupon-item" style="margin-bottom: 20px;">
-                        <h2 class="content-subtitle" style="border-bottom: 2px solid var(--accent-color); padding-bottom: 6px; margin-bottom: 12px;">
-                            幻想の蜃気楼
-                        </h2>
-                        
-                        <div style="background: #fff3cd; color: #856404; padding: 8px 12px; border-radius: 6px; font-size: 0.9rem; margin-bottom: 12px;">
-                            <strong>特殊仕様：</strong> 闘心がついているため、30,000のダメージキャップがかかります。
+                    <div class="invasion-card">
+                        <div class="invasion-card-title">
+                            メラートリザードマン占領地
+                            <span class="sub-text">激怒したリザードマン軍団</span>
                         </div>
 
-                        <div style="font-weight: bold; color: var(--primary-color); margin-bottom: 6px; font-size: 0.95rem;">リーダー格</div>
-                        <ul style="margin: 0 0 15px 0; padding-left: 20px; font-size: 0.9rem; line-height: 1.6;">
-                            <li>荒地の王 タウロス</li>
-                            <li>砂漠の恐怖 タナス</li>
-                            <li>湿地の土竜 トルンバ</li>
-                            <li>アリヨン</li>
-                            <li>水の精霊 アベル</li>
-                        </ul>
+                        <!-- 雑魚モンスター -->
+                        <div class="monster-group">
+                            <div class="monster-role-header">
+                                <span class="monster-role-badge badge-mob">雑魚</span>
+                                <span class="monster-role-title">雑魚モンスター</span>
+                            </div>
+                            <ul class="monster-chips">
+                                <li class="monster-chip">激怒したリザードマン　ウォーリア</li>
+                                <li class="monster-chip">激怒したリザードマン　バーサーカー</li>
+                                <li class="monster-chip">激怒したリザードマン　サマナー</li>
+                                <li class="monster-chip">激怒したレットリザードマン　ファイター</li>
+                            </ul>
+                        </div>
 
-                        <div style="font-weight: bold; color: var(--primary-color); margin-bottom: 6px; font-size: 0.95rem;">モンスター</div>
-                        <p style="font-size: 0.9rem; color: #555; line-height: 1.6; margin: 0 0 12px 0;">
-                            砂漠の闇 サンドスパイダー、砂漠のギロチン Sand Scorpion、ビースト ケンタウロスウォーロード、ビースト 湿地の土竜
-                        </p>
+                        <!-- 指揮官 -->
+                        <div class="monster-group">
+                            <div class="monster-role-header">
+                                <span class="monster-role-badge badge-commander">指揮官</span>
+                                <span class="monster-role-title">指揮官</span>
+                                <span class="monster-role-sub">（下記からランダムで２体出現）</span>
+                            </div>
+                            <ul class="monster-chips">
+                                <li class="monster-chip highlight-commander">リザードマン傭兵隊　助言者</li>
+                                <li class="monster-chip highlight-commander">リザードマン傭兵隊　参謀</li>
+                                <li class="monster-chip highlight-commander">リザードマンレンジャー　捜索隊長</li>
+                                <li class="monster-chip highlight-commander">リザードマンレンジャー　強襲隊長</li>
+                                <li class="monster-chip highlight-commander">ゼンタ修道会　警備隊長</li>
+                                <li class="monster-chip highlight-commander">ゼンタ修道会　司教</li>
+                            </ul>
+                        </div>
 
-                        <div style="font-weight: bold; color: var(--primary-color); margin-bottom: 6px; font-size: 0.95rem;">指揮官</div>
-                        <p style="font-size: 0.9rem; color: #555; line-height: 1.6; margin: 0;">
-                            荒地の王 タウロス、砂漠の恐怖 タナス、湿地の土竜 トルンバ、アリヨン、水の精霊 アベル
-                        </p>
+                        <!-- リーダー -->
+                        <div class="monster-group">
+                            <div class="monster-role-header">
+                                <span class="monster-role-badge badge-leader">リーダー</span>
+                                <span class="monster-role-title">リーダー</span>
+                                <span class="monster-role-sub">（下記からランダムで１体出現）</span>
+                            </div>
+                            <ul class="monster-chips">
+                                <li class="monster-chip highlight-leader">大司教　イーフォス</li>
+                                <li class="monster-chip highlight-leader">最高祭司長　イシル</li>
+                                <li class="monster-chip highlight-leader">先鋒隊長　スキラー</li>
+                            </ul>
+                        </div>
                     </div>
 
                     <!-- タイガ駐屯地 -->
-                    <div class="coupon-item" style="margin-bottom: 20px;">
-                        <h2 class="content-subtitle" style="border-bottom: 2px solid var(--accent-color); padding-bottom: 6px; margin-bottom: 12px;">
-                            タイガ駐屯地 <span style="font-size: 0.85rem; font-weight: normal; color: #666;">（勇猛なマフム連合）</span>
-                        </h2>
-                        
-                        <div style="font-weight: bold; color: var(--primary-color); margin-bottom: 6px; font-size: 0.9rem;">リーダー・幹部クラス</div>
-                        <ul style="margin: 0 0 15px 0; padding-left: 20px; font-size: 0.9rem; line-height: 1.6;">
-                            <li>リーダー、補給官 カストール（セルマフム？）、作戦将校 キトゥス</li>
-                            <li>セル マフム親衛隊 軍団長（入口の近く） / 高位魔道士</li>
-                            <li>オル マフム傭兵隊 騎士団長（一番奥） / 探索隊長 / 強襲隊長</li>
-                        </ul>
+                    <div class="invasion-card">
+                        <div class="invasion-card-title">
+                            タイガ駐屯地
+                            <span class="sub-text">勇猛なマフム連合</span>
+                        </div>
 
-                        <div style="font-weight: bold; color: var(--primary-color); margin-bottom: 6px; font-size: 0.95rem;">モンスター</div>
-                        <p style="font-size: 0.9rem; color: #555; line-height: 1.6; margin: 0 0 12px 0;">
-                            勇猛なオル マフム（ファイター / 上級ファイター / 幹部）、オエル マフム レンジャー（長老 / 攻撃隊長 / 突撃隊長）
-                        </p>
-
-                        <div style="font-weight: bold; color: var(--primary-color); margin-bottom: 6px; font-size: 0.95rem;">指揮官</div>
-                        <p style="font-size: 0.9rem; color: #555; line-height: 1.6; margin: 0;">
-                            セル マフム親衛隊（軍団長 / 高位魔道士）、オル マフム傭兵隊（騎士団長 / 探索隊長 / 強襲隊長）、補給官 カストール、作戦将校 キトゥス
-                        </p>
-                    </div>
-
-                    <!-- 暗黒軍団の段階とパターン -->
-                    <div class="coupon-item">
-                        <h2 class="content-subtitle" style="border-bottom: 2px solid var(--accent-color); padding-bottom: 6px; margin-bottom: 12px;">
-                            暗黒軍団の段階と出現パターン
-                        </h2>
-
-                        <div style="margin-bottom: 12px; font-size: 0.9rem; line-height: 1.6;">
-                            <strong>段階ごとの分類：</strong>
-                            <ul style="margin: 5px 0 0 0; padding-left: 20px;">
-                                <li><strong>1段階：</strong> 暗黒軍団 監視者 ／ 暗黒軍団 破壊者</li>
-                                <li><strong>2段階：</strong> 暗黒軍団 執政官 ／ 暗黒軍団 司令官</li>
-                                <li><strong>3段階：</strong> 暗黒軍団 大君主 ／ 暗黒軍団 大戦士</li>
+                        <!-- 雑魚モンスター -->
+                        <div class="monster-group">
+                            <div class="monster-role-header">
+                                <span class="monster-role-badge badge-mob">雑魚</span>
+                                <span class="monster-role-title">雑魚モンスター</span>
+                            </div>
+                            <ul class="monster-chips">
+                                <li class="monster-chip">勇猛なオル　マフム　ファイター</li>
+                                <li class="monster-chip">勇猛なオル　マフム上級ファイター</li>
+                                <li class="monster-chip">勇猛なオル　マフム幹部</li>
                             </ul>
                         </div>
 
-                        <div style="background: var(--bg-color); padding: 12px; border-radius: 6px; font-size: 0.9rem; line-height: 1.6;">
-                            <strong>出現バリエーションのメモ：</strong>
-                            <ul style="margin: 5px 0 0 0; padding-left: 20px; color: #555;">
-                                <li>監視者しか出ないことがある</li>
-                                <li>監視者や破壊者のあとに司令官が出ることがある</li>
-                                <li>司令官しか出なかったり、司令官のあと執政官が出たりする（執政官 → 司令官のパターンもあり）</li>
-                                <li>大君主 → 大戦士のときがある</li>
+                        <!-- 指揮官 -->
+                        <div class="monster-group">
+                            <div class="monster-role-header">
+                                <span class="monster-role-badge badge-commander">指揮官</span>
+                                <span class="monster-role-title">指揮官</span>
+                                <span class="monster-role-sub">（下記からランダムで２体出現）</span>
+                            </div>
+                            <ul class="monster-chips">
+                                <li class="monster-chip highlight-commander">セル　マフム親衛隊　軍団長</li>
+                                <li class="monster-chip highlight-commander">セル　マフム親衛隊　高位魔道士</li>
+                                <li class="monster-chip highlight-commander">オエル　マフム　レンジャー　長老</li>
+                                <li class="monster-chip highlight-commander">オエル　マフム　レンジャー　攻撃隊長</li>
+                                <li class="monster-chip highlight-commander">オエル　マフム　レンジャー　突撃隊長</li>
+                                <li class="monster-chip highlight-commander">オル　マフム傭兵隊　騎士団長</li>
+                                <li class="monster-chip highlight-commander">オル　マフム傭兵隊　探索隊長</li>
+                                <li class="monster-chip highlight-commander">オル　マフム傭兵隊　強襲隊長</li>
                             </ul>
+                        </div>
+
+                        <!-- リーダー -->
+                        <div class="monster-group">
+                            <div class="monster-role-header">
+                                <span class="monster-role-badge badge-leader">リーダー</span>
+                                <span class="monster-role-title">リーダー</span>
+                                <span class="monster-role-sub">（下記からランダムで１体出現）</span>
+                            </div>
+                            <ul class="monster-chips">
+                                <li class="monster-chip highlight-leader">補給官　カストール</li>
+                                <li class="monster-chip highlight-leader">作戦将校　キトゥス</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 幻想の蜃気楼 -->
+                    <div class="invasion-card">
+                        <div class="invasion-card-title">
+                            幻想の蜃気楼
+                        </div>
+
+                        <!-- 雑魚モンスター -->
+                        <div class="monster-group">
+                            <div class="monster-role-header">
+                                <span class="monster-role-badge badge-mob">雑魚</span>
+                                <span class="monster-role-title">雑魚モンスター</span>
+                            </div>
+                            <ul class="monster-chips">
+                                <li class="monster-chip">スコーピオン</li>
+                                <li class="monster-chip">ケンタウロス</li>
+                                <li class="monster-chip">水辺のモンスター</li>
+                            </ul>
+                        </div>
+
+                        <!-- 指揮官 -->
+                        <div class="monster-group">
+                            <div class="monster-role-header">
+                                <span class="monster-role-badge badge-commander">指揮官</span>
+                                <span class="monster-role-title">指揮官</span>
+                                <span class="monster-role-sub">（下記が全て出現）</span>
+                            </div>
+                            <ul class="monster-chips">
+                                <li class="monster-chip highlight-commander">砂漠の闇　サンドスパイダー</li>
+                                <li class="monster-chip highlight-commander">砂漠のギロチン　サンドスコーピオン</li>
+                                <li class="monster-chip highlight-commander">ビースト　ケンタウロスウォーロード</li>
+                                <li class="monster-chip highlight-commander">ビースト　湿地の土</li>
+                                <li class="monster-chip highlight-commander">？？？　湖の淑女</li>
+                                <li class="monster-chip highlight-commander">？？？　水の精霊</li>
+                            </ul>
+                        </div>
+
+                        <!-- リーダー -->
+                        <div class="monster-group">
+                            <div class="monster-role-header">
+                                <span class="monster-role-badge badge-leader">リーダー</span>
+                                <span class="monster-role-title">リーダー</span>
+                                <span class="monster-role-sub">（下記からランダムで１体出現）</span>
+                            </div>
+                            <ul class="monster-chips">
+                                <li class="monster-chip highlight-leader">荒地の王　タウロス</li>
+                                <li class="monster-chip highlight-leader">砂漠の恐怖　タナス</li>
+                                <li class="monster-chip highlight-leader">湿地の土竜　トルンバ</li>
+                                <li class="monster-chip highlight-leader">湖の淑女　アリヨン（最近でない？）</li>
+                                <li class="monster-chip highlight-leader">水の精霊　アベル</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 暗黒軍団 -->
+                    <div class="invasion-card">
+                        <div class="invasion-card-title">
+                            暗黒軍団
+                        </div>
+
+                        <!-- 雑魚モンスター -->
+                        <div class="monster-group">
+                            <div class="monster-role-header">
+                                <span class="monster-role-badge badge-mob">雑魚</span>
+                                <span class="monster-role-title">雑魚モンスター</span>
+                            </div>
+                            <ul class="monster-chips">
+                                <li class="monster-chip">暗黒軍団の戦士</li>
+                                <li class="monster-chip">暗黒軍団の狙撃手</li>
+                            </ul>
+                        </div>
+
+                        <!-- リーダー -->
+                        <div class="monster-group">
+                            <div class="monster-role-header">
+                                <span class="monster-role-badge badge-leader">リーダー</span>
+                                <span class="monster-role-title">リーダー</span>
+                                <span class="monster-role-sub">（下記からランダムで１～２体出現）</span>
+                            </div>
+                            <ul class="monster-chips">
+                                <li class="monster-chip highlight-leader">暗黒軍団　監視者</li>
+                                <li class="monster-chip highlight-leader">暗黒軍団　破壊者</li>
+                                <li class="monster-chip highlight-leader">暗黒軍団　執政官</li>
+                                <li class="monster-chip highlight-leader">暗黒軍団　司令官</li>
+                                <li class="monster-chip highlight-leader">暗黒軍団　大君主</li>
+                                <li class="monster-chip highlight-leader">暗黒軍団　大戦士</li>
+                            </ul>
+                        </div>
+
+                        <!-- リーダーから貰える宝箱 -->
+                        <div class="monster-group">
+                            <div class="monster-role-header">
+                                <span class="monster-role-badge badge-chest">宝箱</span>
+                                <span class="monster-role-title">リーダーから貰える宝箱</span>
+                            </div>
+                            <table class="invasion-table" style="max-width: 480px;">
+                                <thead>
+                                    <tr>
+                                        <th>リーダー</th>
+                                        <th style="width: 110px; text-align: center;">宝箱の段階</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>暗黒軍団　監視者</td>
+                                        <td style="text-align: center;"><span class="monster-role-badge badge-mob">１段階</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>暗黒軍団　破壊者</td>
+                                        <td style="text-align: center;"><span class="monster-role-badge badge-mob">１段階</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>暗黒軍団　執政官</td>
+                                        <td style="text-align: center;"><span class="monster-role-badge badge-commander">２段階</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>暗黒軍団　司令官</td>
+                                        <td style="text-align: center;"><span class="monster-role-badge badge-commander">２段階</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>暗黒軍団　大君主</td>
+                                        <td style="text-align: center;"><span class="monster-role-badge badge-leader">３段階</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>暗黒軍団　大戦士</td>
+                                        <td style="text-align: center;"><span class="monster-role-badge badge-leader">３段階</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 

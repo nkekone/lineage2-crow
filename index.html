@@ -880,6 +880,7 @@
                     <li><a href="#invasion" data-page="invasion">モンスター侵攻</a></li>
                     <li><a href="#crowpass" data-page="crowpass">CROW PASS</a></li>
                     <li><a href="#accessories" data-page="accessories">レアアクセサリー</a></li>
+                    <li><a href="#boss" data-page="boss">ボス討伐戦</a></li>
                 </ul>
             </div>
         </aside>
@@ -3053,6 +3054,230 @@
 
                 </div>
             </section>
+
+            <!-- ボス討伐戦 -->
+            <section id="page-boss" class="page" hidden>
+                <div class="content-card">
+                    <h1 class="content-title">ボス討伐戦</h1>
+
+                    <!-- 概要 -->
+                    <h2 class="section-main-heading">概要</h2>
+                    <p class="intro-text" style="margin-bottom: 20px;">
+                        毎日20:00より開催されるイベント。入場後の事前準備時間を経て、20:20から本格スタートします。
+                    </p>
+
+                    <!-- スケジュール・入場ルール -->
+                    <div class="invasion-card">
+                        <div class="invasion-card-title">タイムスケジュール・基本ルール</div>
+                        <ul class="schedule-list">
+                            <li class="schedule-item">
+                                <span class="schedule-time">20:00</span>
+                                <span>オーク要塞戦開始と同時に画面右上にアイコン表示（ワープ可能）</span>
+                            </li>
+                            <li class="schedule-item">
+                                <span class="schedule-time">20:00〜20:20</span>
+                                <span>準備時間（雑魚モンスター出現。経験値多め・稀に精錬石[刻印]ドロップ）</span>
+                            </li>
+                            <li class="schedule-item">
+                                <span class="schedule-time">20:20〜</span>
+                                <span>イベント本番スタート</span>
+                            </li>
+                        </ul>
+                        <div class="invasion-alert">
+                            <strong>🏆 ランキング＆特典：</strong><br>
+                            与えたダメージ量に応じてリアルタイムでランキングが更新されます。<br>
+                            ・<strong>1位〜10位：</strong> キャラクターの頭上に順位が表示されます。<br>
+                            ・<strong>1位〜30位（最終）：</strong> <b>バーサーカースクロール 5個</b> がもらえます。
+                        </div>
+                    </div>
+
+                    <!-- 進行フロー（ゲージ） -->
+                    <div class="invasion-card">
+                        <div class="invasion-card-title">進行フロー（進行ゲージ）</div>
+                        <p style="font-size: 0.9rem; color: #555; margin-bottom: 12px;">
+                            右上のアイコンから詳細な進行状況（4本のゲージ）を確認できます。
+                        </p>
+                        <table class="invasion-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 25%;">ゲージ</th>
+                                    <th>進行イベント・出現モンスター</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>1つ目のゲージ</strong></td>
+                                    <td>準備段階（進行状況の目安）</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>2つ目のゲージ</strong></td>
+                                    <td>満タンになると <strong>中ボス①</strong> が登場。<br><small style="color: #666;">※確率でボスが「イスティナ」に確定する場合があります（イスティナ確定時は中ボスは登場しません）。</small></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3つ目のゲージ</strong></td>
+                                    <td>満タンになると <strong>中ボス②</strong> が登場。</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>4つ目のゲージ</strong></td>
+                                    <td>満タンになると <strong>ボス</strong> が登場！</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- デイリーミッション -->
+                    <div class="invasion-card">
+                        <div class="invasion-card-title">デイリーミッション</div>
+                        <table class="invasion-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 35%;">ミッション名</th>
+                                    <th>達成条件</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>ボス討伐戦場攻略</strong></td>
+                                    <td>雑魚モンスターを10匹倒す</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- 登場モンスター -->
+                    <h2 class="section-main-heading">登場モンスター</h2>
+
+                    <!-- 雑魚モンスター -->
+                    <div class="invasion-card">
+                        <div class="invasion-card-title">雑魚モンスター</div>
+                        <div class="monster-group">
+                            <div class="monster-role-header">
+                                <span class="monster-role-badge badge-mob">雑魚</span>
+                                <span class="monster-role-title">悪魔系モンスター</span>
+                            </div>
+                            <p style="font-size: 0.9rem; color: #475569; margin: 6px 0 0 0;">
+                                「闘争心」が付与されています。攻撃力は比較的弱めで経験値が多く、稀に<b>精錬石[刻印]</b>をドロップします。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 中ボス① -->
+                    <div class="invasion-card">
+                        <div class="invasion-card-title">
+                            中ボス①
+                            <span class="sub-text">2つ目のゲージ満タンで登場</span>
+                        </div>
+                        <div class="monster-group">
+                            <div class="monster-role-header">
+                                <span class="monster-role-badge badge-commander">中ボス</span>
+                                <span class="monster-role-title">出現モンスター・出現場所</span>
+                            </div>
+                            <ul class="monster-chips">
+                                <li class="monster-chip highlight-commander">デュークエビル ヒテール <span style="font-size: 0.8rem; color: #64748b;">（右下の魔法陣）</span></li>
+                                <li class="monster-chip highlight-commander">エレメンタルキング ブエラ <span style="font-size: 0.8rem; color: #64748b;">（左下の魔法陣）</span></li>
+                                <li class="monster-chip highlight-commander">スコーピオンキング ブラス <span style="font-size: 0.8rem; color: #64748b;">（上/一番奥の魔法陣）</span></li>
+                            </ul>
+                        </div>
+                        <ul style="margin: 12px 0 0 0; padding-left: 20px; font-size: 0.9rem; color: #475569; line-height: 1.7;">
+                            <li>「闘争心」が付与されています。</li>
+                            <li>一定量ダメージを与えると、経験値を取得できる<b>アーク</b>を獲得。</li>
+                            <li>とどめをさしたプレイヤーは、<b>精錬石[刻印] 3個</b> をドロップ獲得できます。</li>
+                        </ul>
+                    </div>
+
+                    <!-- 中ボス② -->
+                    <div class="invasion-card">
+                        <div class="invasion-card-title">
+                            中ボス②
+                            <span class="sub-text">3つ目のゲージ満タンで登場</span>
+                        </div>
+                        <div class="monster-group">
+                            <div class="monster-role-header">
+                                <span class="monster-role-badge badge-commander">中ボス</span>
+                                <span class="monster-role-title">出現モンスター・出現場所</span>
+                            </div>
+                            <ul class="monster-chips">
+                                <li class="monster-chip highlight-commander">スケルトンキング ヒラーク <span style="font-size: 0.8rem; color: #64748b;">（右上の魔法陣）</span></li>
+                                <li class="monster-chip highlight-commander">リッパーキング ケスマ <span style="font-size: 0.8rem; color: #64748b;">（左上の魔法陣）</span></li>
+                            </ul>
+                        </div>
+                        <ul style="margin: 12px 0 0 0; padding-left: 20px; font-size: 0.9rem; color: #475569; line-height: 1.7;">
+                            <li>「闘争心」が付与されています。</li>
+                            <li>一定量ダメージを与えると、経験値を取得できる<b>アーク</b>を獲得。</li>
+                            <li>とどめをさしたプレイヤーは、<b>精錬石[刻印] 3個</b> を入手できます。</li>
+                        </ul>
+                    </div>
+
+                    <!-- ボス -->
+                    <div class="invasion-card">
+                        <div class="invasion-card-title">
+                            ボス
+                            <span class="sub-text">4つ目のゲージ満タンで1体出現</span>
+                        </div>
+                        <table class="invasion-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 45%;">ボス名</th>
+                                    <th>対応・注目ドロップアイテム</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>闇の執行者 パーラー</strong></td>
+                                    <td>ドラゴンのベルト</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>地下の使者 クルック</strong></td>
+                                    <td>権能のタリスマン</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>暗黒竜の巫女 ティアト</strong></td>
+                                    <td>ドラゴンのベルト</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>捕らわれたヘルデーモン ハーフ</strong></td>
+                                    <td>権能のタリスマン</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>不滅の君主 エキムス</strong></td>
+                                    <td>ファントムマスク</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>イスティナ</strong></td>
+                                    <td>ドラゴンの卵アガシオン</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <ul style="margin: 10px 0 0 0; padding-left: 20px; font-size: 0.9rem; color: #475569; line-height: 1.7;">
+                            <li>一定量ダメージを与えると、<b>経験値アーク</b>や<b>対応したアイテム</b>を取得できます。</li>
+                            <li>とどめをさしたプレイヤーは<b>祝福された防具強化スクロール</b>を入手できます。<br><small style="color: #e11d48;">※ヘルビートルが出現した場合、とどめ報酬の祝福された防具強化スクロールは入手できません。</small></li>
+                        </ul>
+                        <div class="invasion-alert" style="margin-top: 14px;">
+                            <strong>🎁 討伐後の宝箱報酬（受取注意！）：</strong><br>
+                            ボス討伐後、画面右上のアイコンから報償を獲得すると各ボスの宝箱を入手できます。<br>
+                            中身：<b>各ボス対応アイテム</b>、<b>ソウルショット交換券 100枚</b>、<b>スクロール</b><br>
+                            <span style="color: #c2410c; font-weight: bold;">※獲得ボタンの押し忘れが発生しやすいので注意しましょう！</span>
+                        </div>
+                    </div>
+
+                    <!-- ヘルビートル -->
+                    <div class="invasion-card" style="border-left: 4px solid #f59e0b;">
+                        <div class="invasion-card-title">
+                            特殊ボス：ヘルビートル
+                            <span class="sub-text">ボス討伐時に確率出現</span>
+                        </div>
+                        <p style="font-size: 0.9rem; color: #475569; margin-bottom: 10px;">
+                            ボス討伐後、一定確率で出現するボーナスボスです。<b>3分以内に倒す必要があります。</b>
+                        </p>
+                        <ul style="margin: 0; padding-left: 20px; font-size: 0.9rem; color: #475569; line-height: 1.7;">
+                            <li>一定量ダメージを与えると<b>黄金のメダル</b>を獲得。</li>
+                            <li>とどめをさしたプレイヤーは<b>祝福された防具強化スクロール</b>を入手。</li>
+                            <li>とどめをさしたプレイヤーは一定確率で<b>アデナポーチ</b>を入手できます。</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
         </main>
 
     </div>
@@ -3071,7 +3296,8 @@
                 faq: document.getElementById('page-faq'),
                 invasion: document.getElementById('page-invasion'),
                 crowpass: document.getElementById('page-crowpass'),
-                accessories: document.getElementById('page-accessories')
+                accessories: document.getElementById('page-accessories'),
+                boss: document.getElementById('page-boss')
             };
 
             function updateActiveMenu(hash) {

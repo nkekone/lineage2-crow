@@ -77,9 +77,9 @@ PT募集を見つけたら参加してみましょう。PTを組んであまり�
 </div>
 
 <div class="faq-item">
-<div class="faq-question"><span>Q</span> サブアカを増やしたいけどメールアドレスを何個も作らないとダメ？Gmailエイリアスってなに？</div>
+<div class="faq-question"><span>Q</span> サブアカを増やしたいけどメールアドレスを何個も作るの難しくないですか？</div>
 <div class="faq-answer"><span>A</span><div>
-Gmailを使っている場合、新しいメールアドレスを用意しなくても「エイリアス機能」が使えます！<br>
+Gmailの「エイリアス機能」が使えます！<br>
 例えば <code>example@gmail.com</code> というアドレスをお持ちの場合、<code>example+sub1@gmail.com</code> や <code>example+sub2@gmail.com</code> のように「+」と「好きな文字」を足すだけで、別のアドレスとして登録できます。確認メールなどはすべて元のGmail（<code>example@gmail.com</code>）に届くので管理もとても簡単です。
 </div></div>
 </div>

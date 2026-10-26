@@ -126,6 +126,28 @@ aside {
   color: var(--accent-color);
 }
 
+.menu-category {
+  display: block;
+  padding: 10px 15px 4px;
+  color: #7f8c8d;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.menu-sublist {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 6px;
+}
+
+.menu-sublist li {
+  border-bottom: none;
+}
+
+.menu-sublist a {
+  padding: 7px 15px 7px 28px;
+}
+
 /* 右側メインコンテンツ */
 main {
   width: 880px !important;
@@ -893,17 +915,32 @@ footer {
 
 <!-- メインレイアウトエリア -->
 <div class="wrapper">
-  <!-- 左側：攻略メニュー -->
+  <!-- 左側：メニュー -->
   <aside>
     <div class="menu-box">
-      <div class="menu-title">攻略メニュー</div>
+      <div class="menu-title">メニュー</div>
       <ul class="menu-list">
         <li><a href="#coupon" data-page="coupon">クーポン</a></li>
-        <li><a href="#faq" data-page="faq">よくある疑問（Q&A）</a></li>
-        <li><a href="#invasion" data-page="invasion">モンスター侵攻</a></li>
-        <li><a href="#boss" data-page="boss">ボス討伐戦</a></li>
-        <li><a href="#crowpass" data-page="crowpass">CROW PASS</a></li>
-        <li><a href="#accessories" data-page="accessories">レアアクセサリー</a></li>
+        <li><a href="#faq" data-page="faq">よくある質問（Q&amp;A）</a></li>
+        <li>
+          <span class="menu-category">イベント</span>
+          <ul class="menu-sublist">
+            <li><a href="#invasion" data-page="invasion">モンスター侵攻</a></li>
+            <li><a href="#boss" data-page="boss">ボス討伐戦</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="menu-category">アイテム</span>
+          <ul class="menu-sublist">
+            <li><a href="#accessories" data-page="accessories">レアアクセサリー</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="menu-category">課金</span>
+          <ul class="menu-sublist">
+            <li><a href="#crowpass" data-page="crowpass">CROWPASS</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </aside>

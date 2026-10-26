@@ -6,7 +6,7 @@ PAGES_DIR = 'pages'
 TEMPLATE_FILE = 'template.html'
 OUTPUT_FILE = 'index.html'
 
-PAGE_ORDER = ['home', 'coupon', 'faq', 'invasion', 'boss', 'crowpass']
+PAGE_ORDER = ['home', 'coupon', 'faq', 'invasion', 'boss', 'crowpass', 'accessories']
 
 def build():
     md = markdown.Markdown(extensions=['tables', 'fenced_code', 'nl2br'])
@@ -14,8 +14,9 @@ def build():
     sections_html = []
 
     for page_id in PAGE_ORDER:
-        file_path = os.path.join(PAGES_DIR, f"{page_id}.md")
+        file_path = os.path.join(PAGES_DIR, f'{page_id}.md')
         if not os.path.exists(file_path):
+            print(f'Warning: {file_path} not found!')
             continue
 
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -25,17 +26,19 @@ def build():
         md.reset()
 
         hidden_attr = ' hidden' if page_id != 'home' else ''
-        section_code = f"""<section id="page-{page_id}" class="page"{hidden_attr}>
+        section_code = f'<section id="page-{page_id}" class="page"{hidden_attr}>
   <div class="content-card">
     {html_content}
   </div>
-</section>"""
+</section>'
         sections_html.append(section_code)
 
     with open(TEMPLATE_FILE, 'r', encoding='utf-8') as f:
         template_html = f.read()
 
-    full_content = "\n\n".join(sections_html)
+    full_content = "
+
+".join(sections_html)
     final_html = template_html.replace('<!-- PAGE_CONTENT_PLACEHOLDER -->', full_content)
 
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:

@@ -11,66 +11,477 @@
   --accent-color: #3498db;
   --border-color: #e9ecef;
   --bg-color: #f8f9fa;
+  --text-color: #333333;
 }
-* { box-sizing: border-box; }
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  margin: 0; padding: 0; color: #333; background-color: #f5f6f8; line-height: 1.6; overflow-y: scroll;
+  margin: 0;
+  padding: 0;
+  color: var(--text-color);
+  background-color: #f5f6f8;
+  line-height: 1.6;
+  overflow-y: scroll;
 }
+
+/* 1. 上部ヘッダー */
 header {
-  background-color: #fff; border-bottom: 2px solid var(--accent-color); padding: 15px 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  background-color: #fff;
+  border-bottom: 2px solid var(--accent-color);
+  padding: 15px 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
-.header-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-.site-title { font-size: 1.4rem; font-weight: bold; color: var(--primary-color); margin: 0; }
-.site-title span { font-size: 0.9rem; color: #7f8c8d; margin-left: 8px; font-weight: normal; }
-.site-title a { color: inherit; text-decoration: none; }
-.wrapper { max-width: 1200px; margin: 20px auto; padding: 0 15px; display: flex; gap: 20px; }
-aside { width: 260px; flex-shrink: 0; }
-.menu-box { background: #fff; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
-.menu-title { background-color: var(--primary-color); color: #fff; padding: 12px 15px; font-weight: bold; font-size: 0.95rem; margin: 0; }
-.menu-list { list-style: none; padding: 0; margin: 0; }
-.menu-list li { border-bottom: 1px solid var(--border-color); }
-.menu-list li:last-child { border-bottom: none; }
-.menu-list a { display: block; padding: 12px 15px; color: #333; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: background-color 0.2s, color 0.2s; }
-.menu-list a:hover, .menu-list a.is-active { background-color: #f0f7ff; color: var(--accent-color); }
-main { width: 880px !important; flex: 0 0 880px !important; min-width: 0; }
-.content-card { background: #fff; border: 1px solid var(--border-color); border-radius: 8px; padding: 25px; box-shadow: 0 2px 5px rgba(0,0,0,0.03); margin-bottom: 20px; }
-.content-title { font-size: 1.5rem; color: var(--primary-color); border-bottom: 2px solid var(--accent-color); padding-bottom: 8px; margin-top: 0; margin-bottom: 20px; }
-.intro-text { font-size: 1.05rem; line-height: 1.8; color: #444; }
-.page[hidden] { display: none !important; }
 
-/* テーブル・アラート・カード装飾共通CSS */
-.invasion-card { background: #fff; border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
-.invasion-card-title { font-size: 1.1rem; font-weight: bold; color: var(--primary-color); margin-bottom: 14px; border-bottom: 2px solid var(--accent-color); padding-bottom: 6px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
-.invasion-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 10px 0 16px 0; }
-.invasion-table th, .invasion-table td { border: 1px solid var(--border-color); padding: 9px 12px; }
-.invasion-table th { background-color: var(--primary-color); color: #fff; font-weight: 600; text-align: left; }
-.invasion-table tr:nth-child(even) { background-color: var(--bg-color); }
-.invasion-alert { background: #fffbeb; border: 1px solid #fef3c7; border-left: 4px solid #f59e0b; padding: 10px 14px; border-radius: 4px; font-size: 0.9rem; color: #92400e; margin: 12px 0; line-height: 1.5; }
-.schedule-list { list-style: none; padding: 0; margin: 8px 0 14px 0; display: flex; flex-direction: column; gap: 6px; }
-.schedule-item { display: flex; align-items: center; gap: 12px; font-size: 0.9rem; }
-.schedule-time { background: #e2e8f0; color: var(--primary-color); font-weight: bold; font-family: monospace; font-size: 0.88rem; padding: 2px 8px; border-radius: 4px; min-width: 70px; text-align: center; }
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-/* FAQ・アクセサリー用CSS等 */
-.faq-item { border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; margin-bottom: 20px; background: #fff; }
-.faq-question { font-size: 1.1rem; font-weight: bold; color: var(--primary-color); margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px; }
-.faq-question span { background-color: var(--accent-color); color: #fff; width: 24px; height: 24px; display: inline-flex; align-items: center; justify-content: center; border-radius: 4px; font-size: 0.85rem; flex-shrink: 0; }
-.faq-answer { background: var(--bg-color); padding: 15px; border-radius: 6px; font-size: 0.95rem; color: #444; line-height: 1.7; display: flex; align-items: flex-start; gap: 8px; }
-.faq-answer span { background-color: #7f8c8d; color: #fff; width: 24px; height: 24px; display: inline-flex; align-items: center; justify-content: center; border-radius: 4px; font-size: 0.85rem; flex-shrink: 0; }
+.site-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin: 0;
+}
 
-footer { text-align: center; padding: 30px 15px; margin-top: 40px; border-top: 1px solid var(--border-color); color: #7f8c8d; font-size: 0.85rem; background-color: #fff; }
-@media (max-width: 768px) { .wrapper { flex-direction: column; } aside { width: 100%; } }
+.site-title span {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  margin-left: 8px;
+  font-weight: normal;
+}
+
+.site-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 2. メインレイアウト */
+.wrapper {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 15px;
+  display: flex;
+  gap: 20px;
+}
+
+/* 左側サイドバー */
+aside {
+  width: 260px;
+  flex-shrink: 0;
+}
+
+.menu-box {
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+  position: sticky;
+  top: 20px;
+}
+
+.menu-title {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 12px 15px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-list li {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.menu-list li:last-child {
+  border-bottom: none;
+}
+
+.menu-list a {
+  display: block;
+  padding: 12px 15px;
+  color: #333;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.menu-list a:hover,
+.menu-list a.is-active {
+  background-color: #f0f7ff;
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+/* 右側メインコンテンツ */
+main {
+  width: 880px !important;
+  flex: 0 0 880px !important;
+  min-width: 0;
+}
+
+.content-card {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 28px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+  margin-bottom: 20px;
+}
+
+/* --- Markdown標準要素のオシャレ化装飾 --- */
+
+/* h1 (# 見出し) -> ページメインタイトル風 */
+.content-card > h1:first-child,
+.content-card h1 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 10px;
+  margin-top: 0;
+  margin-bottom: 22px;
+  font-weight: bold;
+  letter-spacing: -0.3px;
+}
+
+/* h2 (## 見出し) -> セクションメイン見出し風 */
+.content-card h2 {
+  font-size: 1.25rem;
+  color: var(--primary-color);
+  border-left: 4px solid var(--accent-color);
+  padding-left: 12px;
+  margin: 32px 0 16px 0;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+/* h3 (### 見出し) -> サブ見出し風 */
+.content-card h3 {
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 6px;
+  margin: 24px 0 14px 0;
+  font-weight: bold;
+}
+
+/* テーブル (Markdown | ... |) の自動オシャレ化 */
+.content-card table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  margin: 16px 0 24px 0;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+.content-card th, 
+.content-card td {
+  border: 1px solid var(--border-color);
+  padding: 10px 14px;
+}
+
+.content-card th {
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+  text-align: left;
+}
+
+.content-card tr:nth-child(even) {
+  background-color: var(--bg-color);
+}
+
+.content-card tr:hover {
+  background-color: #f1f5f9;
+}
+
+/* 引用 (Markdown > ...) -> アラート枠風 */
+.content-card blockquote {
+  background: #fffbeb;
+  border: 1px solid #fef3c7;
+  border-left: 4px solid #f59e0b;
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 0.92rem;
+  color: #92400e;
+  margin: 18px 0;
+  line-height: 1.6;
+}
+
+.content-card blockquote p {
+  margin: 0;
+}
+
+/* コードブロック & インラインコード */
+.content-card code {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: #1e293b;
+  font-weight: 600;
+}
+
+/* 区切り線 (Markdown ---) */
+.content-card hr {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(to right, #cbd5e1, #f1f5f9);
+  margin: 30px 0;
+}
+
+/* リスト */
+.content-card ul, .content-card ol {
+  color: #334155;
+  line-height: 1.8;
+  padding-left: 24px;
+  margin: 12px 0 18px 0;
+}
+
+.content-card li {
+  margin-bottom: 4px;
+}
+
+.intro-text {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #444;
+}
+
+.page[hidden] {
+  display: none !important;
+}
+
+/* --- 元デザイン専用クラスの完全再現 --- */
+.coupon-item, .faq-item, .invasion-card {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+.faq-question {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.faq-question span {
+  background-color: var(--accent-color);
+  color: #fff;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.faq-answer {
+  background: var(--bg-color);
+  padding: 15px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.7;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.faq-answer span {
+  background-color: #7f8c8d;
+  color: #fff;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.invasion-card-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 14px;
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.invasion-alert {
+  background: #fffbeb;
+  border: 1px solid #fef3c7;
+  border-left: 4px solid #f59e0b;
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #92400e;
+  margin: 14px 0;
+  line-height: 1.6;
+}
+
+.schedule-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 14px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.schedule-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+}
+
+.schedule-time {
+  background: #e2e8f0;
+  color: var(--primary-color);
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 0.88rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  min-width: 70px;
+  text-align: center;
+}
+
+.monster-group {
+  margin-bottom: 16px;
+}
+
+.monster-role-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.monster-role-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.badge-mob { background: #64748b; }
+.badge-commander { background: #3b82f6; }
+.badge-leader { background: #e11d48; }
+.badge-chest { background: #f59e0b; }
+
+.monster-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.monster-chip {
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  color: #334155;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.monster-chip.highlight-leader {
+  background: #fff1f2;
+  border-color: #fecdd3;
+  color: #9f1239;
+  font-weight: 600;
+}
+
+.monster-chip.highlight-commander {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1e40af;
+}
+
+/* フッター */
+footer {
+  text-align: center;
+  padding: 30px 15px;
+  margin-top: 40px;
+  border-top: 1px solid var(--border-color);
+  color: #7f8c8d;
+  font-size: 0.85rem;
+  background-color: #fff;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+  }
+  aside {
+    width: 100%;
+  }
+  main {
+    width: 100% !important;
+    flex: 1 1 100% !important;
+  }
+}
 </style>
 </head>
 <body>
 
+<!-- 上部ヘッダー -->
 <header>
   <div class="header-container">
     <div class="site-title"><a href="#home">lineage2-crow <span>- リネ２クロウにゃん -</span></a></div>
   </div>
 </header>
 
+<!-- メインレイアウトエリア -->
 <div class="wrapper">
+
+  <!-- 左側：攻略メニュー -->
   <aside>
     <div class="menu-box">
       <div class="menu-title">攻略メニュー</div>
@@ -85,6 +496,7 @@ footer { text-align: center; padding: 30px 15px; margin-top: 40px; border-top: 1
     </div>
   </aside>
 
+  <!-- 右側：メインコンテンツ (Markdownから結合挿入される場所) -->
   <main>
     <section id="page-home" class="page">
   <div class="content-card">
@@ -552,8 +964,10 @@ LV86で高級、LV87で最高級、LV88で特級が貰えます。<br />
   </div>
 </section>
   </main>
+
 </div>
 
+<!-- フッター -->
 <footer>
   &copy; 2026 lineage2-crow All Rights Reserved.<br>
   <small style="display:inline-block; margin-top:5px; font-size:0.75rem;">※当サイトは個人のファンサイトであり、NCSoftおよびNC Japanとは一切関係ありません。</small>
@@ -566,9 +980,9 @@ LV86で高級、LV87で最高級、LV88で特級が貰えます。<br />
     coupon: document.getElementById('page-coupon'),
     faq: document.getElementById('page-faq'),
     invasion: document.getElementById('page-invasion'),
-    boss: document.getElementById('page-boss'),
     crowpass: document.getElementById('page-crowpass'),
-    accessories: document.getElementById('page-accessories')
+    accessories: document.getElementById('page-accessories'),
+    boss: document.getElementById('page-boss')
   };
 
   function updateActiveMenu(hash) {
@@ -582,17 +996,28 @@ LV86で高級、LV87で最高級、LV88で特級が貰えます。<br />
   function showPage() {
     var hash = location.hash || '#home';
     var key = hash.replace('#', '');
-    if (key.indexOf('acc-') === 0) key = 'accessories';
-    if (!pages[key]) key = 'home';
+
+    if (key.indexOf('acc-') === 0) {
+      key = 'accessories';
+    }
+
+    if (!pages[key]) {
+      key = 'home';
+    }
 
     Object.keys(pages).forEach(function (pageKey) {
-      if (pages[pageKey]) pages[pageKey].hidden = pageKey !== key;
+      if (pages[pageKey]) {
+        pages[pageKey].hidden = pageKey !== key;
+      }
     });
+
     updateActiveMenu(key === 'accessories' ? '#accessories' : hash);
 
     if (location.hash && location.hash.indexOf('#acc-') === 0) {
       var targetEl = document.querySelector(location.hash);
-      if (targetEl) targetEl.scrollIntoView({ behavior: 'smooth' });
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   }
 

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="V5AcE0vT8AaHmwCyEwjVIlt817WPQnrcBrQM85848Vc">
+<title>lineage2-crow | リネ２クロウにゃん</title>
+<style>
+:root {
+  --primary-color: #2c3e50;
+  --accent-color: #3498db;
+  --border-color: #e9ecef;
+  --bg-color: #f8f9fa;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin: 0; padding: 0; color: #333; background-color: #f5f6f8; line-height: 1.6; overflow-y: scroll;
+}
+header {
+  background-color: #fff; border-bottom: 2px solid var(--accent-color); padding: 15px 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.header-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.site-title { font-size: 1.4rem; font-weight: bold; color: var(--primary-color); margin: 0; }
+.site-title span { font-size: 0.9rem; color: #7f8c8d; margin-left: 8px; font-weight: normal; }
+.site-title a { color: inherit; text-decoration: none; }
+.wrapper { max-width: 1200px; margin: 20px auto; padding: 0 15px; display: flex; gap: 20px; }
+aside { width: 260px; flex-shrink: 0; }
+.menu-box { background: #fff; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
+.menu-title { background-color: var(--primary-color); color: #fff; padding: 12px 15px; font-weight: bold; font-size: 0.95rem; margin: 0; }
+.menu-list { list-style: none; padding: 0; margin: 0; }
+.menu-list li { border-bottom: 1px solid var(--border-color); }
+.menu-list li:last-child { border-bottom: none; }
+.menu-list a { display: block; padding: 12px 15px; color: #333; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: background-color 0.2s, color 0.2s; }
+.menu-list a:hover, .menu-list a.is-active { background-color: #f0f7ff; color: var(--accent-color); }
+main { width: 880px !important; flex: 0 0 880px !important; min-width: 0; }
+.content-card { background: #fff; border: 1px solid var(--border-color); border-radius: 8px; padding: 25px; box-shadow: 0 2px 5px rgba(0,0,0,0.03); margin-bottom: 20px; }
+.content-title { font-size: 1.5rem; color: var(--primary-color); border-bottom: 2px solid var(--accent-color); padding-bottom: 8px; margin-top: 0; margin-bottom: 20px; }
+.intro-text { font-size: 1.05rem; line-height: 1.8; color: #444; }
+.page[hidden] { display: none !important; }
+
+/* テーブル・アラート・カード装飾共通CSS */
+.invasion-card { background: #fff; border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
+.invasion-card-title { font-size: 1.1rem; font-weight: bold; color: var(--primary-color); margin-bottom: 14px; border-bottom: 2px solid var(--accent-color); padding-bottom: 6px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.invasion-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 10px 0 16px 0; }
+.invasion-table th, .invasion-table td { border: 1px solid var(--border-color); padding: 9px 12px; }
+.invasion-table th { background-color: var(--primary-color); color: #fff; font-weight: 600; text-align: left; }
+.invasion-table tr:nth-child(even) { background-color: var(--bg-color); }
+.invasion-alert { background: #fffbeb; border: 1px solid #fef3c7; border-left: 4px solid #f59e0b; padding: 10px 14px; border-radius: 4px; font-size: 0.9rem; color: #92400e; margin: 12px 0; line-height: 1.5; }
+.schedule-list { list-style: none; padding: 0; margin: 8px 0 14px 0; display: flex; flex-direction: column; gap: 6px; }
+.schedule-item { display: flex; align-items: center; gap: 12px; font-size: 0.9rem; }
+.schedule-time { background: #e2e8f0; color: var(--primary-color); font-weight: bold; font-family: monospace; font-size: 0.88rem; padding: 2px 8px; border-radius: 4px; min-width: 70px; text-align: center; }
+
+/* FAQ・アクセサリー用CSS等 */
+.faq-item { border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; margin-bottom: 20px; background: #fff; }
+.faq-question { font-size: 1.1rem; font-weight: bold; color: var(--primary-color); margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px; }
+.faq-question span { background-color: var(--accent-color); color: #fff; width: 24px; height: 24px; display: inline-flex; align-items: center; justify-content: center; border-radius: 4px; font-size: 0.85rem; flex-shrink: 0; }
+.faq-answer { background: var(--bg-color); padding: 15px; border-radius: 6px; font-size: 0.95rem; color: #444; line-height: 1.7; display: flex; align-items: flex-start; gap: 8px; }
+.faq-answer span { background-color: #7f8c8d; color: #fff; width: 24px; height: 24px; display: inline-flex; align-items: center; justify-content: center; border-radius: 4px; font-size: 0.85rem; flex-shrink: 0; }
+
+footer { text-align: center; padding: 30px 15px; margin-top: 40px; border-top: 1px solid var(--border-color); color: #7f8c8d; font-size: 0.85rem; background-color: #fff; }
+@media (max-width: 768px) { .wrapper { flex-direction: column; } aside { width: 100%; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-container">
+    <div class="site-title"><a href="#home">lineage2-crow <span>- リネ２クロウにゃん -</span></a></div>
+  </div>
+</header>
+
+<div class="wrapper">
+  aside>
+    <div class="menu-box">
+      <div class="menu-title">攻略メニュー</div>
+      <ul class="menu-list">
+        <li><a href="#coupon" data-page="coupon">クーポン</a></li>
+        <li><a href="#faq" data-page="faq">よくある疑問（Q&A）</a></li>
+        <li><a href="#invasion" data-page="invasion">モンスター侵攻</a></li>
+        <li><a href="#boss" data-page="boss">ボス討伐戦</a></li>
+        <li><a href="#crowpass" data-page="crowpass">CROW PASS</a></li>
+        <li><a href="#accessories" data-page="accessories">レアアクセサリー</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <!-- PAGE_CONTENT_PLACEHOLDER -->
+  </main>
+</div>
+
+<footer>
+  &copy; 2026 lineage2-crow All Rights Reserved.<br>
+  <small style="display:inline-block; margin-top:5px; font-size:0.75rem;">※当サイトは個人のファンサイトであり、NCSoftおよびNC Japanとは一切関係ありません。</small>
+</footer>
+
+<script>
+(function () {
+  var pages = {
+    home: document.getElementById('page-home'),
+    coupon: document.getElementById('page-coupon'),
+    faq: document.getElementById('page-faq'),
+    invasion: document.getElementById('page-invasion'),
+    boss: document.getElementById('page-boss'),
+    crowpass: document.getElementById('page-crowpass'),
+    accessories: document.getElementById('page-accessories')
+  };
+
+  function updateActiveMenu(hash) {
+    var current = hash.replace('#', '') || 'home';
+    document.querySelectorAll('.menu-list a').forEach(function (link) {
+      var targetPage = link.getAttribute('data-page');
+      link.classList.toggle('is-active', targetPage === current);
+    });
+  }
+
+  function showPage() {
+    var hash = location.hash || '#home';
+    var key = hash.replace('#', '');
+    if (key.indexOf('acc-') === 0) key = 'accessories';
+    if (!pages[key]) key = 'home';
+
+    Object.keys(pages).forEach(function (pageKey) {
+      if (pages[pageKey]) pages[pageKey].hidden = pageKey !== key;
+    });
+    updateActiveMenu(key === 'accessories' ? '#accessories' : hash);
+
+    if (location.hash && location.hash.indexOf('#acc-') === 0) {
+      var targetEl = document.querySelector(location.hash);
+      if (targetEl) targetEl.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  window.addEventListener('hashchange', showPage);
+  showPage();
+})();
+</script>
+</body>
+</html>

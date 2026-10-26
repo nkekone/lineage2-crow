@@ -11,7 +11,6 @@
   --accent-color: #3498db;
   --border-color: #e9ecef;
   --bg-color: #f8f9fa;
-  --text-color: #333333;
 }
 
 * {
@@ -22,7 +21,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   margin: 0;
   padding: 0;
-  color: var(--text-color);
+  color: #333;
   background-color: #f5f6f8;
   line-height: 1.6;
   overflow-y: scroll;
@@ -63,7 +62,7 @@ header {
   text-decoration: none;
 }
 
-/* 2. メインレイアウト */
+/* 2. メインレイアウト（左メニュー＋右コンテンツ） */
 .wrapper {
   max-width: 1200px;
   margin: 20px auto;
@@ -125,7 +124,6 @@ aside {
 .menu-list a.is-active {
   background-color: #f0f7ff;
   color: var(--accent-color);
-  font-weight: 600;
 }
 
 /* 右側メインコンテンツ */
@@ -139,63 +137,49 @@ main {
   background: #fff;
   border: 1px solid var(--border-color);
   border-radius: 8px;
-  padding: 28px;
+  padding: 25px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.03);
   margin-bottom: 20px;
 }
 
-/* --- Markdown標準要素のオシャレ化装飾 --- */
+.content-title {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 8px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
 
-/* h1 (# 見出し) -> ページメインタイトル風 */
-.content-card > h1:first-child,
+/* Markdown自動変換要素のベーススタイル */
 .content-card h1 {
   font-size: 1.5rem;
   color: var(--primary-color);
   border-bottom: 2px solid var(--accent-color);
-  padding-bottom: 10px;
+  padding-bottom: 8px;
   margin-top: 0;
-  margin-bottom: 22px;
-  font-weight: bold;
-  letter-spacing: -0.3px;
+  margin-bottom: 20px;
 }
 
-/* h2 (## 見出し) -> セクションメイン見出し風 */
 .content-card h2 {
   font-size: 1.25rem;
   color: var(--primary-color);
   border-left: 4px solid var(--accent-color);
-  padding-left: 12px;
-  margin: 32px 0 16px 0;
-  font-weight: bold;
-  line-height: 1.4;
-}
-
-/* h3 (### 見出し) -> サブ見出し風 */
-.content-card h3 {
-  font-size: 1.1rem;
-  color: var(--primary-color);
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 6px;
-  margin: 24px 0 14px 0;
+  padding-left: 10px;
+  margin: 30px 0 16px 0;
   font-weight: bold;
 }
 
-/* テーブル (Markdown | ... |) の自動オシャレ化 */
 .content-card table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.9rem;
-  margin: 16px 0 24px 0;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  margin: 16px 0;
 }
 
-.content-card th, 
-.content-card td {
+.content-card th, .content-card td {
   border: 1px solid var(--border-color);
-  padding: 10px 14px;
+  padding: 9px 12px;
 }
 
 .content-card th {
@@ -209,57 +193,14 @@ main {
   background-color: var(--bg-color);
 }
 
-.content-card tr:hover {
-  background-color: #f1f5f9;
-}
-
-/* 引用 (Markdown > ...) -> アラート枠風 */
 .content-card blockquote {
+  margin: 16px 0;
   background: #fffbeb;
   border: 1px solid #fef3c7;
   border-left: 4px solid #f59e0b;
   padding: 12px 16px;
-  border-radius: 6px;
-  font-size: 0.92rem;
-  color: #92400e;
-  margin: 18px 0;
-  line-height: 1.6;
-}
-
-.content-card blockquote p {
-  margin: 0;
-}
-
-/* コードブロック & インラインコード */
-.content-card code {
-  background: #f1f5f9;
-  border: 1px solid #cbd5e1;
-  padding: 3px 8px;
   border-radius: 4px;
-  font-family: monospace;
-  font-size: 0.9rem;
-  color: #1e293b;
-  font-weight: 600;
-}
-
-/* 区切り線 (Markdown ---) */
-.content-card hr {
-  border: 0;
-  height: 1px;
-  background: linear-gradient(to right, #cbd5e1, #f1f5f9);
-  margin: 30px 0;
-}
-
-/* リスト */
-.content-card ul, .content-card ol {
-  color: #334155;
-  line-height: 1.8;
-  padding-left: 24px;
-  margin: 12px 0 18px 0;
-}
-
-.content-card li {
-  margin-bottom: 4px;
+  color: #92400e;
 }
 
 .intro-text {
@@ -268,18 +209,27 @@ main {
   color: #444;
 }
 
-.page[hidden] {
-  display: none !important;
+.content-subtitle {
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  margin: 0 0 16px;
 }
 
-/* --- 元デザイン専用クラスの完全再現 --- */
-.coupon-item, .faq-item, .invasion-card {
+.coupon-item {
   border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 20px;
   margin-bottom: 20px;
   background: #fff;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+/* FAQ用のスタイル */
+.faq-item {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background: #fff;
 }
 
 .faq-question {
@@ -330,6 +280,215 @@ main {
   flex-shrink: 0;
 }
 
+.page[hidden] {
+  display: none !important;
+}
+
+/* CROW PASS タイムライン用のスタイル */
+.timeline-year-group {
+  margin-bottom: 28px;
+}
+
+.timeline-year-group:last-child {
+  margin-bottom: 10px;
+}
+
+.timeline-year-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.timeline-year-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: bold;
+  padding: 5px 14px;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(44, 62, 80, 0.15);
+  letter-spacing: 0.5px;
+}
+
+.timeline-year-line {
+  flex-grow: 1;
+  height: 1px;
+  background: linear-gradient(to right, #cbd5e1, transparent);
+}
+
+.timeline-list {
+  position: relative;
+  padding-left: 60px;
+  margin: 0;
+}
+
+.timeline-list::before {
+  content: '';
+  position: absolute;
+  left: 23px;
+  top: 14px;
+  bottom: 14px;
+  width: 2px;
+  background: #e2e8f0;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-node {
+  position: absolute;
+  left: -60px;
+  top: 10px;
+  width: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.timeline-month {
+  background: #fff;
+  border: 2px solid var(--accent-color);
+  color: var(--primary-color);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  white-space: nowrap;
+}
+
+.timeline-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.timeline-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.timeline-card:hover {
+  border-color: var(--accent-color);
+  background: #fbfdff;
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.12);
+  color: var(--accent-color);
+}
+
+.timeline-card-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.timeline-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  transition: color 0.2s;
+}
+
+.timeline-link-icon {
+  color: #94a3b8;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.timeline-card:hover .timeline-link-icon {
+  color: var(--accent-color);
+  transform: translate(2px, -2px);
+}
+
+.timeline-sub-card {
+  margin-left: 14px;
+  padding: 8px 14px;
+  background: #fffbeb;
+  border: 1px solid #fef3c7;
+  border-left: 3px solid #f59e0b;
+  border-radius: 0 6px 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.timeline-sub-card:hover {
+  background: #fef3c7;
+}
+
+.sub-card-badge {
+  background: #f59e0b;
+  color: #fff;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.sub-card-link {
+  color: #92400e;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  flex-grow: 1;
+}
+
+.sub-card-link:hover {
+  text-decoration: underline;
+}
+
+/* モンスター侵攻用のスタイル */
+.section-main-heading {
+  font-size: 1.25rem;
+  color: var(--primary-color);
+  border-left: 4px solid var(--accent-color);
+  padding-left: 10px;
+  margin: 30px 0 16px 0;
+  font-weight: bold;
+}
+
+.section-main-heading:first-of-type {
+  margin-top: 10px;
+}
+
+.invasion-card {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
 .invasion-card-title {
   font-size: 1.1rem;
   font-weight: bold;
@@ -344,16 +503,37 @@ main {
   gap: 8px;
 }
 
-.invasion-alert {
-  background: #fffbeb;
-  border: 1px solid #fef3c7;
-  border-left: 4px solid #f59e0b;
-  padding: 12px 16px;
-  border-radius: 6px;
+.invasion-card-title span.sub-text {
+  font-size: 0.85rem;
+  font-weight: normal;
+  color: #64748b;
+}
+
+.invasion-table {
+  width: 100%;
+  border-collapse: collapse;
   font-size: 0.9rem;
-  color: #92400e;
-  margin: 14px 0;
-  line-height: 1.6;
+  margin: 10px 0 16px 0;
+}
+
+.invasion-table th, .invasion-table td {
+  border: 1px solid var(--border-color);
+  padding: 9px 12px;
+}
+
+.invasion-table th {
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+  text-align: left;
+}
+
+.invasion-table tr:nth-child(even) {
+  background-color: var(--bg-color);
+}
+
+.invasion-table tr:hover {
+  background-color: #f1f5f9;
 }
 
 .schedule-list {
@@ -388,6 +568,10 @@ main {
   margin-bottom: 16px;
 }
 
+.monster-group:last-child {
+  margin-bottom: 0;
+}
+
 .monster-role-header {
   display: flex;
   align-items: center;
@@ -409,6 +593,18 @@ main {
 .badge-commander { background: #3b82f6; }
 .badge-leader { background: #e11d48; }
 .badge-chest { background: #f59e0b; }
+
+.monster-role-title {
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.monster-role-sub {
+  font-size: 0.82rem;
+  color: #64748b;
+  font-weight: normal;
+}
 
 .monster-chips {
   display: flex;
@@ -444,6 +640,201 @@ main {
   color: #1e40af;
 }
 
+.invasion-alert {
+  background: #fffbeb;
+  border: 1px solid #fef3c7;
+  border-left: 4px solid #f59e0b;
+  padding: 10px 14px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #92400e;
+  margin: 12px 0;
+  line-height: 1.5;
+}
+
+/* レアアクセサリー用のスタイル */
+.accessory-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.filter-btn {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  color: #475569;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.filter-btn.is-active {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(44, 62, 80, 0.15);
+}
+
+.accessory-quick-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 24px;
+  background: var(--bg-color);
+  padding: 12px 14px;
+  border-radius: 8px;
+  align-items: center;
+}
+
+.quick-jump-label {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #64748b;
+  margin-right: 4px;
+}
+
+.quick-jump-chip {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  padding: 4px 10px;
+  border-radius: 14px;
+  font-size: 0.82rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.quick-jump-chip:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  background: #f0f7ff;
+}
+
+.accessory-item-card {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  transition: opacity 0.2s;
+}
+
+.accessory-item-card.is-hidden {
+  display: none !important;
+}
+
+.accessory-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 6px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.accessory-name {
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin: 0;
+}
+
+.accessory-badge {
+  font-size: 0.78rem;
+  font-weight: bold;
+  padding: 3px 9px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.badge-ring { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+.badge-earring { background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
+.badge-necklace { background: #f3e8ff; color: #7e22ce; border: 1px solid #e9d5ff; }
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+}
+
+.accessory-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+.accessory-table th, .accessory-table td {
+  border: 1px solid var(--border-color);
+  padding: 8px 10px;
+}
+
+.accessory-table th {
+  background: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+}
+
+.accessory-table th.col-name {
+  text-align: left;
+  min-width: 180px;
+  background: #1e293b;
+}
+
+.accessory-table th.col-enchant {
+  width: 55px;
+  min-width: 50px;
+}
+
+.accessory-table td.cell-name {
+  font-weight: 600;
+  color: #334155;
+  background: #fafafa;
+  white-space: normal;
+  min-width: 180px;
+}
+
+.accessory-table td.cell-val {
+  text-align: center;
+  color: #334155;
+}
+
+#acc-frintezza .accessory-table td.cell-val {
+  white-space: normal;
+}
+
+.accessory-table td.cell-empty {
+  color: #cbd5e1;
+  text-align: center;
+}
+
+.accessory-table tr:hover td {
+  background-color: #f8fafc;
+}
+
+.accessory-table tr:hover td.cell-name {
+  background-color: #f1f5f9;
+}
+
 /* フッター */
 footer {
   text-align: center;
@@ -462,9 +853,31 @@ footer {
   aside {
     width: 100%;
   }
-  main {
-    width: 100% !important;
-    flex: 1 1 100% !important;
+  .timeline-list {
+    padding-left: 52px;
+  }
+  .timeline-list::before {
+    left: 19px;
+  }
+  .timeline-node {
+    left: -52px;
+    width: 42px;
+  }
+  .timeline-month {
+    font-size: 0.72rem;
+    padding: 1px 5px;
+  }
+  .timeline-card {
+    padding: 10px 12px;
+  }
+  .timeline-title {
+    font-size: 0.88rem;
+  }
+  .timeline-sub-card {
+    margin-left: 6px;
+    padding: 7px 10px;
+    font-size: 0.8rem;
+    flex-wrap: wrap;
   }
 }
 </style>
@@ -473,14 +886,13 @@ footer {
 
 <!-- 上部ヘッダー -->
 <header>
-  <div class="header-container">
-    <div class="site-title"><a href="#home">lineage2-crow <span>- リネ２クロウにゃん -</span></a></div>
-  </div>
+<div class="header-container">
+  <div class="site-title"><a href="#home">lineage2-crow <span>- リネ２クロウにゃん -</span></a></div>
+</div>
 </header>
 
 <!-- メインレイアウトエリア -->
 <div class="wrapper">
-
   <!-- 左側：攻略メニュー -->
   <aside>
     <div class="menu-box">
@@ -496,11 +908,10 @@ footer {
     </div>
   </aside>
 
-  <!-- 右側：メインコンテンツ (Markdownから結合挿入される場所) -->
+  <!-- 右側：メインコンテンツ -->
   <main>
-    <!-- PAGE_CONTENT_PLACEHOLDER -->
+<!-- PAGE_CONTENT_PLACEHOLDER -->
   </main>
-
 </div>
 
 <!-- フッター -->
@@ -559,6 +970,23 @@ footer {
 
   window.addEventListener('hashchange', showPage);
   showPage();
+
+  var filterBtns = document.querySelectorAll('.filter-btn');
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      filterBtns.forEach(function (b) { b.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+      var filter = btn.getAttribute('data-filter');
+      var cards = document.querySelectorAll('.accessory-item-card');
+      cards.forEach(function (card) {
+        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+          card.classList.remove('is-hidden');
+        } else {
+          card.classList.add('is-hidden');
+        }
+      });
+    });
+  });
 })();
 </script>
 </body>

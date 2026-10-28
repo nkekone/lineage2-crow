@@ -14,10 +14,10 @@ jobs:
   build-and-commit:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # リポジトリへの自動書き込み権限
+      contents: write
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -31,13 +31,13 @@ jobs:
       - name: Run build script
         run: python scripts/build.py
 
-      - name: Commit and push index.html
+      - name: Commit and push generated index.html
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add index.html
           if git diff --staged --quiet; then
-            echo "index.html に変更はありませんでした。"
+            echo "No changes detected in index.html"
           else
             git commit -m "auto: Update index.html from markdown [skip ci]"
             git push origin HEAD:main

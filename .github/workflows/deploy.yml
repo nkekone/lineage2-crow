@@ -8,12 +8,13 @@ on:
       - 'pages/**'
       - 'template.html'
       - 'scripts/build.py'
+      - '.github/workflows/deploy.yml'
 
 jobs:
   build-and-commit:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # リポジトリへの書き込み権限
+      contents: write # リポジトリへの自動書き込み権限
 
     steps:
       - name: Checkout repository
@@ -23,6 +24,9 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install markdown # ← これを追加しました！
 
       - name: Run build script
         run: python scripts/build.py

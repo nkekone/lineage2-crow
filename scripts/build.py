@@ -1,47 +1,37 @@
-import os
-import markdown
+name: Build and Commit index.html
 
-PAGES_DIR = 'pages'
-TEMPLATE_FILE = 'template.html'
-OUTPUT_FILE = 'index.html'
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'pages/**'
+      - 'template.html'
+      - 'scripts/build.py'
+      - '.github/workflows/deploy.yml'
 
-PAGE_ORDER = ['home', 'coupon', 'faq', 'invasion', 'boss', 'crowpass', 'accessories']
+jobs:
+  build-and-commit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # リポジトリへの自動書き込み権限を許可
 
-def build():
-    md = markdown.Markdown(extensions=['tables', 'fenced_code', 'nl2br'])
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    sections_html = []
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
 
-    for page_id in PAGE_ORDER:
-        file_path = os.path.join(PAGES_DIR, f"{page_id}.md")
-        if not os.path.exists(file_path):
-            print(f"Warning: {file_path} not found!")
-            continue
+      - name: Run build script
+        run: python scripts/build.py
 
-        with open(file_path, 'r', encoding='utf-8') as f:
-            content_md = f.read()
-
-        html_content = md.convert(content_md)
-        md.reset()
-
-        hidden_attr = ' hidden' if page_id != 'home' else ''
-        section_code = f'<section id="page-{page_id}" class="page"{hidden_attr}>\n  <div class="content-card">\n    {html_content}\n  </div>\n</section>'
-        sections_html.append(section_code)
-
-    if not os.path.exists(TEMPLATE_FILE):
-        print(f"Error: {TEMPLATE_FILE} not found!")
-        return
-
-    with open(TEMPLATE_FILE, 'r', encoding='utf-8') as f:
-        template_html = f.read()
-
-    full_content = "\n\n".join(sections_html)
-    final_html = template_html.replace('<!-- PAGE_CONTENT_PLACEHOLDER -->', full_content)
-
-    with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
-        f.write(final_html)
-
-    print("index.html の生成が正常に完了しました！")
-
-if __name__ == '__main__':
-    build()
+      - name: Commit and push generated index.html
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add index.html
+          # 変更がある場合のみコミットしてプッシュ
+          git diff --quiet && git diff --staged --quiet || (git commit -m "auto: Build index.html from markdown update" && git push)

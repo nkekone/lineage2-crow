@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <!-- ① Googleに教えたいページの住所 -->
+    <loc>https://lineage2-crow.pages.dev/</loc>
+    
+    <!-- ② このページを最後に直した日付 -->
+    <lastmod>2026-10-28</lastmod>
+    
+    <!-- ③ どれくらいの頻度で更新するか（weekly＝週1くらい） -->
+    <changefreq>weekly</changefreq>
+    
+    <!-- ④ サイトの中での重要度（1.0が一番高い） -->
+    <priority>1.0</priority>
+  </url>
+</urlset>

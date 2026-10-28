@@ -39,6 +39,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes detected in index.html"
           else
-            git commit -m "auto: Update index.html from markdown [skip ci]"
+            git commit -m "auto: Update index.html from markdown" # ← [skip ci] を削除
             git push origin HEAD:main
           fi

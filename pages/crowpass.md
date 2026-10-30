@@ -13,6 +13,20 @@
 
   <div class="timeline-list">
     <div class="timeline-item">
+      <div class="timeline-node"><span class="timeline-month">11月</span></div>
+      <div class="timeline-content">
+        <a href="https://lineage2.ncsoft.jp/news/news/lineage2/news/f26/2611crow" target="_blank" rel="noopener noreferrer" class="timeline-card">
+          <div class="timeline-card-main">
+            <span class="timeline-title">「[11月]CROW PASS」販売のお知らせ</span>
+          </div>
+          <span class="timeline-link-icon" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="timeline-item">
       <div class="timeline-node"><span class="timeline-month">10月</span></div>
       <div class="timeline-content">
         <a href="https://lineage2.ncsoft.jp/news/news/lineage2/news/f26/2610_crowpass" target="_blank" rel="noopener noreferrer" class="timeline-card">

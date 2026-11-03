@@ -44,10 +44,20 @@ header {
 }
 
 .site-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-size: 1.4rem;
   font-weight: bold;
   color: var(--primary-color);
   margin: 0;
+}
+
+.site-title-image {
+  display: block;
+  width: auto;
+  height: 72px;
+  flex-shrink: 0;
 }
 
 .site-title span {
@@ -869,6 +879,20 @@ footer {
 }
 
 @media (max-width: 768px) {
+  header {
+    padding: 10px 12px;
+  }
+  .site-title {
+    gap: 8px;
+    font-size: 1.1rem;
+  }
+  .site-title span {
+    margin-left: 4px;
+    font-size: 0.75rem;
+  }
+  .site-title-image {
+    height: 56px;
+  }
   .wrapper {
     flex-direction: column;
   }
@@ -909,7 +933,10 @@ footer {
 <!-- 上部ヘッダー -->
 <header>
 <div class="header-container">
-  <div class="site-title"><a href="#home">lineage2-crow <span>- リネ２クロウにゃん -</span></a></div>
+  <div class="site-title">
+    <a href="#home">lineage2-crow <span>- リネ２クロウにゃん -</span></a>
+    <img class="site-title-image" src="assets/crow-cat.png" alt="剣を持った猫のイラスト">
+  </div>
 </div>
 </header>
 

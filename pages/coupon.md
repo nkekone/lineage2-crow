@@ -76,13 +76,14 @@
 ### シルバーウィーク記念クーポン
 
 <div class="coupon-code-card">
-  <div class="coupon-code-heading">
-    <span class="coupon-code-badge">SILVER WEEK 2026</span>
-    <span>クロウサーバー専用クーポンコード</span>
-  </div>
   <div class="coupon-code-row">
-    <code class="coupon-code-value" id="silver-week-coupon-code">SILVER2026CROW</code>
-    <button class="coupon-copy-button" type="button" data-copy-target="silver-week-coupon-code">コードをコピー</button>
+    <input class="coupon-code-value" id="silver-week-coupon-code" type="text" value="SILVER2026CROW" readonly aria-label="クロウサーバー専用クーポンコード">
+    <button class="coupon-copy-button" type="button" data-copy-target="silver-week-coupon-code" aria-label="クーポンコードをコピー">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <rect x="8" y="8" width="13" height="13" rx="2"></rect>
+        <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"></path>
+      </svg>
+    </button>
   </div>
   <p class="coupon-copy-status" role="status" aria-live="polite"></p>
 </div>

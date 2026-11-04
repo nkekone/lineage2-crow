@@ -7,8 +7,11 @@
 
 ※クロウサーバーでのみご使用いただけるクーポンです。
 
-- **クーポンナンバー:** THANKYOU1105CROW
-- **受け取り回数:** アカウントあたり1回まで
+<p style="text-align: center; margin: 20px 0;">
+<strong>■クーポンナンバー■</strong><br>
+<strong style="font-size: 1.5rem; color: #ff5269;">THANKYOU1105CROW</strong><br>
+※アカウントあたり1回まで受け取り可能
+</p>
 
 | 報賞アイテム | 個数 | 説明 |
 | :--- | :---: | :--- |
@@ -71,7 +74,19 @@
 ---
 
 ### シルバーウィーク記念クーポン
-- **クロウサーバー専用コード:** 
+
+<div class="coupon-code-card">
+  <div class="coupon-code-heading">
+    <span class="coupon-code-badge">SILVER WEEK 2026</span>
+    <span>クロウサーバー専用クーポンコード</span>
+  </div>
+  <div class="coupon-code-row">
+    <code class="coupon-code-value" id="silver-week-coupon-code">SILVER2026CROW</code>
+    <button class="coupon-copy-button" type="button" data-copy-target="silver-week-coupon-code">コードをコピー</button>
+  </div>
+  <p class="coupon-copy-status" role="status" aria-live="polite"></p>
+</div>
+
 - **有効期限:** 2026年9月18日(金) 9:00 〜 9月23日(水) 23:59
 - **アイテム削除日:** 2026年9月30日(水) 定期メンテナンス時
 

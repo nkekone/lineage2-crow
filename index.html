@@ -1056,15 +1056,19 @@ footer {
   <div class="content-card">
     <h1>クーポン</h1>
 <h2>1周年記念クーポン</h2>
-<p>これまでクロウサーバーで冒険を楽しんでくださった皆さまに感謝の気持ちを込めて、特別なクーポンをご用意いたしました。<br />
-ぜひ報賞を受け取り、これからの冒険にお役立てください。</p>
-<p>※クロウサーバーでのみご使用いただけるクーポンです。</p>
-<p style="text-align: center; margin: 20px 0;">
-<strong>■クーポンナンバー■</strong><br>
-<strong style="font-size: 1.5rem; color: #ff5269;">THANKYOU1105CROW</strong><br>
-※アカウントあたり1回まで受け取り可能
-</p>
-
+<div class="coupon-code-card">
+  <div class="coupon-code-row">
+    <input class="coupon-code-value" id="anniversary-coupon-code" type="text" value="THANKYOU1105CROW" readonly aria-label="1周年記念クーポンコード">
+    <button class="coupon-copy-button" type="button" data-copy-target="anniversary-coupon-code" aria-label="クーポンコードをコピー">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <rect x="8" y="8" width="13" height="13" rx="2"></rect>
+        <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"></path>
+      </svg>
+    </button>
+  </div>
+  <p class="coupon-copy-status" role="status" aria-live="polite"></p>
+</div>
+<p>※アカウントあたり1回まで受け取り可能</p>
 <table>
 <thead>
 <tr>
@@ -1121,11 +1125,10 @@ footer {
 </tr>
 </tbody>
 </table>
-<h3>クーポン受け取り期間</h3>
-<p>2026年11月4日(水)定期メンテナンス後〜2026年11月11日(水)定期メンテナンス前</p>
-<h3>クーポン削除日</h3>
-<p>「商品/プレゼントインベントリ」に届いている未受領のクーポンは、2026年11月11日(水)定期メンテナンス時に削除いたします。<br />
-クーポンナンバーをご登録後は速やかに受け取り、ご使用いただきますようお願いいたします。</p>
+<ul>
+<li><strong>有効期限:</strong> 2026年11月4日(水)定期メンテナンス後〜2026年11月11日(水)定期メンテナンス前まで（「商品/プレゼントインベントリ」に届いている未受領のクーポンは、同メンテナンス時に削除）<br />
+クーポンナンバーをご登録後は速やかに受け取り、ご使用いただきますようお願いいたします。</li>
+</ul>
 <hr />
 <h3>プレイリワード①</h3>
 <p>2026年10月21日(水)定期メンテナンス終了後より、プレイリワード①が配布されます。<br />
@@ -1192,8 +1195,19 @@ footer {
 </table>
 <hr />
 <h3>10月生放送記念クーポン</h3>
+<div class="coupon-code-card">
+  <div class="coupon-code-row">
+    <input class="coupon-code-value" id="october-live-coupon-code" type="text" value="261014CROWLOGIN" readonly aria-label="10月生放送記念クーポンコード">
+    <button class="coupon-copy-button" type="button" data-copy-target="october-live-coupon-code" aria-label="クーポンコードをコピー">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <rect x="8" y="8" width="13" height="13" rx="2"></rect>
+        <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"></path>
+      </svg>
+    </button>
+  </div>
+  <p class="coupon-copy-status" role="status" aria-live="polite"></p>
+</div>
 <ul>
-<li><strong>クロウサーバー専用コード:</strong> </li>
 <li><strong>有効期限:</strong> 2026年10月14日(水) 定期メンテナンス前まで</li>
 </ul>
 <table>
@@ -1241,6 +1255,7 @@ footer {
 <h3>シルバーウィーク記念クーポン</h3>
 <div class="coupon-code-card">
   <div class="coupon-code-row">
+    <input class="coupon-code-value" id="silver-week-coupon-code" type="text" value="SILVER2026CROW" readonly aria-label="シルバーウィーク記念クーポンコード">
     <button class="coupon-copy-button" type="button" data-copy-target="silver-week-coupon-code" aria-label="クーポンコードをコピー">
       <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
         <rect x="8" y="8" width="13" height="13" rx="2"></rect>

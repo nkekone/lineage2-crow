@@ -2,16 +2,19 @@
 
 ## 1周年記念クーポン
 
-これまでクロウサーバーで冒険を楽しんでくださった皆さまに感謝の気持ちを込めて、特別なクーポンをご用意いたしました。
-ぜひ報賞を受け取り、これからの冒険にお役立てください。
-
-※クロウサーバーでのみご使用いただけるクーポンです。
-
-<p style="text-align: center; margin: 20px 0;">
-<strong>■クーポンナンバー■</strong><br>
-<strong style="font-size: 1.5rem; color: #ff5269;">THANKYOU1105CROW</strong><br>
+<div class="coupon-code-card">
+  <div class="coupon-code-row">
+    <input class="coupon-code-value" id="anniversary-coupon-code" type="text" value="THANKYOU1105CROW" readonly aria-label="1周年記念クーポンコード">
+    <button class="coupon-copy-button" type="button" data-copy-target="anniversary-coupon-code" aria-label="クーポンコードをコピー">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <rect x="8" y="8" width="13" height="13" rx="2"></rect>
+        <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"></path>
+      </svg>
+    </button>
+  </div>
+  <p class="coupon-copy-status" role="status" aria-live="polite"></p>
+</div>
 ※アカウントあたり1回まで受け取り可能
-</p>
 
 | 報賞アイテム | 個数 | 説明 |
 | :--- | :---: | :--- |
@@ -25,13 +28,7 @@
 | 大花火 | 100 | 使用すると色とりどりの花火が打ちあがる |
 | ミステリアス ポーション | 30 | 使用すると頭が大きくなるという噂があるポーション |
 
-### クーポン受け取り期間
-
-2026年11月4日(水)定期メンテナンス後〜2026年11月11日(水)定期メンテナンス前
-
-### クーポン削除日
-
-「商品/プレゼントインベントリ」に届いている未受領のクーポンは、2026年11月11日(水)定期メンテナンス時に削除いたします。
+- **有効期限:** 2026年11月4日(水)定期メンテナンス後〜2026年11月11日(水)定期メンテナンス前まで（「商品/プレゼントインベントリ」に届いている未受領のクーポンは、同メンテナンス時に削除）
 クーポンナンバーをご登録後は速やかに受け取り、ご使用いただきますようお願いいたします。
 
 ---
@@ -59,7 +56,19 @@
 ---
 
 ### 10月生放送記念クーポン
-- **クロウサーバー専用コード:** 
+
+<div class="coupon-code-card">
+  <div class="coupon-code-row">
+    <input class="coupon-code-value" id="october-live-coupon-code" type="text" value="261014CROWLOGIN" readonly aria-label="10月生放送記念クーポンコード">
+    <button class="coupon-copy-button" type="button" data-copy-target="october-live-coupon-code" aria-label="クーポンコードをコピー">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <rect x="8" y="8" width="13" height="13" rx="2"></rect>
+        <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"></path>
+      </svg>
+    </button>
+  </div>
+  <p class="coupon-copy-status" role="status" aria-live="polite"></p>
+</div>
 - **有効期限:** 2026年10月14日(水) 定期メンテナンス前まで
 
 | アイテム名 | 個数 | 削除日 |
@@ -77,6 +86,7 @@
 
 <div class="coupon-code-card">
   <div class="coupon-code-row">
+    <input class="coupon-code-value" id="silver-week-coupon-code" type="text" value="SILVER2026CROW" readonly aria-label="シルバーウィーク記念クーポンコード">
     <button class="coupon-copy-button" type="button" data-copy-target="silver-week-coupon-code" aria-label="クーポンコードをコピー">
       <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
         <rect x="8" y="8" width="13" height="13" rx="2"></rect>

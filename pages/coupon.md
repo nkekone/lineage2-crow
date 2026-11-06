@@ -5,7 +5,7 @@
 - **対象アカウント:** 「りね2てれび アップデート記念生放送」放送終了後アンケートに回答したアカウント
 - **配布日時:** 2026年11月6日(金) 午後4時頃
 - **配布先:** 対象アカウントのクーポンボックス
-- <span style="color: #e11d48;"><strong>有効期限:</strong> 2026年11月13日(金) 午後6時まで</span>
+- <span class="coupon-expiration" data-expires-at="2026-11-13T18:00:00+09:00"><strong>有効期限:</strong> 2026年11月13日(金) 午後6時まで</span>
 
 
 | アイテム名 | 個数 |
@@ -37,7 +37,7 @@
 - 装備力800以上
 - **判定基準:** アカウント内で最も装備力が高いキャラクターの、2026年11月4日(水)定期メンテナンス時点での装備力
 
-- <span style="color: #e11d48;"><strong>有効期限:</strong> 2026年11月18日(水) 定期メンテナンス前まで</span>
+- <span class="coupon-expiration" data-expires-at="2026-11-18T23:59:59+09:00"><strong>有効期限:</strong> 2026年11月18日(水) 定期メンテナンス前まで</span>
 
 | アイテム名 | 個数 |
 | :--- | :---: |
@@ -65,7 +65,7 @@
   <p class="coupon-copy-status" role="status" aria-live="polite"></p>
 </div>
 
-- <span style="color: #e11d48;"><strong>有効期限:</strong> 2026年11月11日(水)定期メンテナンス前まで</span>
+- <span class="coupon-expiration" data-expires-at="2026-11-11T23:59:59+09:00"><strong>有効期限:</strong> 2026年11月11日(水)定期メンテナンス前まで</span>
 
 | 報賞アイテム | 個数 | 説明 |
 | :--- | :---: | :--- |
@@ -87,7 +87,7 @@
 クーポンページで配布されるので、ここに記載します。
 
 - **対象アカウント:**2026年9月16日(水)から2026年10月21日(水)までの期間中に、一度でもログインしているアカウント
-- <span style="color: #e11d48;"><strong>有効期限:</strong> 2026年11月18日(水) 定期メンテナンス前まで</span>
+- <span class="coupon-expiration" data-expires-at="2026-11-18T23:59:59+09:00"><strong>有効期限:</strong> 2026年11月18日(水) 定期メンテナンス前まで</span>
 
 | アイテム名 | 個数 | 削除日 |
 | :--- | :---: | :---: |
@@ -117,7 +117,7 @@
   </div>
   <p class="coupon-copy-status" role="status" aria-live="polite"></p>
 </div>
-- <span style="color: #e11d48;"><strong>有効期限:</strong> 2026年10月14日(水) 定期メンテナンス前まで</span>
+- <span class="coupon-expiration" data-expires-at="2026-10-14T23:59:59+09:00"><strong>有効期限:</strong> 2026年10月14日(水) 定期メンテナンス前まで</span>
 
 | アイテム名 | 個数 | 削除日 |
 | :--- | :---: | :---: |
@@ -145,7 +145,7 @@
   <p class="coupon-copy-status" role="status" aria-live="polite"></p>
 </div>
 
-- <span style="color: #e11d48;"><strong>有効期限:</strong> 2026年9月18日(金) 9:00 〜 9月23日(水) 23:59</span>
+- <span class="coupon-expiration" data-expires-at="2026-09-24T00:00:00+09:00"><strong>有効期限:</strong> 2026年9月18日(金) 9:00 〜 9月23日(水) 23:59</span>
 - **アイテム削除日:** 2026年9月30日(水) 定期メンテナンス時
 
 | アイテム名 | 個数 | 削除日 |

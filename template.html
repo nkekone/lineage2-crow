@@ -323,6 +323,26 @@ main {
   font-size: 0.9rem;
 }
 
+.coupon-expiration {
+  color: #e11d48;
+}
+
+.coupon-expiration.is-expired {
+  color: #64748b;
+}
+
+.coupon-expiration-status {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  color: #475569;
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
 /* FAQ用のスタイル */
 .faq-item {
   border: 1px solid var(--border-color);
@@ -1102,6 +1122,23 @@ footer {
 
   window.addEventListener('hashchange', showPage);
   showPage();
+
+  var now = new Date();
+  document.querySelectorAll('.coupon-expiration[data-expires-at]').forEach(function (expiration) {
+    var expiresAt = new Date(expiration.getAttribute('data-expires-at'));
+    if (Number.isNaN(expiresAt.getTime())) {
+      console.error('Invalid coupon expiration date:', expiration.getAttribute('data-expires-at'));
+      return;
+    }
+
+    if (now >= expiresAt) {
+      expiration.classList.add('is-expired');
+      var status = document.createElement('span');
+      status.className = 'coupon-expiration-status';
+      status.textContent = '期限切れ';
+      expiration.appendChild(status);
+    }
+  });
 
   var filterBtns = document.querySelectorAll('.filter-btn');
   filterBtns.forEach(function (btn) {

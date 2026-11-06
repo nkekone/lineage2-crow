@@ -323,6 +323,26 @@ main {
   font-size: 0.9rem;
 }
 
+.coupon-expiration {
+  color: #e11d48;
+}
+
+.coupon-expiration.is-expired {
+  color: #64748b;
+}
+
+.coupon-expiration-status {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  color: #475569;
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
 /* FAQ用のスタイル */
 .faq-item {
   border: 1px solid var(--border-color);
@@ -1061,7 +1081,7 @@ footer {
 <li><strong>対象アカウント:</strong> 「りね2てれび アップデート記念生放送」放送終了後アンケートに回答したアカウント</li>
 <li><strong>配布日時:</strong> 2026年11月6日(金) 午後4時頃</li>
 <li><strong>配布先:</strong> 対象アカウントのクーポンボックス</li>
-<li><span style="color: #e11d48;"><strong>有効期限:</strong> 2026年11月13日(金) 午後6時まで</span></li>
+<li><span class="coupon-expiration" data-expires-at="2026-11-13T18:00:00+09:00"><strong>有効期限:</strong> 2026年11月13日(金) 午後6時まで</span></li>
 </ul>
 <table>
 <thead>
@@ -1116,7 +1136,7 @@ footer {
 <p><strong>判定基準:</strong> アカウント内で最も装備力が高いキャラクターの、2026年11月4日(水)定期メンテナンス時点での装備力</p>
 </li>
 <li>
-<p><span style="color: #e11d48;"><strong>有効期限:</strong> 2026年11月18日(水) 定期メンテナンス前まで</span></p>
+<p><span class="coupon-expiration" data-expires-at="2026-11-18T23:59:59+09:00"><strong>有効期限:</strong> 2026年11月18日(水) 定期メンテナンス前まで</span></p>
 </li>
 </ul>
 <table>
@@ -1169,7 +1189,7 @@ footer {
 </div>
 
 <ul>
-<li><span style="color: #e11d48;"><strong>有効期限:</strong> 2026年11月11日(水)定期メンテナンス前まで</span></li>
+<li><span class="coupon-expiration" data-expires-at="2026-11-11T23:59:59+09:00"><strong>有効期限:</strong> 2026年11月11日(水)定期メンテナンス前まで</span></li>
 </ul>
 <table>
 <thead>
@@ -1233,7 +1253,7 @@ footer {
 クーポンページで配布されるので、ここに記載します。</p>
 <ul>
 <li><strong>対象アカウント:</strong>2026年9月16日(水)から2026年10月21日(水)までの期間中に、一度でもログインしているアカウント</li>
-<li><span style="color: #e11d48;"><strong>有効期限:</strong> 2026年11月18日(水) 定期メンテナンス前まで</span></li>
+<li><span class="coupon-expiration" data-expires-at="2026-11-18T23:59:59+09:00"><strong>有効期限:</strong> 2026年11月18日(水) 定期メンテナンス前まで</span></li>
 </ul>
 <table>
 <thead>
@@ -1306,7 +1326,7 @@ footer {
   <p class="coupon-copy-status" role="status" aria-live="polite"></p>
 </div>
 <ul>
-<li><span style="color: #e11d48;"><strong>有効期限:</strong> 2026年10月14日(水) 定期メンテナンス前まで</span></li>
+<li><span class="coupon-expiration" data-expires-at="2026-10-14T23:59:59+09:00"><strong>有効期限:</strong> 2026年10月14日(水) 定期メンテナンス前まで</span></li>
 </ul>
 <table>
 <thead>
@@ -1365,7 +1385,7 @@ footer {
 </div>
 
 <ul>
-<li><span style="color: #e11d48;"><strong>有効期限:</strong> 2026年9月18日(金) 9:00 〜 9月23日(水) 23:59</span></li>
+<li><span class="coupon-expiration" data-expires-at="2026-09-24T00:00:00+09:00"><strong>有効期限:</strong> 2026年9月18日(金) 9:00 〜 9月23日(水) 23:59</span></li>
 <li><strong>アイテム削除日:</strong> 2026年9月30日(水) 定期メンテナンス時</li>
 </ul>
 <table>
@@ -2445,6 +2465,23 @@ Gmailの「エイリアス機能」が使えます！<br>
 
   window.addEventListener('hashchange', showPage);
   showPage();
+
+  var now = new Date();
+  document.querySelectorAll('.coupon-expiration[data-expires-at]').forEach(function (expiration) {
+    var expiresAt = new Date(expiration.getAttribute('data-expires-at'));
+    if (Number.isNaN(expiresAt.getTime())) {
+      console.error('Invalid coupon expiration date:', expiration.getAttribute('data-expires-at'));
+      return;
+    }
+
+    if (now >= expiresAt) {
+      expiration.classList.add('is-expired');
+      var status = document.createElement('span');
+      status.className = 'coupon-expiration-status';
+      status.textContent = '期限切れ';
+      expiration.appendChild(status);
+    }
+  });
 
   var filterBtns = document.querySelectorAll('.filter-btn');
   filterBtns.forEach(function (btn) {

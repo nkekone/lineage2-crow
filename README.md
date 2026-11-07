@@ -10,6 +10,7 @@ lineage2-crow/
 │   ├── faq.md
 │   ├── invasion.md
 │   ├── boss.md
+│   ├── dimmension_boss.md
 │   ├── crowpass.md
 │   └── accessories.md
 ├── scripts/

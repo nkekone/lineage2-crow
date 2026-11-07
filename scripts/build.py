@@ -11,7 +11,16 @@ OUTPUT_FILE = OUTPUT_DIR / 'index.html'
 STATIC_DIRS = ['assets']
 STATIC_FILES = ['sitemap.xml']
 
-PAGE_ORDER = ['home', 'coupon', 'faq', 'invasion', 'boss', 'crowpass', 'accessories']
+PAGE_ORDER = [
+    'home', 
+    'coupon', 
+    'faq', 
+    'invasion', 
+    'boss', 
+    'dimension_boss'
+    'crowpass', 
+    'accessories'
+    ]
 
 def build():
     md = markdown.Markdown(extensions=['tables', 'fenced_code', 'nl2br'])

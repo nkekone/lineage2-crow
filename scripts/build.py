@@ -17,7 +17,7 @@ PAGE_ORDER = [
     'faq', 
     'invasion', 
     'boss', 
-    'dimension_boss'
+    'dimension_boss',
     'crowpass', 
     'accessories'
     ]

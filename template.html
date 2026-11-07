@@ -256,6 +256,11 @@ main {
   background: #fff;
 }
 
+.coupon-item.is-expired {
+  border-color: #cbd5e1;
+  background: #f1f3f5;
+}
+
 .coupon-code-card {
   margin: 16px 0 20px;
 }
@@ -334,10 +339,7 @@ main {
 .coupon-expiration-status {
   display: inline-block;
   margin-left: 8px;
-  padding: 1px 8px;
-  border-radius: 999px;
-  background: #e2e8f0;
-  color: #475569;
+  color: #e11d48;
   font-size: 0.8rem;
   font-weight: 700;
   white-space: nowrap;
@@ -1123,6 +1125,27 @@ footer {
   window.addEventListener('hashchange', showPage);
   showPage();
 
+  var couponContent = document.querySelector('#page-coupon .content-card');
+  if (couponContent) {
+    Array.from(couponContent.children).filter(function (element) {
+      return element.tagName === 'H2';
+    }).forEach(function (heading) {
+      var card = document.createElement('div');
+      card.className = 'coupon-item';
+      couponContent.insertBefore(card, heading);
+
+      var element = heading;
+      while (element) {
+        if (element !== heading && (element.tagName === 'H2' || element.tagName === 'HR')) {
+          break;
+        }
+        var nextElement = element.nextElementSibling;
+        card.appendChild(element);
+        element = nextElement;
+      }
+    });
+  }
+
   var now = new Date();
   document.querySelectorAll('.coupon-expiration[data-expires-at]').forEach(function (expiration) {
     var expiresAt = new Date(expiration.getAttribute('data-expires-at'));
@@ -1133,10 +1156,17 @@ footer {
 
     if (now >= expiresAt) {
       expiration.classList.add('is-expired');
+      var couponItem = expiration.closest('.coupon-item');
+      if (couponItem) {
+        couponItem.classList.add('is-expired');
+      }
       var status = document.createElement('span');
       status.className = 'coupon-expiration-status';
       status.textContent = '期限切れ';
-      expiration.appendChild(status);
+      var couponHeading = couponItem && couponItem.querySelector('h2');
+      if (couponHeading) {
+        couponHeading.appendChild(status);
+      }
     }
   });
 

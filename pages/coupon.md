@@ -4,6 +4,34 @@
 クーポンの情報は気をつけていますが、間違えている場合があります。間違えていても許してください。
 </p>
 
+## クロウサーバー
+
+<div class="coupon-code-card">
+  <div class="coupon-code-row">
+    <input class="coupon-code-value" id="crow-server-coupon-code" type="text" value="261120L2CrowThanks2" readonly aria-label="クロウサーバークーポンコード">
+    <button class="coupon-copy-button" type="button" data-copy-target="crow-server-coupon-code" aria-label="クーポンコードをコピー">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <rect x="8" y="8" width="13" height="13" rx="2"></rect>
+        <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"></path>
+      </svg>
+    </button>
+  </div>
+  <p class="coupon-copy-status" role="status" aria-live="polite"></p>
+</div>
+
+- <span class="coupon-expiration" data-expires-at="2026-12-02T23:59:59+09:00"><strong>有効期限:</strong> 2026年12月2日(水)定期メンテナンス前まで</span>
+
+| アイテム名 | 個数 |
+| :--- | :---: |
+| ルーンストーン[刻印] | 25,000 |
+| 攻撃力強化スクロール[刻印] | 100 |
+| 防御力強化スクロール[刻印] | 100 |
+| 経験値向上スクロール[刻印] | 100 |
+| 人形召喚券(一般〜英雄)：11回[刻印] | 5 |
+| 成長のルーンの欠片[刻印] | 30 |
+
+---
+
 ## アップデート記念生放送終了後アンケートクーポン
 
 - **対象アカウント:** 「りね2てれび アップデート記念生放送」放送終了後アンケートに回答したアカウント

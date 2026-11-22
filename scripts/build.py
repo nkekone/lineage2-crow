@@ -1,7 +1,9 @@
 import shutil
+from html import escape
 from pathlib import Path
 
 import markdown
+import yaml
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 PAGES_DIR = ROOT_DIR / 'pages'
@@ -10,6 +12,7 @@ OUTPUT_DIR = ROOT_DIR / 'dist'
 OUTPUT_FILE = OUTPUT_DIR / 'index.html'
 STATIC_DIRS = ['assets']
 STATIC_FILES = ['sitemap.xml']
+DATA_DIR = ROOT_DIR / 'data'
 
 PAGE_ORDER = [
     'home', 
@@ -21,6 +24,101 @@ PAGE_ORDER = [
     'crowpass', 
     'accessories'
     ]
+
+ENCHANTMENT_LABELS = [f'+{level}' for level in range(7)]
+CATEGORY_LABELS = {
+    'ring': ('💍 リング', 'badge-ring'),
+    'earring': ('🦻 イヤリング', 'badge-earring'),
+    'necklace': ('📿 ネックレス', 'badge-necklace'),
+}
+
+def render_accessories():
+    yaml_file = DATA_DIR / 'accessories.yaml'
+    if not yaml_file.is_file():
+        raise FileNotFoundError(f'{yaml_file} not found')
+
+    with yaml_file.open('r', encoding='utf-8') as file:
+        accessories = yaml.safe_load(file) or []
+
+    counts = {
+        'all': len(accessories),
+        'ring': sum(item['category'] == 'ring' for item in accessories),
+        'earring': sum(item['category'] == 'earring' for item in accessories),
+        'necklace': sum(item['category'] == 'necklace' for item in accessories),
+    }
+
+    parts = ['<div class="accessory-nav">']
+    filters = [
+        ('all', f'すべて ({counts["all"]})'),
+        ('ring', f'💍 リング ({counts["ring"]})'),
+        ('earring', f'🦻 イヤリング ({counts["earring"]})'),
+        ('necklace', f'📿 ネックレス ({counts["necklace"]})'),
+    ]
+    for index, (category, label) in enumerate(filters):
+        active = ' is-active' if index == 0 else ''
+        parts.append(
+            f'<button type="button" class="filter-btn{active}" '
+            f'data-filter="{category}">{escape(label)}</button>'
+        )
+    parts.append('</div>')
+
+    parts.append('<div class="accessory-quick-jump">')
+    parts.append('<span class="quick-jump-label">目次ジャンプ:</span>')
+    for accessory in accessories:
+        accessory_id = escape(str(accessory['id']), quote=True)
+        name = escape(str(accessory['name']))
+        parts.append(
+            f'<a href="#{accessory_id}" class="quick-jump-chip">{name}</a>'
+        )
+    parts.append('</div>')
+
+    for accessory in accessories:
+        accessory_id = escape(str(accessory['id']), quote=True)
+        name = escape(str(accessory['name']))
+        category = accessory['category']
+        badge_label, badge_class = CATEGORY_LABELS[category]
+
+        parts.append(
+            f'<div id="{accessory_id}" class="accessory-item-card" '
+            f'data-category="{category}">'
+        )
+        parts.append('<div class="accessory-header">')
+        parts.append(f'<h2 class="accessory-name">{name}</h2>')
+        parts.append(
+            f'<span class="accessory-badge {badge_class}">'
+            f'{escape(badge_label)}</span>'
+        )
+        parts.append('</div>')
+        parts.append('<div class="table-responsive">')
+        parts.append('<table class="accessory-table">')
+        parts.append('<thead><tr>')
+        parts.append('<th class="col-name">項目</th>')
+        for enchantment in ENCHANTMENT_LABELS:
+            parts.append(
+                f'<th class="col-enchant">{escape(enchantment)}</th>'
+            )
+        parts.append('</tr></thead><tbody>')
+
+        for stat in accessory['stats']:
+            stat_name = escape(str(stat['name']))
+            values = stat.get('values') or {}
+            parts.append('<tr>')
+            parts.append(f'<td class="cell-name">{stat_name}</td>')
+            for enchantment in ENCHANTMENT_LABELS:
+                value = values.get(enchantment)
+                if value is None:
+                    parts.append('<td class="cell-empty">-</td>')
+                else:
+                    parts.append(
+                        f'<td class="cell-val">{escape(str(value))}</td>'
+                    )
+            parts.append('</tr>')
+
+        parts.append('</tbody></table>')
+        parts.append('</div>')
+        parts.append('</div>')
+
+    return '\n'.join(parts)
 
 def build():
     md = markdown.Markdown(extensions=['tables', 'fenced_code', 'nl2br', 'attr_list'])
@@ -37,6 +135,9 @@ def build():
 
         html_content = md.convert(content_md)
         md.reset()
+
+        if page_id == 'accessories':
+            html_content = f'{html_content}\n{render_accessories()}'
 
         hidden_attr = ' hidden' if page_id != 'home' else ''
         section_code = f'<section id="page-{page_id}" class="page"{hidden_attr}>\n  <div class="content-card">\n    {html_content}\n  </div>\n</section>'

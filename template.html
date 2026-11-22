@@ -1172,22 +1172,123 @@ footer {
     }
   });
 
-  var filterBtns = document.querySelectorAll('.filter-btn');
-  filterBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      filterBtns.forEach(function (b) { b.classList.remove('is-active'); });
-      btn.classList.add('is-active');
-      var filter = btn.getAttribute('data-filter');
-      var cards = document.querySelectorAll('.accessory-item-card');
-      cards.forEach(function (card) {
-        if (filter === 'all' || card.getAttribute('data-category') === filter) {
-          card.classList.remove('is-hidden');
-        } else {
-          card.classList.add('is-hidden');
+  var accessoryContent = document.querySelector('#page-accessories .content-card');
+  if (accessoryContent) {
+    var accessoryHeadings = Array.from(accessoryContent.querySelectorAll('h2[id^="acc-"]'));
+    accessoryHeadings.forEach(function (heading) {
+      var name = heading.textContent.trim();
+      var category = name.indexOf('リング') !== -1 ? 'ring'
+        : name.indexOf('イヤリング') !== -1 ? 'earring'
+        : name.indexOf('ネックレス') !== -1 ? 'necklace'
+        : 'all';
+
+      var card = document.createElement('div');
+      card.id = heading.id;
+      card.className = 'accessory-item-card';
+      card.setAttribute('data-category', category);
+      accessoryContent.insertBefore(card, heading);
+
+      var header = document.createElement('div');
+      header.className = 'accessory-header';
+      heading.className = 'accessory-name';
+      card.appendChild(header);
+      header.appendChild(heading);
+
+      var badge = document.createElement('span');
+      badge.className = 'accessory-badge badge-' + category;
+      badge.textContent = category === 'ring' ? '💍 リング'
+        : category === 'earring' ? '🦻 イヤリング'
+        : category === 'necklace' ? '📿 ネックレス'
+        : '';
+      header.appendChild(badge);
+
+      var element = card.nextElementSibling;
+      while (element) {
+        if (element.tagName === 'H2' || element.tagName === 'HR') {
+          break;
         }
+        var nextElement = element.nextElementSibling;
+        if (element.tagName === 'TABLE') {
+          var tableWrapper = document.createElement('div');
+          tableWrapper.className = 'table-responsive';
+          element.className = 'accessory-table';
+          card.appendChild(tableWrapper);
+          tableWrapper.appendChild(element);
+
+          var tableHeadCells = element.querySelectorAll('thead th');
+          tableHeadCells.forEach(function (cell, index) {
+            cell.className = index === 0 ? 'col-name' : 'col-enchant';
+          });
+          element.querySelectorAll('tbody tr').forEach(function (row) {
+            var cells = row.querySelectorAll('td');
+            cells.forEach(function (cell, index) {
+              cell.className = index === 0 ? 'cell-name'
+                : cell.textContent.trim() === '-' ? 'cell-empty'
+                : 'cell-val';
+            });
+          });
+        } else {
+          card.appendChild(element);
+        }
+        element = nextElement;
+      }
+    });
+
+    var quickLabel = Array.from(accessoryContent.children).find(function (element) {
+      return element.tagName === 'P' && element.textContent.trim() === '目次ジャンプ:';
+    });
+    var quickList = quickLabel ? quickLabel.nextElementSibling : null;
+    if (quickLabel && quickList && quickList.tagName === 'UL') {
+      var quickNav = document.createElement('div');
+      quickNav.className = 'accessory-quick-jump';
+      var label = document.createElement('span');
+      label.className = 'quick-jump-label';
+      label.textContent = '目次ジャンプ:';
+      quickNav.appendChild(label);
+      Array.from(quickList.querySelectorAll('a')).forEach(function (link) {
+        link.className = 'quick-jump-chip';
+        quickNav.appendChild(link);
+      });
+      accessoryContent.insertBefore(quickNav, quickLabel);
+      quickLabel.remove();
+      quickList.remove();
+    }
+
+    var filterNav = document.createElement('div');
+    filterNav.className = 'accessory-nav';
+    var filters = [
+      ['all', 'すべて (9)'],
+      ['ring', '💍 リング (3)'],
+      ['earring', '🦻 イヤリング (4)'],
+      ['necklace', '📿 ネックレス (2)']
+    ];
+    filters.forEach(function (filterData, index) {
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'filter-btn' + (index === 0 ? ' is-active' : '');
+      button.setAttribute('data-filter', filterData[0]);
+      button.textContent = filterData[1];
+      filterNav.appendChild(button);
+    });
+    var quickNavElement = accessoryContent.querySelector('.accessory-quick-jump');
+    accessoryContent.insertBefore(filterNav, quickNavElement || accessoryContent.firstChild.nextSibling);
+
+    var filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        filterBtns.forEach(function (b) { b.classList.remove('is-active'); });
+        btn.classList.add('is-active');
+        var filter = btn.getAttribute('data-filter');
+        document.querySelectorAll('.accessory-item-card').forEach(function (card) {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.classList.remove('is-hidden');
+          } else {
+            card.classList.add('is-hidden');
+          }
+        });
       });
     });
-  });
+  }
 
   document.querySelectorAll('.coupon-copy-button').forEach(function (btn) {
     btn.addEventListener('click', function () {

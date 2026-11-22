@@ -1,368 +1,166 @@
 # レアアクセサリー一覧
 
-<p class="intro-text" style="margin-bottom: 20px;">
-各レアアクセサリーの強化値（+0〜+6）ごとのステータス一覧です。<br>
+各レアアクセサリーの強化値（+0〜+6）ごとのステータス一覧です。
 カテゴリーやクイックリンクから目的のアクセサリーを絞り込んで確認できます。
-</p>
 
-<!-- カテゴリー絞り込みボタン -->
-<div class="accessory-nav">
-  <button type="button" class="filter-btn is-active" data-filter="all">すべて (9)</button>
-  <button type="button" class="filter-btn" data-filter="ring">💍 リング (3)</button>
-  <button type="button" class="filter-btn" data-filter="earring">🦻 イヤリング (4)</button>
-  <button type="button" class="filter-btn" data-filter="necklace">📿 ネックレス (2)</button>
-</div>
+**目次ジャンプ:**
+- [クイーンアント リング](#acc-qa)
+- [バイウム リング](#acc-baium)
+- [コア リング](#acc-core)
+- [アズタカン イヤリング](#acc-aztaqan)
+- [アンタラス イヤリング](#acc-antharas)
+- [オルフェン イヤリング](#acc-orfen)
+- [ザケン イヤリング](#acc-zaken)
+- [ベリオン ネックレス](#acc-belion)
+- [フリンテッサ ネックレス](#acc-frintezza)
 
-<!-- クイックジャンプリンク -->
-<div class="accessory-quick-jump">
-  <span class="quick-jump-label">目次ジャンプ:</span>
-  <a href="#acc-qa" class="quick-jump-chip">クイーンアント</a>
-  <a href="#acc-baium" class="quick-jump-chip">バイウム</a>
-  <a href="#acc-core" class="quick-jump-chip">コア</a>
-  <a href="#acc-aztaqan" class="quick-jump-chip">アズタカン</a>
-  <a href="#acc-antharas" class="quick-jump-chip">アンタラス</a>
-  <a href="#acc-orfen" class="quick-jump-chip">オルフェン</a>
-  <a href="#acc-zaken" class="quick-jump-chip">ザケン</a>
-  <a href="#acc-belion" class="quick-jump-chip">ベリオン</a>
-  <a href="#acc-frintezza" class="quick-jump-chip">フリンテッサ</a>
-</div>
+## クイーンアント リング {#acc-qa}
 
-<!-- 1. クイーンアント リング -->
-<div id="acc-qa" class="accessory-item-card" data-category="ring">
-  <div class="accessory-header">
-    <h2 class="accessory-name">クイーンアント リング</h2>
-    <span class="accessory-badge badge-ring">💍 リング</span>
-  </div>
-  <div class="table-responsive">
-    <table class="accessory-table">
-      <thead>
-        <tr>
-          <th class="col-name">項目</th>
-          <th class="col-enchant">+0</th>
-          <th class="col-enchant">+1</th>
-          <th class="col-enchant">+2</th>
-          <th class="col-enchant">+3</th>
-          <th class="col-enchant">+4</th>
-          <th class="col-enchant">+5</th>
-          <th class="col-enchant">+6</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td class="cell-name">魔法抵抗力</td><td class="cell-val">61</td><td class="cell-val">62</td><td class="cell-val">63</td><td class="cell-val">64</td><td class="cell-val">67</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">最大MP</td><td class="cell-val">9</td><td class="cell-val">15</td><td class="cell-val">21</td><td class="cell-val">30</td><td class="cell-val">40</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">物理命中率</td><td class="cell-val">1</td><td class="cell-val">2</td><td class="cell-val">3</td><td class="cell-val">4</td><td class="cell-val">6</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">魔法命中率</td><td class="cell-val">1</td><td class="cell-val">2</td><td class="cell-val">3</td><td class="cell-val">4</td><td class="cell-val">6</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">攻撃力</td><td class="cell-val">4%</td><td class="cell-val">6%</td><td class="cell-val">7%</td><td class="cell-val">9%</td><td class="cell-val">11%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">魔力</td><td class="cell-val">4%</td><td class="cell-val">6%</td><td class="cell-val">7%</td><td class="cell-val">9%</td><td class="cell-val">11%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">防御力</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-val">35</td><td class="cell-val">65</td><td class="cell-val">95</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">魔法抵抗力</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-val">35</td><td class="cell-val">65</td><td class="cell-val">95</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">感染攻撃/攻撃耐性</td><td class="cell-val">10%</td><td class="cell-val">15%</td><td class="cell-val">20%</td><td class="cell-val">20%</td><td class="cell-val">20%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">通常攻撃クリティカルダメージ</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-val">10%</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">魔法スキルクリティカルダメージ</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-val">5%</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">すべてのクリティカルダメージ</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-val">10%</td><td class="cell-val">15%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+| 項目 | +0 | +1 | +2 | +3 | +4 | +5 | +6 |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| 魔法抵抗力 | 61 | 62 | 63 | 64 | 67 | - | - |
+| 最大MP | 9 | 15 | 21 | 30 | 40 | - | - |
+| 物理命中率 | 1 | 2 | 3 | 4 | 6 | - | - |
+| 魔法命中率 | 1 | 2 | 3 | 4 | 6 | - | - |
+| 攻撃力 | 4% | 6% | 7% | 9% | 11% | - | - |
+| 魔力 | 4% | 6% | 7% | 9% | 11% | - | - |
+| 防御力 | - | - | 35 | 65 | 95 | - | - |
+| 魔法抵抗力 | - | - | 35 | 65 | 95 | - | - |
+| 感染攻撃/攻撃耐性 | 10% | 15% | 20% | 20% | 20% | - | - |
+| 通常攻撃クリティカルダメージ | - | - | 10% | - | - | - | - |
+| 魔法スキルクリティカルダメージ | - | - | 5% | - | - | - | - |
+| すべてのクリティカルダメージ | - | - | - | 10% | 15% | - | - |
 
-<!-- 2. バイウム リング -->
-<div id="acc-baium" class="accessory-item-card" data-category="ring">
-  <div class="accessory-header">
-    <h2 class="accessory-name">バイウム リング</h2>
-    <span class="accessory-badge badge-ring">💍 リング</span>
-  </div>
-  <div class="table-responsive">
-    <table class="accessory-table">
-      <thead>
-        <tr>
-          <th class="col-name">項目</th>
-          <th class="col-enchant">+0</th>
-          <th class="col-enchant">+1</th>
-          <th class="col-enchant">+2</th>
-          <th class="col-enchant">+3</th>
-          <th class="col-enchant">+4</th>
-          <th class="col-enchant">+5</th>
-          <th class="col-enchant">+6</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td class="cell-name">魔法抵抗力</td><td class="cell-val">73</td><td class="cell-val">74</td><td class="cell-val">75</td><td class="cell-val">76</td><td class="cell-val">79</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">最大MP</td><td class="cell-val">15</td><td class="cell-val">21</td><td class="cell-val">27</td><td class="cell-val">40</td><td class="cell-val">55</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">物理命中率</td><td class="cell-val">2</td><td class="cell-val">3</td><td class="cell-val">4</td><td class="cell-val">6</td><td class="cell-val">8</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">魔法命中率</td><td class="cell-val">2</td><td class="cell-val">3</td><td class="cell-val">4</td><td class="cell-val">6</td><td class="cell-val">8</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">攻撃速度</td><td class="cell-val">3%</td><td class="cell-val">4%</td><td class="cell-val">5%</td><td class="cell-val">7%</td><td class="cell-val">9%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">魔法詠唱速度</td><td class="cell-val">3%</td><td class="cell-val">4%</td><td class="cell-val">5%</td><td class="cell-val">7%</td><td class="cell-val">9%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">すべてのスキル威力</td><td class="cell-val">3%</td><td class="cell-val">6%</td><td class="cell-val">10%</td><td class="cell-val">12%</td><td class="cell-val">15%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">ショック攻撃および攻撃耐性</td><td class="cell-val">10%</td><td class="cell-val">15%</td><td class="cell-val">20%</td><td class="cell-val">20%</td><td class="cell-val">20%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">感染攻撃および攻撃耐性</td><td class="cell-val">5%</td><td class="cell-val">10%</td><td class="cell-val">15%</td><td class="cell-val">15%</td><td class="cell-val">15%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">防御力</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-val">35</td><td class="cell-val">65</td><td class="cell-val">95</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">魔法抵抗力（エンチャント効果）</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-val">35</td><td class="cell-val">65</td><td class="cell-val">95</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">通常攻撃クリティカル ダメージ</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-val">15%</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">魔法スキル クリティカル ダメージ</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-val">10%</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">すべてのクリティカル ダメージ</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-val">15%</td><td class="cell-val">18%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+## バイウム リング {#acc-baium}
 
-<!-- 3. コア リング -->
-<div id="acc-core" class="accessory-item-card" data-category="ring">
-  <div class="accessory-header">
-    <h2 class="accessory-name">コア リング</h2>
-    <span class="accessory-badge badge-ring">💍 リング</span>
-  </div>
-  <div class="table-responsive">
-    <table class="accessory-table">
-      <thead>
-        <tr>
-          <th class="col-name">項目</th>
-          <th class="col-enchant">+0</th>
-          <th class="col-enchant">+1</th>
-          <th class="col-enchant">+2</th>
-          <th class="col-enchant">+3</th>
-          <th class="col-enchant">+4</th>
-          <th class="col-enchant">+5</th>
-          <th class="col-enchant">+6</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td class="cell-name">魔法抵抗</td><td class="cell-val">61</td><td class="cell-val">62</td><td class="cell-val">63</td><td class="cell-val">64</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">最大MP</td><td class="cell-val">9</td><td class="cell-val">15</td><td class="cell-val">21</td><td class="cell-val">30</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">物理回避率</td><td class="cell-val">1</td><td class="cell-val">2</td><td class="cell-val">4</td><td class="cell-val">6</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">魔法回避率</td><td class="cell-val">1</td><td class="cell-val">2</td><td class="cell-val">4</td><td class="cell-val">6</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">攻撃力</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-val">+20</td><td class="cell-val">+50</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">魔力</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-val">+20</td><td class="cell-val">+50</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">防御力</td><td class="cell-val">+2%</td><td class="cell-val">+4%</td><td class="cell-val">+6%</td><td class="cell-val">+8%</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">魔法抵抗力</td><td class="cell-val">+2%</td><td class="cell-val">+4%</td><td class="cell-val">+6%</td><td class="cell-val">+8%</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">受けるダメージ</td><td class="cell-val">-2%</td><td class="cell-val">-4%</td><td class="cell-val">-6%</td><td class="cell-val">-8%</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">サイレンス攻撃および攻撃耐性</td><td class="cell-val">10%</td><td class="cell-val">15%</td><td class="cell-val">20%</td><td class="cell-val">20%</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">フィアー攻撃および攻撃耐性</td><td class="cell-val">10%</td><td class="cell-val">15%</td><td class="cell-val">20%</td><td class="cell-val">20%</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">特殊効果</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-val" style="font-size:0.8rem; white-space:normal;">コアの祝福</td><td class="cell-val" style="font-size:0.8rem; white-space:normal;">コアの祝福</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+| 項目 | +0 | +1 | +2 | +3 | +4 | +5 | +6 |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| 魔法抵抗力 | 73 | 74 | 75 | 76 | 79 | - | - |
+| 最大MP | 15 | 21 | 27 | 40 | 55 | - | - |
+| 物理命中率 | 2 | 3 | 4 | 6 | 8 | - | - |
+| 魔法命中率 | 2 | 3 | 4 | 6 | 8 | - | - |
+| 攻撃速度 | 3% | 4% | 5% | 7% | 9% | - | - |
+| 魔法詠唱速度 | 3% | 4% | 5% | 7% | 9% | - | - |
+| すべてのスキル威力 | 3% | 6% | 10% | 12% | 15% | - | - |
+| ショック攻撃および攻撃耐性 | 10% | 15% | 20% | 20% | 20% | - | - |
+| 感染攻撃および攻撃耐性 | 5% | 10% | 15% | 15% | 15% | - | - |
+| 防御力 | - | - | 35 | 65 | 95 | - | - |
+| 魔法抵抗力（エンチャント効果） | - | - | 35 | 65 | 95 | - | - |
+| 通常攻撃クリティカル ダメージ | - | - | 15% | - | - | - | - |
+| 魔法スキル クリティカル ダメージ | - | - | 10% | - | - | - | - |
+| すべてのクリティカル ダメージ | - | - | - | 15% | 18% | - | - |
 
-<!-- 4. アズタカン イヤリング -->
-<div id="acc-aztaqan" class="accessory-item-card" data-category="earring">
-  <div class="accessory-header">
-    <h2 class="accessory-name">アズタカン イヤリング</h2>
-    <span class="accessory-badge badge-earring">🦻 イヤリング</span>
-  </div>
-  <div class="table-responsive">
-    <table class="accessory-table">
-      <thead>
-        <tr>
-          <th class="col-name">項目</th>
-          <th class="col-enchant">+0</th>
-          <th class="col-enchant">+1</th>
-          <th class="col-enchant">+2</th>
-          <th class="col-enchant">+3</th>
-          <th class="col-enchant">+4</th>
-          <th class="col-enchant">+5</th>
-          <th class="col-enchant">+6</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td class="cell-name">魔法抵抗力</td><td class="cell-val">107</td><td class="cell-val">108</td><td class="cell-val">109</td><td class="cell-val">110</td><td class="cell-val">113</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">PvE時のダメージ ボーナス</td><td class="cell-val">5%</td><td class="cell-val">6%</td><td class="cell-val">7%</td><td class="cell-val">8%</td><td class="cell-val">9%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">PvE時に受けるダメージ</td><td class="cell-val">-5%</td><td class="cell-val">-6%</td><td class="cell-val">-7%</td><td class="cell-val">-8%</td><td class="cell-val">-9%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">獲得EXP/SP</td><td class="cell-val">15%</td><td class="cell-val">19%</td><td class="cell-val">23%</td><td class="cell-val">27%</td><td class="cell-val">31%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">MP回復ボーナス</td><td class="cell-val">20</td><td class="cell-val">20</td><td class="cell-val">20</td><td class="cell-val">20</td><td class="cell-val">20</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">すべてのスキル使用時の消耗MP</td><td class="cell-val">-2%</td><td class="cell-val">-3%</td><td class="cell-val">-4%</td><td class="cell-val">-6%</td><td class="cell-val">-8%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">特殊効果</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-val" style="font-size:0.8rem; white-space:normal;">30%の確率で与えたダメージの3%をMPとして吸収</td><td class="cell-val" style="font-size:0.8rem; white-space:normal;">30%の確率で与えたダメージの3%をMPとして吸収</td><td class="cell-val" style="font-size:0.8rem; white-space:normal;">30%の確率で与えたダメージの3%をMPとして吸収</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+## コア リング {#acc-core}
 
-<!-- 5. アンタラス イヤリング -->
-<div id="acc-antharas" class="accessory-item-card" data-category="earring">
-  <div class="accessory-header">
-    <h2 class="accessory-name">アンタラス イヤリング</h2>
-    <span class="accessory-badge badge-earring">🦻 イヤリング</span>
-  </div>
-  <div class="table-responsive">
-    <table class="accessory-table">
-      <thead>
-        <tr>
-          <th class="col-name">項目</th>
-          <th class="col-enchant">+0</th>
-          <th class="col-enchant">+1</th>
-          <th class="col-enchant">+2</th>
-          <th class="col-enchant">+3</th>
-          <th class="col-enchant">+4</th>
-          <th class="col-enchant">+5</th>
-          <th class="col-enchant">+6</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td class="cell-name">魔法抵抗力</td><td class="cell-val">117</td><td class="cell-val">118</td><td class="cell-val">119</td><td class="cell-val">120</td><td class="cell-val">123</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">攻撃力/魔力</td><td class="cell-val">150</td><td class="cell-val">300</td><td class="cell-val">400</td><td class="cell-val">500</td><td class="cell-val">600</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">すべてのクリティカルを受ける確率</td><td class="cell-val">-1%</td><td class="cell-val">-2%</td><td class="cell-val">-3%</td><td class="cell-val">-4%</td><td class="cell-val">-5%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">最大MP</td><td class="cell-val">28</td><td class="cell-val">34</td><td class="cell-val">40</td><td class="cell-val">50</td><td class="cell-val">70</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">受けるヒール量</td><td class="cell-val">6%</td><td class="cell-val">10%</td><td class="cell-val">15%</td><td class="cell-val">17%</td><td class="cell-val">20%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">すべてのスキル使用時の消耗MP</td><td class="cell-val">-3%</td><td class="cell-val">-5%</td><td class="cell-val">-6%</td><td class="cell-val">-7%</td><td class="cell-val">-8%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">感染攻撃確率/攻撃耐性</td><td class="cell-val">10%</td><td class="cell-val">20%</td><td class="cell-val">30%</td><td class="cell-val">30%</td><td class="cell-val">30%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">ショック攻撃確率/攻撃耐性</td><td class="cell-val">5%</td><td class="cell-val">10%</td><td class="cell-val">20%</td><td class="cell-val">20%</td><td class="cell-val">20%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">サイレンス攻撃確率/攻撃耐性</td><td class="cell-val">5%</td><td class="cell-val">10%</td><td class="cell-val">20%</td><td class="cell-val">20%</td><td class="cell-val">20%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">フィアー攻撃確率/攻撃耐性</td><td class="cell-val">5%</td><td class="cell-val">10%</td><td class="cell-val">20%</td><td class="cell-val">20%</td><td class="cell-val">20%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">ダメージ反射耐性</td><td class="cell-empty">-</td><td class="cell-val">7%</td><td class="cell-val">15%</td><td class="cell-val">20%</td><td class="cell-val">25%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">CON</td><td class="cell-empty">-</td><td class="cell-val">1</td><td class="cell-val">1</td><td class="cell-val">2</td><td class="cell-val">2</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">MEN</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-val">1</td><td class="cell-val">1</td><td class="cell-val">2</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">防御力/魔法抵抗力（エンチャント効果）</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-val">200</td><td class="cell-val">350</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">特殊効果</td><td class="cell-val" style="font-size:0.8rem; white-space:normal;">80%の確率で与えたダメージの3%をHPとして吸収</td><td class="cell-val" style="font-size:0.8rem; white-space:normal;">80%の確率で与えたダメージの4%をHPとして吸収</td><td class="cell-val" style="font-size:0.8rem; white-space:normal;">80%の確率で与えたダメージの8%をHPとして吸収</td><td class="cell-val" style="font-size:0.8rem; white-space:normal;">80%の確率で与えたダメージの8%をHPとして吸収</td><td class="cell-val" style="font-size:0.8rem; white-space:normal;">80%の確率で与えたダメージの8%をHPとして吸収</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+| 項目 | +0 | +1 | +2 | +3 | +4 | +5 | +6 |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| 魔法抵抗 | 61 | 62 | 63 | 64 | - | - | - |
+| 最大MP | 9 | 15 | 21 | 30 | - | - | - |
+| 物理回避率 | 1 | 2 | 4 | 6 | - | - | - |
+| 魔法回避率 | 1 | 2 | 4 | 6 | - | - | - |
+| 攻撃力 | - | - | +20 | +50 | - | - | - |
+| 魔力 | - | - | +20 | +50 | - | - | - |
+| 防御力 | +2% | +4% | +6% | +8% | - | - | - |
+| 魔法抵抗力 | +2% | +4% | +6% | +8% | - | - | - |
+| 受けるダメージ | -2% | -4% | -6% | -8% | - | - | - |
+| サイレンス攻撃および攻撃耐性 | 10% | 15% | 20% | 20% | - | - | - |
+| フィアー攻撃および攻撃耐性 | 10% | 15% | 20% | 20% | - | - | - |
+| 特殊効果 | - | - | コアの祝福 | コアの祝福 | - | - | - |
 
-<!-- 6. オルフェン イヤリング -->
-<div id="acc-orfen" class="accessory-item-card" data-category="earring">
-  <div class="accessory-header">
-    <h2 class="accessory-name">オルフェン イヤリング</h2>
-    <span class="accessory-badge badge-earring">🦻 イヤリング</span>
-  </div>
-  <div class="table-responsive">
-    <table class="accessory-table">
-      <thead>
-        <tr>
-          <th class="col-name">項目</th>
-          <th class="col-enchant">+0</th>
-          <th class="col-enchant">+1</th>
-          <th class="col-enchant">+2</th>
-          <th class="col-enchant">+3</th>
-          <th class="col-enchant">+4</th>
-          <th class="col-enchant">+5</th>
-          <th class="col-enchant">+6</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td class="cell-name">魔法抵抗力</td><td class="cell-val">89</td><td class="cell-val">90</td><td class="cell-val">91</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">最大MP</td><td class="cell-val">19</td><td class="cell-val">25</td><td class="cell-val">31</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">受けるヒール量</td><td class="cell-val">2%</td><td class="cell-val">4%</td><td class="cell-val">6%</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">すべてのスキル使用時の消耗MP</td><td class="cell-val">-5%</td><td class="cell-val">-7%</td><td class="cell-val">-8%</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">MP回復ボーナス</td><td class="cell-val">2</td><td class="cell-val">2</td><td class="cell-val">4</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">ホールド攻撃確率</td><td class="cell-val">10%</td><td class="cell-val">15%</td><td class="cell-val">20%</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">フィアー攻撃確率</td><td class="cell-val">5%</td><td class="cell-val">10%</td><td class="cell-val">15%</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">サイレンス攻撃確率</td><td class="cell-val">5%</td><td class="cell-val">10%</td><td class="cell-val">15%</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">ホールド攻撃耐性</td><td class="cell-val">10%</td><td class="cell-val">15%</td><td class="cell-val">20%</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">フィアー攻撃耐性</td><td class="cell-val">5%</td><td class="cell-val">10%</td><td class="cell-val">15%</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">サイレンス攻撃耐性</td><td class="cell-val">5%</td><td class="cell-val">10%</td><td class="cell-val">15%</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">PvE時に与えるダメージ</td><td class="cell-val">0.50%</td><td class="cell-val">1%</td><td class="cell-val">1.50%</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">特殊効果</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-val" style="font-size:0.8rem; white-space:normal;">30%の確率で与えたダメージの3%をMPとして吸収</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+## アズタカン イヤリング {#acc-aztaqan}
 
-<!-- 7. ザケン イヤリング -->
-<div id="acc-zaken" class="accessory-item-card" data-category="earring">
-  <div class="accessory-header">
-    <h2 class="accessory-name">ザケン イヤリング</h2>
-    <span class="accessory-badge badge-earring">🦻 イヤリング</span>
-  </div>
-  <div class="table-responsive">
-    <table class="accessory-table">
-      <thead>
-        <tr>
-          <th class="col-name">項目</th>
-          <th class="col-enchant">+0</th>
-          <th class="col-enchant">+1</th>
-          <th class="col-enchant">+2</th>
-          <th class="col-enchant">+3</th>
-          <th class="col-enchant">+4</th>
-          <th class="col-enchant">+5</th>
-          <th class="col-enchant">+6</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td class="cell-name">魔法抵抗力</td><td class="cell-val">107</td><td class="cell-val">108</td><td class="cell-val">109</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">攻撃力 / 魔力</td><td class="cell-val">100</td><td class="cell-val">200</td><td class="cell-val">300</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">すべてのクリティカル確率</td><td class="cell-val">1%</td><td class="cell-val">2%</td><td class="cell-val">3%</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">最大MP</td><td class="cell-val">22</td><td class="cell-val">28</td><td class="cell-val">34</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">受けるヒール量</td><td class="cell-val">4%</td><td class="cell-val">6%</td><td class="cell-val">10%</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">HP回復ボーナス</td><td class="cell-val">10%</td><td class="cell-val">15%</td><td class="cell-val">20%</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">MP回復ボーナス</td><td class="cell-val">20</td><td class="cell-val">21</td><td class="cell-val">22</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">全スキル使用時MP消耗</td><td class="cell-val">-2%</td><td class="cell-val">-3%</td><td class="cell-val">-4%</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">感染攻撃確率 / 攻撃耐性</td><td class="cell-val">10%</td><td class="cell-val">15%</td><td class="cell-val">20%</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">ショック攻撃確率 / 攻撃耐性</td><td class="cell-val">5%</td><td class="cell-val">10%</td><td class="cell-val">15%</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">サイレンス攻撃確率 / 攻撃耐性</td><td class="cell-val">5%</td><td class="cell-val">10%</td><td class="cell-val">15%</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">フィアー攻撃確率 / 攻撃耐性</td><td class="cell-val">5%</td><td class="cell-val">10%</td><td class="cell-val">15%</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">特殊効果</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-val" style="font-size:0.8rem; white-space:normal;">80%の確率で与えたダメージの8%をHPとして吸収</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+| 項目 | +0 | +1 | +2 | +3 | +4 | +5 | +6 |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| 魔法抵抗力 | 107 | 108 | 109 | 110 | 113 | - | - |
+| PvE時のダメージ ボーナス | 5% | 6% | 7% | 8% | 9% | - | - |
+| PvE時に受けるダメージ | -5% | -6% | -7% | -8% | -9% | - | - |
+| 獲得EXP/SP | 15% | 19% | 23% | 27% | 31% | - | - |
+| MP回復ボーナス | 20 | 20 | 20 | 20 | 20 | - | - |
+| すべてのスキル使用時の消耗MP | -2% | -3% | -4% | -6% | -8% | - | - |
+| 特殊効果 | - | - | 30%の確率で与えたダメージの3%をMPとして吸収 | 30%の確率で与えたダメージの3%をMPとして吸収 | 30%の確率で与えたダメージの3%をMPとして吸収 | - | - |
 
-<!-- 8. ベリオン ネックレス -->
-<div id="acc-belion" class="accessory-item-card" data-category="necklace">
-  <div class="accessory-header">
-    <h2 class="accessory-name">ベリオン ネックレス</h2>
-    <span class="accessory-badge badge-necklace">📿 ネックレス</span>
-  </div>
-  <div class="table-responsive">
-    <table class="accessory-table">
-      <thead>
-        <tr>
-          <th class="col-name">項目</th>
-          <th class="col-enchant">+0</th>
-          <th class="col-enchant">+1</th>
-          <th class="col-enchant">+2</th>
-          <th class="col-enchant">+3</th>
-          <th class="col-enchant">+4</th>
-          <th class="col-enchant">+5</th>
-          <th class="col-enchant">+6</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td class="cell-name">魔法抵抗力</td><td class="cell-val">107</td><td class="cell-val">108</td><td class="cell-val">109</td><td class="cell-val">110</td><td class="cell-val">113</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">最大MP</td><td class="cell-val">30</td><td class="cell-val">36</td><td class="cell-val">50</td><td class="cell-val">65</td><td class="cell-val">90</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">最大HP</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-val">1000</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">攻撃力</td><td class="cell-val">300</td><td class="cell-val">600</td><td class="cell-val">900</td><td class="cell-val">1200</td><td class="cell-val">1500</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">魔力</td><td class="cell-val">300</td><td class="cell-val">600</td><td class="cell-val">900</td><td class="cell-val">1200</td><td class="cell-val">1500</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">防御力</td><td class="cell-val">500</td><td class="cell-val">1000</td><td class="cell-val">1500</td><td class="cell-val">2000</td><td class="cell-val">3000</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">魔法抵抗力</td><td class="cell-val">500</td><td class="cell-val">1000</td><td class="cell-val">1500</td><td class="cell-val">2000</td><td class="cell-val">3000</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">すべてのスキル威力</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-val">5%</td><td class="cell-val">10%</td><td class="cell-val">15%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">スキル再使用時間</td><td class="cell-val">-5%</td><td class="cell-val">-6%</td><td class="cell-val">-8%</td><td class="cell-val">-10%</td><td class="cell-val">-12%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">封印攻撃確率</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-val">5%</td><td class="cell-val">10%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">ショック攻撃確率</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-val">10%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">封印攻撃耐性</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-val">5%</td><td class="cell-val">10%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+## アンタラス イヤリング {#acc-antharas}
 
-<!-- 9. フリンテッサ ネックレス -->
-<div id="acc-frintezza" class="accessory-item-card" data-category="necklace">
-  <div class="accessory-header">
-    <h2 class="accessory-name">フリンテッサ ネックレス</h2>
-    <span class="accessory-badge badge-necklace">📿 ネックレス</span>
-  </div>
-  <div class="table-responsive">
-    <table class="accessory-table">
-      <thead>
-        <tr>
-          <th class="col-name">項目</th>
-          <th class="col-enchant">+0</th>
-          <th class="col-enchant">+1</th>
-          <th class="col-enchant">+2</th>
-          <th class="col-enchant">+3</th>
-          <th class="col-enchant">+4</th>
-          <th class="col-enchant">+5</th>
-          <th class="col-enchant">+6</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td class="cell-name">魔法抵抗力</td><td class="cell-val">107</td><td class="cell-val">108</td><td class="cell-val">109</td><td class="cell-val">110</td><td class="cell-val">113</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">最大MP</td><td class="cell-val">30</td><td class="cell-val">36</td><td class="cell-val">50</td><td class="cell-val">65</td><td class="cell-val">90</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">すべてのスキル威力</td><td class="cell-val">5%</td><td class="cell-val">10%</td><td class="cell-val">15%</td><td class="cell-val">18%</td><td class="cell-val">23%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">スキル再使用時間</td><td class="cell-val">-5%</td><td class="cell-val">-6%</td><td class="cell-val">-8%</td><td class="cell-val">-10%</td><td class="cell-val">-12%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">すべてのクリティカル確率</td><td class="cell-val">2%</td><td class="cell-val">3%</td><td class="cell-val">5%</td><td class="cell-val">6%</td><td class="cell-val">7%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">すべてのクリティカル ダメージ</td><td class="cell-val">20</td><td class="cell-val">50</td><td class="cell-val">100</td><td class="cell-val">150</td><td class="cell-val">200</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">睡眠攻撃および攻撃耐性</td><td class="cell-val">10%</td><td class="cell-val">15%</td><td class="cell-val">20%</td><td class="cell-val">20%</td><td class="cell-val">20%</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-        <tr><td class="cell-name">特殊効果</td><td class="cell-empty">-</td><td class="cell-empty">-</td><td class="cell-val">受けるダメージの5%を反射</td><td class="cell-val">受けるダメージの6%を反射</td><td class="cell-val">受けるダメージの10%を反射</td><td class="cell-empty">-</td><td class="cell-empty">-</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+| 項目 | +0 | +1 | +2 | +3 | +4 | +5 | +6 |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| 魔法抵抗力 | 117 | 118 | 119 | 120 | 123 | - | - |
+| 攻撃力/魔力 | 150 | 300 | 400 | 500 | 600 | - | - |
+| すべてのクリティカルを受ける確率 | -1% | -2% | -3% | -4% | -5% | - | - |
+| 最大MP | 28 | 34 | 40 | 50 | 70 | - | - |
+| 受けるヒール量 | 6% | 10% | 15% | 17% | 20% | - | - |
+| すべてのスキル使用時の消耗MP | -3% | -5% | -6% | -7% | -8% | - | - |
+| 感染攻撃確率/攻撃耐性 | 10% | 20% | 30% | 30% | 30% | - | - |
+| ショック攻撃確率/攻撃耐性 | 5% | 10% | 20% | 20% | 20% | - | - |
+| サイレンス攻撃確率/攻撃耐性 | 5% | 10% | 20% | 20% | 20% | - | - |
+| フィアー攻撃確率/攻撃耐性 | 5% | 10% | 20% | 20% | 20% | - | - |
+| ダメージ反射耐性 | - | 7% | 15% | 20% | 25% | - | - |
+| CON | - | 1 | 1 | 2 | 2 | - | - |
+| MEN | - | - | 1 | 1 | 2 | - | - |
+| 防御力/魔法抵抗力（エンチャント効果） | - | - | - | 200 | 350 | - | - |
+| 特殊効果 | 80%の確率で与えたダメージの3%をHPとして吸収 | 80%の確率で与えたダメージの4%をHPとして吸収 | 80%の確率で与えたダメージの8%をHPとして吸収 | 80%の確率で与えたダメージの8%をHPとして吸収 | 80%の確率で与えたダメージの8%をHPとして吸収 | - | - |
+
+## オルフェン イヤリング {#acc-orfen}
+
+| 項目 | +0 | +1 | +2 | +3 | +4 | +5 | +6 |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| 魔法抵抗力 | 89 | 90 | 91 | - | - | - | - |
+| 最大MP | 19 | 25 | 31 | - | - | - | - |
+| 受けるヒール量 | 2% | 4% | 6% | - | - | - | - |
+| すべてのスキル使用時の消耗MP | -5% | -7% | -8% | - | - | - | - |
+| MP回復ボーナス | 2 | 2 | 4 | - | - | - | - |
+| ホールド攻撃確率 | 10% | 15% | 20% | - | - | - | - |
+| フィアー攻撃確率 | 5% | 10% | 15% | - | - | - | - |
+| サイレンス攻撃確率 | 5% | 10% | 15% | - | - | - | - |
+| ホールド攻撃耐性 | 10% | 15% | 20% | - | - | - | - |
+| フィアー攻撃耐性 | 5% | 10% | 15% | - | - | - | - |
+| サイレンス攻撃耐性 | 5% | 10% | 15% | - | - | - | - |
+| PvE時に与えるダメージ | 0.50% | 1% | 1.50% | - | - | - | - |
+| 特殊効果 | - | - | 30%の確率で与えたダメージの3%をMPとして吸収 | - | - | - | - |
+
+## ザケン イヤリング {#acc-zaken}
+
+| 項目 | +0 | +1 | +2 | +3 | +4 | +5 | +6 |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| 魔法抵抗力 | 107 | 108 | 109 | - | - | - | - |
+| 攻撃力 / 魔力 | 100 | 200 | 300 | - | - | - | - |
+| すべてのクリティカル確率 | 1% | 2% | 3% | - | - | - | - |
+| 最大MP | 22 | 28 | 34 | - | - | - | - |
+| 受けるヒール量 | 4% | 6% | 10% | - | - | - | - |
+| HP回復ボーナス | 10% | 15% | 20% | - | - | - | - |
+| MP回復ボーナス | 20 | 21 | 22 | - | - | - | - |
+| 全スキル使用時MP消耗 | -2% | -3% | -4% | - | - | - | - |
+| 感染攻撃確率 / 攻撃耐性 | 10% | 15% | 20% | - | - | - | - |
+| ショック攻撃確率 / 攻撃耐性 | 5% | 10% | 15% | - | - | - | - |
+| サイレンス攻撃確率 / 攻撃耐性 | 5% | 10% | 15% | - | - | - | - |
+| フィアー攻撃確率 / 攻撃耐性 | 5% | 10% | 15% | - | - | - | - |
+| 特殊効果 | - | - | 80%の確率で与えたダメージの8%をHPとして吸収 | - | - | - | - |
+
+## ベリオン ネックレス {#acc-belion}
+
+| 項目 | +0 | +1 | +2 | +3 | +4 | +5 | +6 |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| 魔法抵抗力 | 107 | 108 | 109 | 110 | 113 | - | - |
+| 最大MP | 30 | 36 | 50 | 65 | 90 | - | - |
+| 最大HP | - | - | - | - | 1000 | - | - |
+| 攻撃力 | 300 | 600 | 900 | 1200 | 1500 | - | - |
+| 魔力 | 300 | 600 | 900 | 1200 | 1500 | - | - |
+| 防御力 | 500 | 1000 | 1500 | 2000 | 3000 | - | - |
+| 魔法抵抗力 | 500 | 1000 | 1500 | 2000 | 3000 | - | - |
+| すべてのスキル威力 | - | - | 5% | 10% | 15% | - | - |
+| スキル再使用時間 | -5% | -6% | -8% | -10% | -12% | - | - |
+| 封印攻撃確率 | - | - | - | 5% | 10% | - | - |
+| ショック攻撃確率 | - | - | - | - | 10% | - | - |
+| 封印攻撃耐性 | - | - | - | 5% | 10% | - | - |
+
+## フリンテッサ ネックレス {#acc-frintezza}
+
+| 項目 | +0 | +1 | +2 | +3 | +4 | +5 | +6 |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| 魔法抵抗力 | 107 | 108 | 109 | 110 | 113 | - | - |
+| 最大MP | 30 | 36 | 50 | 65 | 90 | - | - |
+| すべてのスキル威力 | 5% | 10% | 15% | 18% | 23% | - | - |
+| スキル再使用時間 | -5% | -6% | -8% | -10% | -12% | - | - |
+| すべてのクリティカル確率 | 2% | 3% | 5% | 6% | 7% | - | - |
+| すべてのクリティカル ダメージ | 20 | 50 | 100 | 150 | 200 | - | - |
+| 睡眠攻撃および攻撃耐性 | 10% | 15% | 20% | 20% | 20% | - | - |
+| 特殊効果 | - | - | 受けるダメージの5%を反射 | 受けるダメージの6%を反射 | 受けるダメージの10%を反射 | - | - |

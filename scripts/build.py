@@ -23,7 +23,7 @@ PAGE_ORDER = [
     ]
 
 def build():
-    md = markdown.Markdown(extensions=['tables', 'fenced_code', 'nl2br'])
+    md = markdown.Markdown(extensions=['tables', 'fenced_code', 'nl2br', 'attr_list'])
 
     sections_html = []
 

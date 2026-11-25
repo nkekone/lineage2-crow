@@ -32,6 +32,31 @@
 
 ---
 
+### クロウサーバーPURPLEコイン100万円分争奪戦 生放送 視聴後クーポン ルーンストーン追加配布クーポン
+
+2026年11月25日(水)定期メンテナンス時に追加配布された、ルーンストーン15,000個分のクーポンです。
+
+<div class="coupon-code-card">
+  <div class="coupon-code-row">
+    <input class="coupon-code-value" id="crow-rune-stone-coupon-code" type="text" value="261125CROWrs15000" readonly aria-label="クロウサーバールーンストーン追加クーポンコード">
+    <button class="coupon-copy-button" type="button" data-copy-target="crow-rune-stone-coupon-code" aria-label="クーポンコードをコピー">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <rect x="8" y="8" width="13" height="13" rx="2"></rect>
+        <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"></path>
+      </svg>
+    </button>
+  </div>
+  <p class="coupon-copy-status" role="status" aria-live="polite"></p>
+</div>
+
+- <span class="coupon-expiration" data-expires-at="2026-12-02T23:59:59+09:00"><strong>有効期限:</strong> 2026年12月2日(水)定期メンテナンス前まで</span>
+
+| アイテム名 | 個数 |
+| :--- | :---: |
+| ルーンストーン[刻印] | 15,000 |
+
+---
+
 ## アップデート記念生放送終了後アンケートクーポン
 
 - **対象アカウント:** 「りね2てれび アップデート記念生放送」放送終了後アンケートに回答したアカウント

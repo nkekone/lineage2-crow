@@ -101,6 +101,7 @@ def render_accessories():
 
         for stat in accessory['stats']:
             stat_name = escape(str(stat['name']))
+            is_special_effect = stat['name'] == '特殊効果'
             values = stat.get('values') or {}
             parts.append('<tr>')
             parts.append(f'<td class="cell-name">{stat_name}</td>')
@@ -109,8 +110,14 @@ def render_accessories():
                 if value is None:
                     parts.append('<td class="cell-empty">-</td>')
                 else:
+                    safe_value = escape(str(value))
+                    if is_special_effect:
+                        safe_value = (
+                            f'<span class="special-effect-text">'
+                            f'{safe_value}</span>'
+                        )
                     parts.append(
-                        f'<td class="cell-val">{escape(str(value))}</td>'
+                        f'<td class="cell-val">{safe_value}</td>'
                     )
             parts.append('</tr>')
 

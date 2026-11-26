@@ -261,6 +261,27 @@ main {
   background: #f1f3f5;
 }
 
+.coupon-target {
+  margin: 12px 0;
+}
+
+.coupon-target ul {
+  margin: 6px 0 0;
+  padding-left: 1.4em;
+}
+
+.coupon-delivery-note {
+  margin: 16px 0 20px;
+}
+
+.coupon-reward-table-wrap {
+  overflow-x: auto;
+}
+
+.coupon-reward-table {
+  min-width: 620px;
+}
+
 .coupon-code-card {
   margin: 16px 0 20px;
 }
@@ -1134,27 +1155,6 @@ footer {
 
   window.addEventListener('hashchange', showPage);
   showPage();
-
-  var couponContent = document.querySelector('#page-coupon .content-card');
-  if (couponContent) {
-    Array.from(couponContent.children).filter(function (element) {
-      return element.tagName === 'H2';
-    }).forEach(function (heading) {
-      var card = document.createElement('div');
-      card.className = 'coupon-item';
-      couponContent.insertBefore(card, heading);
-
-      var element = heading;
-      while (element) {
-        if (element !== heading && (element.tagName === 'H2' || element.tagName === 'HR')) {
-          break;
-        }
-        var nextElement = element.nextElementSibling;
-        card.appendChild(element);
-        element = nextElement;
-      }
-    });
-  }
 
   var now = new Date();
   document.querySelectorAll('.coupon-expiration[data-expires-at]').forEach(function (expiration) {

@@ -5,6 +5,7 @@
 ```text
 lineage2-crow/
 ├── data/
+│   ├── coupons.yaml        # クーポン情報と報酬
 │   └── accessories.yaml    # レアアクセサリーの構造化データ
 ├── pages/                  # ページ原稿 (Markdown)
 │   ├── home.md
@@ -33,9 +34,11 @@ lineage2-crow/
 
 ## サイトの更新
 
-ページの本文は `pages/` 内の Markdown ファイルを、レアアクセサリーの一覧データは `data/accessories.yaml` を、サイトのレイアウトは `template.html` を編集してください。画像などの静的ファイルは `assets/` に置きます。生成される `dist/index.html` は直接編集しないでください。
+ページの本文は `pages/` 内の Markdown ファイルを、クーポン情報は `data/coupons.yaml` を、レアアクセサリーの一覧データは `data/accessories.yaml` を、サイトのレイアウトは `template.html` を編集してください。画像などの静的ファイルは `assets/` に置きます。生成される `dist/index.html` は直接編集しないでください。
 
-`scripts/build.py` は各 Markdown ファイルと `data/accessories.yaml` をテンプレートに組み込み、`dist/index.html` を生成します。また `assets/` と `sitemap.xml` を `dist/` にコピーします。生成物は `.gitignore` により Git 管理対象外です。
+`scripts/build.py` は各 Markdown ファイル、`data/coupons.yaml`、`data/accessories.yaml` をテンプレートに組み込み、`dist/index.html` を生成します。また `assets/` と `sitemap.xml` を `dist/` にコピーします。生成物は `.gitignore` により Git 管理対象外です。
+
+クーポンを追加・更新する場合は、[data/coupons.yaml](data/coupons.yaml) を編集してください。`name` と `items` を設定し、`code` と `target` は必要な場合だけ記載します。コードを省略すると「クーポンボックスで配布」と表示されます。有効期限は表示用の `expiration.display` と期限判定用の `expiration.at` を設定し、期限情報自体がない場合は `expiration` を省略します。報酬アイテムの `name`、`quantity`、`description`、`deletion_date` は未設定の項目が空欄で表示されます。
 
 レアアクセサリーを追加・更新する場合は、[data/accessories.yaml](data/accessories.yaml) の `id`、`name`、`category`、`stats` を編集してください。強化値に表示する数値がない場合は、対応するキーを省略します。
 

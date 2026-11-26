@@ -127,6 +127,93 @@ def render_accessories():
 
     return '\n'.join(parts)
 
+
+def render_coupons():
+    yaml_file = DATA_DIR / 'coupons.yaml'
+    if not yaml_file.is_file():
+        raise FileNotFoundError(f'{yaml_file} not found')
+
+    with yaml_file.open('r', encoding='utf-8') as file:
+        coupons = yaml.safe_load(file) or []
+
+    parts = []
+    for coupon in coupons:
+        coupon_id = escape(str(coupon['id']), quote=True)
+        name = escape(str(coupon['name']))
+        parts.append(f'<article id="{coupon_id}" class="coupon-item">')
+        parts.append(f'<h2>{name}</h2>')
+
+        code = coupon.get('code')
+        if code:
+            code_id = escape(f'{coupon_id}-code', quote=True)
+            safe_code = escape(str(code), quote=True)
+            parts.append('<div class="coupon-code-card">')
+            parts.append('<div class="coupon-code-row">')
+            parts.append(
+                f'<input class="coupon-code-value" id="{code_id}" '
+                f'type="text" value="{safe_code}" readonly '
+                f'aria-label="{name} クーポンコード">'
+            )
+            parts.append(
+                f'<button class="coupon-copy-button" type="button" '
+                f'data-copy-target="{code_id}" '
+                f'aria-label="{name} クーポンコードをコピー">'
+                '<svg viewBox="0 0 24 24" aria-hidden="true" '
+                'focusable="false">'
+                '<rect x="8" y="8" width="13" height="13" rx="2"></rect>'
+                '<path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 '
+                '0 0 0 2 2h3"></path></svg></button>'
+            )
+            parts.append('</div>')
+            parts.append(
+                '<p class="coupon-copy-status" role="status" '
+                'aria-live="polite"></p>'
+            )
+            parts.append('</div>')
+        else:
+            parts.append(
+                '<p class="coupon-delivery-note">クーポンボックスで配布</p>'
+            )
+
+        expiration = coupon.get('expiration') or {}
+        expiration_text = expiration.get('display')
+        if expiration_text:
+            expiration_at = expiration.get('at')
+            data_expires_at = (
+                f' data-expires-at="{escape(str(expiration_at), quote=True)}"'
+                if expiration_at else ''
+            )
+            parts.append(
+                '<p><span class="coupon-expiration"'
+                f'{data_expires_at}><strong>有効期限:</strong> '
+                f'{escape(str(expiration_text))}</span></p>'
+            )
+
+        targets = coupon.get('target') or []
+        if targets:
+            parts.append(
+                '<div class="coupon-target"><strong>配布対象:</strong><ul>'
+            )
+            for target in targets:
+                parts.append(f'<li>{escape(str(target))}</li>')
+            parts.append('</ul></div>')
+
+        parts.append('<div class="coupon-reward-table-wrap">')
+        parts.append('<table class="coupon-reward-table">')
+        parts.append(
+            '<thead><tr><th>アイテム名</th><th>個数</th>'
+            '<th>説明</th><th>削除日</th></tr></thead><tbody>'
+        )
+        for item in coupon.get('items') or []:
+            parts.append('<tr>')
+            for key in ('name', 'quantity', 'description', 'deletion_date'):
+                parts.append(f'<td>{escape(str(item.get(key) or ""))}</td>')
+            parts.append('</tr>')
+        parts.append('</tbody></table></div></article>')
+
+    return '\n'.join(parts)
+
+
 def build():
     md = markdown.Markdown(extensions=['tables', 'fenced_code', 'nl2br', 'attr_list'])
 
@@ -143,7 +230,9 @@ def build():
         html_content = md.convert(content_md)
         md.reset()
 
-        if page_id == 'accessories':
+        if page_id == 'coupon':
+            html_content = f'{html_content}\n{render_coupons()}'
+        elif page_id == 'accessories':
             html_content = f'{html_content}\n{render_accessories()}'
 
         hidden_attr = ' hidden' if page_id != 'home' else ''

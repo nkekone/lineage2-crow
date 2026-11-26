@@ -136,6 +136,18 @@ def render_coupons():
     with yaml_file.open('r', encoding='utf-8') as file:
         coupons = yaml.safe_load(file) or []
 
+    items_file = DATA_DIR / 'items.yaml'
+    if not items_file.is_file():
+        raise FileNotFoundError(f'{items_file} not found')
+
+    with items_file.open('r', encoding='utf-8') as file:
+        items = yaml.safe_load(file) or []
+    item_descriptions = {
+        item['name']: item['description']
+        for item in items
+        if item.get('name') and item.get('description')
+    }
+
     parts = []
     for coupon in coupons:
         coupon_id = escape(str(coupon['id']), quote=True)
@@ -202,11 +214,31 @@ def render_coupons():
         parts.append('<table class="coupon-reward-table">')
         parts.append(
             '<thead><tr><th>アイテム名</th><th>個数</th>'
-            '<th>説明</th><th>削除日</th></tr></thead><tbody>'
+            '<th>削除日</th></tr></thead><tbody>'
         )
-        for item in coupon.get('items') or []:
-            parts.append('<tr>')
-            for key in ('name', 'quantity', 'description', 'deletion_date'):
+        for item_index, item in enumerate(coupon.get('items') or []):
+            item_name = str(item.get('name') or '')
+            safe_item_name = escape(item_name)
+            description = item_descriptions.get(item_name)
+            parts.append('<tr><td>')
+            if description:
+                tooltip_id = escape(
+                    f'{coupon_id}-item-{item_index}', quote=True
+                )
+                parts.append('<span class="item-tooltip-container">')
+                parts.append(
+                    f'<button class="item-tooltip-trigger" type="button" '
+                    f'aria-describedby="{tooltip_id}">{safe_item_name}</button>'
+                )
+                parts.append(
+                    f'<span id="{tooltip_id}" class="item-tooltip" '
+                    f'role="tooltip">{escape(str(description))}</span>'
+                )
+                parts.append('</span>')
+            else:
+                parts.append(safe_item_name)
+            parts.append('</td>')
+            for key in ('quantity', 'deletion_date'):
                 parts.append(f'<td>{escape(str(item.get(key) or ""))}</td>')
             parts.append('</tr>')
         parts.append('</tbody></table></div></article>')

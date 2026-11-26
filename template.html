@@ -282,6 +282,54 @@ main {
   min-width: 620px;
 }
 
+.item-tooltip-container {
+  display: inline-block;
+}
+
+.item-tooltip-trigger {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+  cursor: help;
+}
+
+.item-tooltip-trigger:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+.item-tooltip {
+  display: none;
+  box-sizing: border-box;
+  width: min(320px, 70vw);
+  margin-top: 6px;
+  padding: 9px 11px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #fff;
+  color: #334155;
+  font-size: 0.86rem;
+  font-weight: normal;
+  line-height: 1.5;
+  white-space: normal;
+}
+
+.item-tooltip-trigger:focus-visible + .item-tooltip,
+.item-tooltip-container.is-open .item-tooltip {
+  display: block;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .item-tooltip-container:hover .item-tooltip {
+    display: block;
+  }
+}
+
 .coupon-code-card {
   margin: 16px 0 20px;
 }
@@ -1234,6 +1282,31 @@ footer {
       } else {
         fallbackCopy();
       }
+    });
+  });
+
+  document.querySelectorAll('.item-tooltip-trigger').forEach(function (trigger) {
+    var container = trigger.parentElement;
+    trigger.addEventListener('click', function () {
+      var shouldOpen = !container.classList.contains('is-open');
+      document.querySelectorAll('.item-tooltip-container.is-open').forEach(function (openContainer) {
+        openContainer.classList.remove('is-open');
+      });
+      if (shouldOpen) {
+        container.classList.add('is-open');
+      }
+    });
+    trigger.addEventListener('blur', function () {
+      container.classList.remove('is-open');
+    });
+  });
+
+  document.addEventListener('click', function (event) {
+    if (event.target.closest('.item-tooltip-container')) {
+      return;
+    }
+    document.querySelectorAll('.item-tooltip-container.is-open').forEach(function (container) {
+      container.classList.remove('is-open');
     });
   });
 })();

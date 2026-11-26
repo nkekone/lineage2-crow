@@ -260,6 +260,33 @@ def render_coupons():
     return '\n'.join(parts)
 
 
+def render_faq(html_content):
+    questions = list(re.finditer(r'<h2>(.*?)</h2>', html_content, re.DOTALL))
+    if not questions:
+        return html_content
+
+    parts = [html_content[:questions[0].start()]]
+    for index, question in enumerate(questions):
+        answer_start = question.end()
+        answer_end = (
+            questions[index + 1].start()
+            if index + 1 < len(questions)
+            else len(html_content)
+        )
+        answer = html_content[answer_start:answer_end].strip()
+        parts.append('<article class="faq-item">')
+        parts.append(
+            f'<h2 class="faq-question"><span>Q</span> '
+            f'{question.group(1)}</h2>'
+        )
+        parts.append(
+            '<div class="faq-answer"><span>A</span><div>'
+            f'{answer}</div></div></article>'
+        )
+
+    return '\n'.join(parts)
+
+
 def build():
     md = markdown.Markdown(extensions=['tables', 'fenced_code', 'nl2br', 'attr_list'])
 
@@ -280,6 +307,8 @@ def build():
             html_content = f'{html_content}\n{render_coupons()}'
         elif page_id == 'accessories':
             html_content = f'{html_content}\n{render_accessories()}'
+        elif page_id == 'faq':
+            html_content = render_faq(html_content)
 
         hidden_attr = ' hidden' if page_id != 'home' else ''
         section_code = f'<section id="page-{page_id}" class="page"{hidden_attr}>\n  <div class="content-card">\n    {html_content}\n  </div>\n</section>'

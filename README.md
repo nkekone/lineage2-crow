@@ -11,7 +11,7 @@ lineage2-crow/
 ├── pages/                  # ページ原稿 (Markdown)
 │   ├── home.md
 │   ├── coupon.md
-│   ├── faq.md
+│   ├── faq.md               # Q&A本文 (質問は見出し、回答はMarkdown)
 │   ├── invasion.md
 │   ├── boss.md
 │   ├── dimmension_boss.md

@@ -1,3 +1,4 @@
+import re
 import shutil
 from html import escape
 from pathlib import Path
@@ -13,6 +14,7 @@ OUTPUT_FILE = OUTPUT_DIR / 'index.html'
 STATIC_DIRS = ['assets']
 STATIC_FILES = ['sitemap.xml']
 DATA_DIR = ROOT_DIR / 'data'
+ITEM_NAME_QUALIFIERS = re.compile(r'\((?:期間限定|期間制)\)|\[刻印\]')
 
 PAGE_ORDER = [
     'home', 
@@ -31,6 +33,11 @@ CATEGORY_LABELS = {
     'earring': ('🦻 イヤリング', 'badge-earring'),
     'necklace': ('📿 ネックレス', 'badge-necklace'),
 }
+
+
+def normalize_item_name(name):
+    return ITEM_NAME_QUALIFIERS.sub('', name).strip()
+
 
 def render_accessories():
     yaml_file = DATA_DIR / 'accessories.yaml'
@@ -142,11 +149,18 @@ def render_coupons():
 
     with items_file.open('r', encoding='utf-8') as file:
         items = yaml.safe_load(file) or []
-    item_descriptions = {
-        item['name']: item['description']
-        for item in items
-        if item.get('name') and item.get('description')
-    }
+    item_descriptions = {}
+    for item in items:
+        if not item.get('name') or not item.get('description'):
+            continue
+        normalized_name = normalize_item_name(item['name'])
+        description = item['description']
+        existing_description = item_descriptions.get(normalized_name)
+        if existing_description and existing_description != description:
+            raise ValueError(
+                f'Conflicting item descriptions for {normalized_name}'
+            )
+        item_descriptions[normalized_name] = description
 
     parts = []
     for coupon in coupons:
@@ -219,7 +233,7 @@ def render_coupons():
         for item_index, item in enumerate(coupon.get('items') or []):
             item_name = str(item.get('name') or '')
             safe_item_name = escape(item_name)
-            description = item_descriptions.get(item_name)
+            description = item_descriptions.get(normalize_item_name(item_name))
             parts.append('<tr><td>')
             if description:
                 tooltip_id = escape(

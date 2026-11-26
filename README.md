@@ -41,7 +41,7 @@ lineage2-crow/
 
 クーポンを追加・更新する場合は、[data/coupons.yaml](data/coupons.yaml) を編集してください。`name` と `items` を設定し、`code` と `target` は必要な場合だけ記載します。コードを省略すると「クーポンボックスで配布」と表示されます。有効期限は表示用の `expiration.display` と期限判定用の `expiration.at` を設定し、期限情報自体がない場合は `expiration` を省略します。報酬アイテムの `name`、`quantity`、`deletion_date` は未設定の項目が空欄で表示されます。
 
-報酬アイテムの説明を表示する場合は、[data/items.yaml](data/items.yaml) にアイテム名と説明を追加してください。説明が登録されたアイテム名は、マウスオーバー、キーボードフォーカス、タップで説明を確認できます。
+報酬アイテムの説明を表示する場合は、[data/items.yaml](data/items.yaml) にアイテム名と説明を追加してください。説明が登録されたアイテム名は、マウスオーバー、キーボードフォーカス、タップで説明を確認できます。`(期間限定)`、`(期間制)`、`[刻印]` の表記は説明を照合するときだけ無視し、クーポン表には元のアイテム名をそのまま表示します。
 
 レアアクセサリーを追加・更新する場合は、[data/accessories.yaml](data/accessories.yaml) の `id`、`name`、`category`、`stats` を編集してください。強化値に表示する数値がない場合は、対応するキーを省略します。
 

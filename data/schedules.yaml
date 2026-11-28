@@ -8,3 +8,14 @@ schedules:
     name: "ブラックフライデーパッケージ"
     start: "2026-11-18"
     end: "2026-12-02"
+
+  - category: event
+    name: "強化完成：サークレット&クローク"
+    start: "2026-11-18"
+    end: "2026-12-02"
+
+  - category: event
+    name: "出席チェック"
+    start: "2026-11-18"
+    end: "2026-12-23"
+    

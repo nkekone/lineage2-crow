@@ -1061,7 +1061,7 @@ main {
   font-weight: 600;
 }
 
-.schedule-timeline-hours {
+.schedule-timeline-date-range {
   display: block;
   color: #64748b;
   font-size: 0.72rem;
@@ -1109,6 +1109,13 @@ main {
 
 .schedule-timeline-day-number {
   display: block;
+}
+
+.schedule-timeline-weekday-label {
+  display: block;
+  color: #64748b;
+  font-size: 0.62rem;
+  line-height: 1.1;
 }
 
 .schedule-timeline-today-label {
@@ -1215,8 +1222,42 @@ footer {
   .wrapper {
     flex-direction: column;
   }
+  main {
+    width: 100% !important;
+    flex: 1 1 auto !important;
+  }
+  .content-card {
+    padding: 16px;
+  }
   aside {
     width: 100%;
+  }
+  .schedule-timeline-table {
+    font-size: 0.68rem !important;
+  }
+  .schedule-timeline-table th.schedule-timeline-label,
+  .schedule-timeline-table th.schedule-timeline-row-label {
+    width: 105px;
+    min-width: 105px;
+    padding: 6px;
+  }
+  .schedule-timeline-table th:not(.schedule-timeline-label):not(.schedule-timeline-row-label),
+  .schedule-timeline-table td {
+    width: 16px;
+    min-width: 16px;
+    padding: 3px 0;
+  }
+  .schedule-timeline-table td.schedule-timeline-day {
+    height: 28px;
+  }
+  .schedule-timeline-weekday-label {
+    font-size: 0.52rem;
+  }
+  .schedule-timeline-today-label {
+    font-size: 0.44rem;
+  }
+  .schedule-timeline-date-range {
+    font-size: 0.62rem;
   }
   .timeline-list {
     padding-left: 52px;
@@ -1243,6 +1284,36 @@ footer {
     padding: 7px 10px;
     font-size: 0.8rem;
     flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 360px) {
+  .content-card {
+    padding: 12px;
+  }
+  .schedule-timeline-table {
+    font-size: 0.62rem !important;
+  }
+  .schedule-timeline-table th.schedule-timeline-label,
+  .schedule-timeline-table th.schedule-timeline-row-label {
+    width: 82px;
+    min-width: 82px;
+    padding: 4px;
+  }
+  .schedule-timeline-table th:not(.schedule-timeline-label):not(.schedule-timeline-row-label),
+  .schedule-timeline-table td {
+    width: 14px;
+    min-width: 14px;
+    padding: 2px 0;
+  }
+  .schedule-timeline-weekday-label {
+    font-size: 0.45rem;
+  }
+  .schedule-timeline-today-label {
+    font-size: 0.4rem;
+  }
+  .schedule-timeline-date-range {
+    font-size: 0.56rem;
   }
 }
 </style>
@@ -1373,6 +1444,17 @@ footer {
         String(date.getDate()).padStart(2, '0');
     }
 
+    function formatScheduleDate(value, includeYear) {
+      var parts = value.slice(0, 10).split('-');
+      var year = Number(parts[0]);
+      var month = Number(parts[1]);
+      var day = Number(parts[2]);
+      var date = new Date(year, month - 1, day);
+      var yearLabel = includeYear ? year + '/' : '';
+      return yearLabel + month + '/' + day +
+        '(' + weekdayLabels[date.getDay()] + ')';
+    }
+
     function appendGroups(row, dates, keyForDate, labelForDate) {
       var previousKey = null;
       var currentCell = null;
@@ -1407,9 +1489,9 @@ footer {
       var today = new Date();
       today.setHours(0, 0, 0, 0);
       var firstDate = new Date(today);
-      firstDate.setDate(firstDate.getDate() - 7);
+      firstDate.setDate(firstDate.getDate() - 3);
       var dates = [];
-      for (var index = 0; index < 22; index += 1) {
+      for (var index = 0; index < 11; index += 1) {
         var date = new Date(firstDate);
         date.setDate(firstDate.getDate() + index);
         dates.push(date);
@@ -1473,6 +1555,10 @@ footer {
         number.className = 'schedule-timeline-day-number';
         number.textContent = String(date.getDate());
         heading.appendChild(number);
+        var weekday = document.createElement('small');
+        weekday.className = 'schedule-timeline-weekday-label';
+        weekday.textContent = weekdayLabels[date.getDay()];
+        heading.appendChild(weekday);
         if (dateKey === todayKey) {
           var todayLabel = document.createElement('small');
           todayLabel.className = 'schedule-timeline-today-label';
@@ -1505,13 +1591,15 @@ footer {
         name.className = 'schedule-timeline-name';
         name.textContent = entry.name;
         label.appendChild(name);
-        if (entry.start.length > 10 && entry.end.length > 10) {
-          var hours = document.createElement('span');
-          hours.className = 'schedule-timeline-hours';
-          hours.textContent = entry.start.slice(11, 16) +
-            ' ～ ' + entry.end.slice(11, 16);
-          label.appendChild(hours);
-        }
+        var startParts = entry.start.slice(0, 10).split('-');
+        var endParts = entry.end.slice(0, 10).split('-');
+        var includeYear = startParts[0] !== endParts[0] ||
+          Number(startParts[0]) !== today.getFullYear();
+        var dateRange = document.createElement('span');
+        dateRange.className = 'schedule-timeline-date-range';
+        dateRange.textContent = formatScheduleDate(entry.start, includeYear) +
+          ' ～ ' + formatScheduleDate(entry.end, includeYear);
+        label.appendChild(dateRange);
         row.appendChild(label);
 
         dates.forEach(function (date) {

@@ -1,6 +1,6 @@
 import re
 import shutil
-from datetime import date, datetime, time, timedelta
+from datetime import date
 from html import escape
 from pathlib import Path
 
@@ -262,32 +262,15 @@ def render_coupons():
     return '\n'.join(parts)
 
 
-def parse_schedule_value(value, field, entry_label):
-    if not isinstance(value, str):
-        raise ValueError(f'{entry_label}.{field} must be an ISO 8601 string')
-
-    if re.fullmatch(r'\d{4}-\d{2}-\d{2}', value):
-        try:
-            parsed_date = date.fromisoformat(value)
-        except ValueError as error:
-            raise ValueError(
-                f'{entry_label}.{field} must be an ISO 8601 date'
-            ) from error
-        boundary = time.min if field == 'start' else time.max
-        comparison_value = datetime.combine(parsed_date, boundary)
-        return parsed_date, comparison_value
-
-    try:
-        parsed = datetime.fromisoformat(value)
-    except ValueError as error:
+def parse_schedule_date(value, field, entry_label):
+    if not isinstance(value, str) or not re.fullmatch(r'\d{4}-\d{2}-\d{2}', value):
         raise ValueError(
-            f'{entry_label}.{field} must be an ISO 8601 datetime'
-        ) from error
-
-    if parsed.utcoffset() != timedelta(hours=9):
-        raise ValueError(f'{entry_label}.{field} must use the +09:00 timezone')
-
-    return parsed, parsed.replace(tzinfo=None)
+            f'{entry_label}.{field} must use the YYYY-MM-DD format'
+        )
+    try:
+        return date.fromisoformat(value)
+    except ValueError as error:
+        raise ValueError(f'{entry_label}.{field} is not a valid date') from error
 
 
 def render_schedule():
@@ -325,14 +308,14 @@ def render_schedule():
         if not isinstance(name, str) or not name.strip():
             raise ValueError(f'{entry_label}.name must be a non-empty string')
 
-        start, start_order = parse_schedule_value(
+        start = parse_schedule_date(
             entry.get('start'), 'start', entry_label
         )
-        end, end_order = parse_schedule_value(
+        end = parse_schedule_date(
             entry.get('end'), 'end', entry_label
         )
-        if end_order <= start_order:
-            raise ValueError(f'{entry_label}.end must be after start')
+        if end < start:
+            raise ValueError(f'{entry_label}.end must be on or after start')
 
         parts.append(
             '<div class="schedule-timeline-entry" '

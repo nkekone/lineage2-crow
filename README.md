@@ -41,7 +41,7 @@ lineage2-crow/
 
 `scripts/build.py` は各 Markdown ファイル、`data/coupons.yaml`、`data/items.yaml`、`data/schedules.yaml`、`data/accessories.yaml` をテンプレートに組み込み、`dist/index.html` を生成します。また `assets/` と `sitemap.xml` を `dist/` にコピーします。生成物は `.gitignore` により Git 管理対象外です。
 
-イベントとアイテム販売の期間は [data/schedules.yaml](data/schedules.yaml) の `schedules` に登録します。各項目に分類の `category`（`event` または `sale`）、`name`、`start`、`end` を設定してください。予定は開始日時順に並び、端末の現在日時を基準に過去7日から14日先までの日単位タイムラインに表示されます。イベントと販売は色で区別します。日時は日本時間で、日付のみ（`YYYY-MM-DD`）または時刻を含む ISO 8601 形式（`YYYY-MM-DDTHH:MM:SS+09:00`）を指定できます。日付のみの終了日は、その日の終わりまでとして扱います。予定がない場合は `schedules: []` にします。
+イベントとアイテム販売の期間は [data/schedules.yaml](data/schedules.yaml) の `schedules` に登録します。各項目に分類の `category`（`event` または `sale`）、`name`、`start`、`end` を設定してください。予定は開始日順に並び、端末の現在日時を基準に過去3日から7日先まで（今日を含む11日間）の曜日付きタイムラインに表示されます。イベントと販売は色で区別します。開始日と終了日は `YYYY-MM-DD` 形式で記入し、終了日も表示期間に含みます。予定がない場合は `schedules: []` にします。
 
 ```yaml
 schedules:
@@ -51,8 +51,8 @@ schedules:
     end: "2026-12-08"
   - category: sale
     name: "販売アイテム名"
-    start: "2026-12-01T09:00:00+09:00"
-    end: "2026-12-08T06:00:00+09:00"
+    start: "2026-12-01"
+    end: "2026-12-08"
 ```
 
 終了日時は開始日時より後にしてください。

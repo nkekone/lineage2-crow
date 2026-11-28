@@ -7,9 +7,11 @@ lineage2-crow/
 ├── data/
 │   ├── coupons.yaml        # クーポン情報と報酬
 │   ├── items.yaml          # アイテムの説明
+│   ├── schedules.yaml      # イベント・アイテム販売の期間
 │   └── accessories.yaml    # レアアクセサリーの構造化データ
 ├── pages/                  # ページ原稿 (Markdown)
 │   ├── home.md
+│   ├── schedule.md         # イベント・販売スケジュール
 │   ├── coupon.md
 │   ├── faq.md               # Q&A本文 (質問は見出し、回答はMarkdown)
 │   ├── invasion.md
@@ -37,7 +39,23 @@ lineage2-crow/
 
 ページの本文は `pages/` 内の Markdown ファイルを、クーポン情報は `data/coupons.yaml` を、アイテムの説明は `data/items.yaml` を、レアアクセサリーの一覧データは `data/accessories.yaml` を、サイトのレイアウトは `template.html` を編集してください。画像などの静的ファイルは `assets/` に置きます。生成される `dist/index.html` は直接編集しないでください。
 
-`scripts/build.py` は各 Markdown ファイル、`data/coupons.yaml`、`data/items.yaml`、`data/accessories.yaml` をテンプレートに組み込み、`dist/index.html` を生成します。また `assets/` と `sitemap.xml` を `dist/` にコピーします。生成物は `.gitignore` により Git 管理対象外です。
+`scripts/build.py` は各 Markdown ファイル、`data/coupons.yaml`、`data/items.yaml`、`data/schedules.yaml`、`data/accessories.yaml` をテンプレートに組み込み、`dist/index.html` を生成します。また `assets/` と `sitemap.xml` を `dist/` にコピーします。生成物は `.gitignore` により Git 管理対象外です。
+
+イベントとアイテム販売の期間は [data/schedules.yaml](data/schedules.yaml) で管理します。`events` と `item_sales` にそれぞれ一覧を追加し、各項目に `name`、`start`、`end` を設定してください。日時は日本時間の ISO 8601 形式（`YYYY-MM-DDTHH:MM:SS+09:00`）で記入します。掲載内容はサイトの「イベント・販売スケジュール」ページに表示されます。該当する予定がない一覧は `[]` のままにできます。
+
+```yaml
+events:
+  - name: "イベント名"
+    start: "2026-12-01T00:00:00+09:00"
+    end: "2026-12-08T23:59:59+09:00"
+
+item_sales:
+  - name: "販売アイテム名"
+    start: "2026-12-01T00:00:00+09:00"
+    end: "2026-12-08T23:59:59+09:00"
+```
+
+上記の日時は記入例です。終了日時は開始日時より後にしてください。
 
 クーポンを追加・更新する場合は、[data/coupons.yaml](data/coupons.yaml) を編集してください。`name` と `items` を設定し、`code` と `target` は必要な場合だけ記載します。コードを省略すると「クーポンボックスで配布」と表示されます。有効期限は表示用の `expiration.display` と期限判定用の `expiration.at` を設定し、期限情報自体がない場合は `expiration` を省略します。報酬アイテムの `name`、`quantity`、`deletion_date` は未設定の項目が空欄で表示されます。
 

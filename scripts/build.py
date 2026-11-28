@@ -1,5 +1,6 @@
 import re
 import shutil
+from datetime import datetime, timedelta
 from html import escape
 from pathlib import Path
 
@@ -17,13 +18,14 @@ DATA_DIR = ROOT_DIR / 'data'
 ITEM_NAME_QUALIFIERS = re.compile(r'\((?:期間限定|期間制)\)|\[刻印\]')
 
 PAGE_ORDER = [
-    'home', 
-    'coupon', 
-    'faq', 
-    'invasion', 
-    'boss', 
+    'home',
+    'schedule',
+    'coupon',
+    'faq',
+    'invasion',
+    'boss',
     'dimension_boss',
-    'crowpass', 
+    'crowpass',
     'accessories'
     ]
 
@@ -260,6 +262,92 @@ def render_coupons():
     return '\n'.join(parts)
 
 
+def parse_schedule_datetime(value, field, entry_label):
+    if not isinstance(value, str):
+        raise ValueError(f'{entry_label}.{field} must be an ISO 8601 string')
+
+    try:
+        parsed = datetime.fromisoformat(value)
+    except ValueError as error:
+        raise ValueError(
+            f'{entry_label}.{field} must be an ISO 8601 datetime'
+        ) from error
+
+    if parsed.utcoffset() != timedelta(hours=9):
+        raise ValueError(f'{entry_label}.{field} must use the +09:00 timezone')
+
+    return parsed
+
+
+def format_schedule_datetime(value):
+    time_text = f'{value.hour:02}:{value.minute:02}'
+    if value.second or value.microsecond:
+        time_text += f':{value.second:02}'
+    if value.microsecond:
+        time_text += f'.{value.microsecond:06}'.rstrip('0')
+    return f'{value.year}年{value.month}月{value.day}日 {time_text}'
+
+
+def render_schedule():
+    yaml_file = DATA_DIR / 'schedules.yaml'
+    if not yaml_file.is_file():
+        raise FileNotFoundError(f'{yaml_file} not found')
+
+    with yaml_file.open('r', encoding='utf-8') as file:
+        schedule = yaml.safe_load(file)
+    if not isinstance(schedule, dict):
+        raise ValueError('schedules.yaml must contain a mapping')
+
+    sections = [
+        ('events', 'イベント開催期間', '登録されているイベントはありません。'),
+        ('item_sales', 'アイテム販売期間', '登録されている販売情報はありません。'),
+    ]
+    parts = []
+    for key, title, empty_message in sections:
+        entries = schedule.get(key, [])
+        if not isinstance(entries, list):
+            raise ValueError(f'schedules.yaml {key} must be a list')
+
+        parts.append(f'<h2>{escape(title)}</h2>')
+        if not entries:
+            parts.append(f'<p>{escape(empty_message)}</p>')
+            continue
+
+        parts.append('<ul class="schedule-list">')
+        for index, entry in enumerate(entries):
+            entry_label = f'{key}[{index}]'
+            if not isinstance(entry, dict):
+                raise ValueError(f'{entry_label} must be a mapping')
+
+            name = entry.get('name')
+            if not isinstance(name, str) or not name.strip():
+                raise ValueError(f'{entry_label}.name must be a non-empty string')
+
+            start = parse_schedule_datetime(
+                entry.get('start'), 'start', entry_label
+            )
+            end = parse_schedule_datetime(entry.get('end'), 'end', entry_label)
+            if end <= start:
+                raise ValueError(f'{entry_label}.end must be after start')
+
+            start_text = format_schedule_datetime(start)
+            end_text = format_schedule_datetime(end)
+            parts.append(
+                '<li><strong>{}</strong><br>'
+                '<time datetime="{}">{}</time> ～ '
+                '<time datetime="{}">{}</time></li>'.format(
+                    escape(name),
+                    escape(start.isoformat(), quote=True),
+                    escape(start_text),
+                    escape(end.isoformat(), quote=True),
+                    escape(end_text),
+                )
+            )
+        parts.append('</ul>')
+
+    return '\n'.join(parts)
+
+
 def render_faq(html_content):
     questions = list(re.finditer(r'<h2>(.*?)</h2>', html_content, re.DOTALL))
     if not questions:
@@ -305,6 +393,8 @@ def build():
 
         if page_id == 'coupon':
             html_content = f'{html_content}\n{render_coupons()}'
+        elif page_id == 'schedule':
+            html_content = f'{html_content}\n{render_schedule()}'
         elif page_id == 'accessories':
             html_content = f'{html_content}\n{render_accessories()}'
         elif page_id == 'faq':

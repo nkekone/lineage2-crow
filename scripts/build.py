@@ -16,7 +16,6 @@ STATIC_DIRS = ['assets']
 STATIC_FILES = ['sitemap.xml']
 DATA_DIR = ROOT_DIR / 'data'
 ITEM_NAME_QUALIFIERS = re.compile(r'\((?:期間限定|期間制)\)|\[刻印\]')
-JAPANESE_WEEKDAYS = ('月', '火', '水', '木', '金', '土', '日')
 
 PAGE_ORDER = [
     'home',
@@ -276,8 +275,7 @@ def parse_schedule_value(value, field, entry_label):
             ) from error
         boundary = time.min if field == 'start' else time.max
         comparison_value = datetime.combine(parsed_date, boundary)
-        display_value = format_schedule_date(parsed_date)
-        return parsed_date, comparison_value, display_value
+        return parsed_date, comparison_value
 
     try:
         parsed = datetime.fromisoformat(value)
@@ -289,21 +287,7 @@ def parse_schedule_value(value, field, entry_label):
     if parsed.utcoffset() != timedelta(hours=9):
         raise ValueError(f'{entry_label}.{field} must use the +09:00 timezone')
 
-    return parsed, parsed.replace(tzinfo=None), format_schedule_datetime(parsed)
-
-
-def format_schedule_date(value):
-    weekday = JAPANESE_WEEKDAYS[value.weekday()]
-    return f'{value.year}年{value.month}月{value.day}日({weekday})'
-
-
-def format_schedule_datetime(value):
-    time_text = f'{value.hour:02}:{value.minute:02}'
-    if value.second or value.microsecond:
-        time_text += f':{value.second:02}'
-    if value.microsecond:
-        time_text += f'.{value.microsecond:06}'.rstrip('0')
-    return f'{format_schedule_date(value)} {time_text}'
+    return parsed, parsed.replace(tzinfo=None)
 
 
 def render_schedule():
@@ -319,11 +303,12 @@ def render_schedule():
     entries = schedule.get('schedules', [])
     if not isinstance(entries, list):
         raise ValueError('schedules.yaml schedules must be a list')
-    if not entries:
-        return '<p>登録されているスケジュールはありません。</p>'
 
     categories = {'event': 'イベント', 'sale': '販売'}
-    rows = []
+    parts = [
+        '<div class="schedule-timeline" data-schedule-timeline>',
+        '<div class="schedule-timeline-data" hidden>',
+    ]
     for index, entry in enumerate(entries):
         entry_label = f'schedules[{index}]'
         if not isinstance(entry, dict):
@@ -340,38 +325,38 @@ def render_schedule():
         if not isinstance(name, str) or not name.strip():
             raise ValueError(f'{entry_label}.name must be a non-empty string')
 
-        start, start_order, start_text = parse_schedule_value(
+        start, start_order = parse_schedule_value(
             entry.get('start'), 'start', entry_label
         )
-        end, end_order, end_text = parse_schedule_value(
+        end, end_order = parse_schedule_value(
             entry.get('end'), 'end', entry_label
         )
         if end_order <= start_order:
             raise ValueError(f'{entry_label}.end must be after start')
 
-        row = (
-            '<tr><td>{}</td><td>{}</td>'
-            '<td><time datetime="{}">{}</time></td>'
-            '<td><time datetime="{}">{}</time></td></tr>'.format(
-                escape(categories[category]),
-                escape(name),
+        parts.append(
+            '<div class="schedule-timeline-entry" '
+            'data-category="{}" data-name="{}" '
+            'data-start="{}" data-end="{}"></div>'.format(
+                escape(category, quote=True),
+                escape(name, quote=True),
                 escape(start.isoformat(), quote=True),
-                escape(start_text),
                 escape(end.isoformat(), quote=True),
-                escape(end_text),
             )
         )
-        rows.append((start_order, row))
-
-    parts = [
-        '<div class="table-responsive">',
-        '<table class="schedule-table">',
-        '<thead><tr><th scope="col">分類</th><th scope="col">内容</th>'
-        '<th scope="col">開始</th><th scope="col">終了</th></tr></thead>',
-        '<tbody>',
-    ]
-    parts.extend(row for _, row in sorted(rows, key=lambda item: item[0]))
-    parts.extend(['</tbody></table></div>'])
+    parts.extend([
+        '</div>',
+        '<p class="schedule-timeline-window" '
+        'data-schedule-window aria-live="polite"></p>',
+        '<div class="schedule-timeline-scroll" '
+        'data-schedule-scroll tabindex="0">',
+        '<table class="schedule-timeline-table" '
+        'data-schedule-table></table></div>',
+        '<p class="schedule-timeline-empty" data-schedule-empty hidden>'
+        'この期間に表示する予定はありません。</p>',
+        '<noscript><p>スケジュールの表示にはJavaScriptが必要です。</p></noscript>',
+        '</div>',
+    ])
     return '\n'.join(parts)
 
 

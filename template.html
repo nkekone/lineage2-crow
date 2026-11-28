@@ -973,6 +973,150 @@ main {
   border-radius: 6px;
 }
 
+.schedule-timeline-window {
+  color: #475569;
+  font-size: 0.88rem;
+  margin-bottom: 8px;
+}
+
+.schedule-timeline-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+}
+
+.schedule-timeline-table {
+  width: max-content !important;
+  min-width: 100%;
+  table-layout: fixed;
+  white-space: nowrap;
+  margin: 0 !important;
+  font-size: 0.82rem !important;
+}
+
+.schedule-timeline-table th:first-child {
+  width: 230px;
+  min-width: 230px;
+}
+
+.schedule-timeline-table th:not(:first-child),
+.schedule-timeline-table td {
+  width: 38px;
+  min-width: 38px;
+  padding: 6px 2px;
+  text-align: center;
+}
+
+.schedule-timeline-table thead th {
+  background: #e2e8f0;
+  color: #334155;
+  text-align: center;
+  padding: 6px 3px;
+}
+
+.schedule-timeline-table thead th.schedule-timeline-label {
+  position: sticky;
+  left: 0;
+  z-index: 4;
+  background: #1e293b;
+  color: #fff;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.schedule-timeline-table th.schedule-timeline-row-label {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background: #fff;
+  color: #334155;
+  text-align: left;
+  white-space: normal;
+  padding: 8px 10px;
+}
+
+.schedule-timeline-category {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-size: 0.72rem;
+  margin-bottom: 3px;
+}
+
+.schedule-timeline-category.event {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.schedule-timeline-category.sale {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.schedule-timeline-name {
+  display: block;
+  font-weight: 600;
+}
+
+.schedule-timeline-hours {
+  display: block;
+  color: #64748b;
+  font-size: 0.72rem;
+  font-weight: 400;
+}
+
+.schedule-timeline-table td.schedule-timeline-day {
+  padding: 0;
+  height: 34px;
+}
+
+.schedule-timeline-table td.schedule-timeline-day.is-in-range.event {
+  background: #bfdbfe;
+  border-color: #93c5fd;
+}
+
+.schedule-timeline-table td.schedule-timeline-day.is-in-range.sale {
+  background: #fde68a;
+  border-color: #fcd34d;
+}
+
+.schedule-timeline-table td.schedule-timeline-day.is-range-start.event {
+  border-left: 3px solid #2563eb;
+}
+
+.schedule-timeline-table td.schedule-timeline-day.is-range-end.event {
+  border-right: 3px solid #2563eb;
+}
+
+.schedule-timeline-table td.schedule-timeline-day.is-range-start.sale {
+  border-left: 3px solid #d97706;
+}
+
+.schedule-timeline-table td.schedule-timeline-day.is-range-end.sale {
+  border-right: 3px solid #d97706;
+}
+
+.schedule-timeline-table .is-today {
+  box-shadow: inset 0 0 0 2px #f59e0b;
+}
+
+.schedule-timeline-table thead th.schedule-timeline-day-heading {
+  padding: 3px 1px;
+}
+
+.schedule-timeline-day-number {
+  display: block;
+}
+
+.schedule-timeline-today-label {
+  display: block;
+  color: #b45309;
+  font-size: 0.6rem;
+  font-weight: 700;
+}
+
 .accessory-table {
   width: 100%;
   border-collapse: collapse;
@@ -1212,6 +1356,207 @@ footer {
 
   window.addEventListener('hashchange', showPage);
   showPage();
+
+  function renderScheduleTimelines() {
+    var weekdayLabels = ['日', '月', '火', '水', '木', '金', '土'];
+
+    function toDateKey(date) {
+      var month = String(date.getMonth() + 1).padStart(2, '0');
+      var day = String(date.getDate()).padStart(2, '0');
+      return date.getFullYear() + '-' + month + '-' + day;
+    }
+
+    function formatDate(date) {
+      return date.getFullYear() + '/' +
+        String(date.getMonth() + 1).padStart(2, '0') + '/' +
+        String(date.getDate()).padStart(2, '0');
+    }
+
+    function appendGroups(row, dates, keyForDate, labelForDate) {
+      var previousKey = null;
+      var currentCell = null;
+      dates.forEach(function (date) {
+        var key = keyForDate(date);
+        if (key !== previousKey) {
+          currentCell = document.createElement('th');
+          currentCell.colSpan = 1;
+          currentCell.textContent = labelForDate(date);
+          row.appendChild(currentCell);
+          previousKey = key;
+        } else {
+          currentCell.colSpan += 1;
+        }
+      });
+    }
+
+    document.querySelectorAll('[data-schedule-timeline]').forEach(function (container) {
+      var entries = [];
+      container.querySelectorAll('.schedule-timeline-entry').forEach(function (source) {
+        entries.push({
+          category: source.getAttribute('data-category'),
+          name: source.getAttribute('data-name'),
+          start: source.getAttribute('data-start'),
+          end: source.getAttribute('data-end')
+        });
+      });
+      entries.sort(function (left, right) {
+        return left.start < right.start ? -1 : left.start > right.start ? 1 : 0;
+      });
+
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+      var firstDate = new Date(today);
+      firstDate.setDate(firstDate.getDate() - 7);
+      var dates = [];
+      for (var index = 0; index < 22; index += 1) {
+        var date = new Date(firstDate);
+        date.setDate(firstDate.getDate() + index);
+        dates.push(date);
+      }
+
+      var todayKey = toDateKey(today);
+      var firstKey = toDateKey(dates[0]);
+      var lastKey = toDateKey(dates[dates.length - 1]);
+      var visibleEntries = entries.filter(function (entry) {
+        return entry.end.slice(0, 10) >= firstKey &&
+          entry.start.slice(0, 10) <= lastKey;
+      });
+      var table = container.querySelector('[data-schedule-table]');
+      var scroll = container.querySelector('[data-schedule-scroll]');
+      var empty = container.querySelector('[data-schedule-empty]');
+      var windowLabel = container.querySelector('[data-schedule-window]');
+
+      windowLabel.textContent = '表示期間: ' + formatDate(dates[0]) +
+        ' ～ ' + formatDate(dates[dates.length - 1]) + '（端末の現在日時を基準）';
+      scroll.hidden = visibleEntries.length === 0;
+      empty.hidden = visibleEntries.length !== 0;
+      if (!visibleEntries.length) {
+        return;
+      }
+
+      var thead = document.createElement('thead');
+      var yearRow = document.createElement('tr');
+      var labelHeading = document.createElement('th');
+      labelHeading.className = 'schedule-timeline-label';
+      labelHeading.rowSpan = 3;
+      labelHeading.textContent = '予定';
+      yearRow.appendChild(labelHeading);
+      appendGroups(
+        yearRow,
+        dates,
+        function (date) { return date.getFullYear(); },
+        function (date) { return date.getFullYear() + '年'; }
+      );
+
+      var monthRow = document.createElement('tr');
+      appendGroups(
+        monthRow,
+        dates,
+        function (date) {
+          return date.getFullYear() + '-' + date.getMonth();
+        },
+        function (date) { return (date.getMonth() + 1) + '月'; }
+      );
+
+      var dayRow = document.createElement('tr');
+      dates.forEach(function (date) {
+        var dateKey = toDateKey(date);
+        var heading = document.createElement('th');
+        heading.className = 'schedule-timeline-day-heading';
+        heading.scope = 'col';
+        heading.title = formatDate(date) + '(' + weekdayLabels[date.getDay()] + ')';
+        if (dateKey === todayKey) {
+          heading.classList.add('is-today');
+        }
+        var number = document.createElement('span');
+        number.className = 'schedule-timeline-day-number';
+        number.textContent = String(date.getDate());
+        heading.appendChild(number);
+        if (dateKey === todayKey) {
+          var todayLabel = document.createElement('small');
+          todayLabel.className = 'schedule-timeline-today-label';
+          todayLabel.textContent = '今日';
+          heading.appendChild(todayLabel);
+        }
+        dayRow.appendChild(heading);
+      });
+      thead.appendChild(yearRow);
+      thead.appendChild(monthRow);
+      thead.appendChild(dayRow);
+
+      var tbody = document.createElement('tbody');
+      visibleEntries.forEach(function (entry) {
+        var startKey = entry.start.slice(0, 10);
+        var endKey = entry.end.slice(0, 10);
+        var visibleStart = startKey < firstKey ? firstKey : startKey;
+        var visibleEnd = endKey > lastKey ? lastKey : endKey;
+        var row = document.createElement('tr');
+        var label = document.createElement('th');
+        label.className = 'schedule-timeline-row-label';
+        label.scope = 'row';
+
+        var category = document.createElement('span');
+        category.className = 'schedule-timeline-category ' + entry.category;
+        category.textContent = entry.category === 'event' ? 'イベント' : '販売';
+        label.appendChild(category);
+
+        var name = document.createElement('span');
+        name.className = 'schedule-timeline-name';
+        name.textContent = entry.name;
+        label.appendChild(name);
+        if (entry.start.length > 10 && entry.end.length > 10) {
+          var hours = document.createElement('span');
+          hours.className = 'schedule-timeline-hours';
+          hours.textContent = entry.start.slice(11, 16) +
+            ' ～ ' + entry.end.slice(11, 16);
+          label.appendChild(hours);
+        }
+        row.appendChild(label);
+
+        dates.forEach(function (date) {
+          var dateKey = toDateKey(date);
+          var cell = document.createElement('td');
+          cell.className = 'schedule-timeline-day';
+          if (dateKey === todayKey) {
+            cell.classList.add('is-today');
+          }
+          if (dateKey >= visibleStart && dateKey <= visibleEnd) {
+            cell.classList.add('is-in-range', entry.category);
+            if (dateKey === visibleStart) {
+              cell.classList.add('is-range-start');
+            }
+            if (dateKey === visibleEnd) {
+              cell.classList.add('is-range-end');
+            }
+            cell.title = entry.name;
+          }
+          row.appendChild(cell);
+        });
+        tbody.appendChild(row);
+      });
+
+      while (table.firstChild) {
+        table.removeChild(table.firstChild);
+      }
+      table.setAttribute('aria-label', 'イベント・販売の開催期間');
+      table.appendChild(thead);
+      table.appendChild(tbody);
+    });
+  }
+
+  function scheduleTimelineMidnightRefresh() {
+    var now = new Date();
+    var nextMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+    window.setTimeout(function () {
+      renderScheduleTimelines();
+      scheduleTimelineMidnightRefresh();
+    }, nextMidnight.getTime() - now.getTime() + 100);
+  }
+
+  renderScheduleTimelines();
+  if (document.querySelector('[data-schedule-timeline]')) {
+    scheduleTimelineMidnightRefresh();
+  }
 
   var now = new Date();
   document.querySelectorAll('.coupon-expiration[data-expires-at]').forEach(function (expiration) {

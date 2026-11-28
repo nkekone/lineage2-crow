@@ -1,3 +1,10 @@
-events: []
+schedules:
+  - category: event
+    name: "マスター トーマを探せ！"
+    start: "2026-11-18"
+    end: "2026-12-02"
 
-item_sales: []
+  - category: sale
+    name: "ブラックフライデーパッケージ"
+    start: "2026-11-18T09:00:00+09:00"
+    end: "2026-12-02T06:00:00+09:00"

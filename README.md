@@ -41,21 +41,21 @@ lineage2-crow/
 
 `scripts/build.py` は各 Markdown ファイル、`data/coupons.yaml`、`data/items.yaml`、`data/schedules.yaml`、`data/accessories.yaml` をテンプレートに組み込み、`dist/index.html` を生成します。また `assets/` と `sitemap.xml` を `dist/` にコピーします。生成物は `.gitignore` により Git 管理対象外です。
 
-イベントとアイテム販売の期間は [data/schedules.yaml](data/schedules.yaml) で管理します。`events` と `item_sales` にそれぞれ一覧を追加し、各項目に `name`、`start`、`end` を設定してください。日時は日本時間の ISO 8601 形式（`YYYY-MM-DDTHH:MM:SS+09:00`）で記入します。掲載内容はサイトの「イベント・販売スケジュール」ページに表示されます。該当する予定がない一覧は `[]` のままにできます。
+イベントとアイテム販売の期間は [data/schedules.yaml](data/schedules.yaml) の `schedules` に登録します。各項目に分類の `category`（`event` または `sale`）、`name`、`start`、`end` を設定してください。掲載内容は開始日時順に「イベント・販売スケジュール」ページの表に表示されます。日時は日本時間で、日付のみ（`YYYY-MM-DD`）または時刻を含む ISO 8601 形式（`YYYY-MM-DDTHH:MM:SS+09:00`）を指定できます。日付のみの終了日は、その日の終わりまでとして扱います。予定がない場合は `schedules: []` にします。
 
 ```yaml
-events:
-  - name: "イベント名"
-    start: "2026-12-01T00:00:00+09:00"
-    end: "2026-12-08T23:59:59+09:00"
-
-item_sales:
-  - name: "販売アイテム名"
-    start: "2026-12-01T00:00:00+09:00"
-    end: "2026-12-08T23:59:59+09:00"
+schedules:
+  - category: event
+    name: "イベント名"
+    start: "2026-12-01"
+    end: "2026-12-08"
+  - category: sale
+    name: "販売アイテム名"
+    start: "2026-12-01T09:00:00+09:00"
+    end: "2026-12-08T06:00:00+09:00"
 ```
 
-上記の日時は記入例です。終了日時は開始日時より後にしてください。
+終了日時は開始日時より後にしてください。
 
 クーポンを追加・更新する場合は、[data/coupons.yaml](data/coupons.yaml) を編集してください。`name` と `items` を設定し、`code` と `target` は必要な場合だけ記載します。コードを省略すると「クーポンボックスで配布」と表示されます。有効期限は表示用の `expiration.display` と期限判定用の `expiration.at` を設定し、期限情報自体がない場合は `expiration` を省略します。報酬アイテムの `name`、`quantity`、`deletion_date` は未設定の項目が空欄で表示されます。
 

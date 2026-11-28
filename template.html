@@ -1482,7 +1482,16 @@ footer {
           end: source.getAttribute('data-end')
         });
       });
+      var categoryOrder = { event: 0, sale: 1 };
       entries.sort(function (left, right) {
+        var categoryDifference = categoryOrder[left.category] -
+          categoryOrder[right.category];
+        if (categoryDifference !== 0) {
+          return categoryDifference;
+        }
+        if (left.end !== right.end) {
+          return left.end < right.end ? -1 : 1;
+        }
         return left.start < right.start ? -1 : left.start > right.start ? 1 : 0;
       });
 

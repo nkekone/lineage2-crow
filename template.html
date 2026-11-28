@@ -996,12 +996,13 @@ main {
   font-size: 0.82rem !important;
 }
 
-.schedule-timeline-table th:first-child {
+.schedule-timeline-table th.schedule-timeline-label,
+.schedule-timeline-table th.schedule-timeline-row-label {
   width: 230px;
   min-width: 230px;
 }
 
-.schedule-timeline-table th:not(:first-child),
+.schedule-timeline-table th:not(.schedule-timeline-label):not(.schedule-timeline-row-label),
 .schedule-timeline-table td {
   width: 38px;
   min-width: 38px;
@@ -1266,7 +1267,7 @@ footer {
       <div class="menu-title">メニュー</div>
       <ul class="menu-list">
         <li><a href="#coupon" data-page="coupon">クーポン</a></li>
-        <li><a href="#schedule" data-page="schedule">イベント・販売スケジュール</a></li>
+        <li><a href="#schedule" data-page="schedule">スケジュール</a></li>
         <li><a href="#faq" data-page="faq">よくある質問（Q&amp;A）</a></li>
         <li>
           <span class="menu-category">イベント</span>
@@ -1538,7 +1539,7 @@ footer {
       while (table.firstChild) {
         table.removeChild(table.firstChild);
       }
-      table.setAttribute('aria-label', 'イベント・販売の開催期間');
+      table.setAttribute('aria-label', 'スケジュール');
       table.appendChild(thead);
       table.appendChild(tbody);
     });

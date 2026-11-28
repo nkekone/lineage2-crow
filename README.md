@@ -11,7 +11,7 @@ lineage2-crow/
 │   └── accessories.yaml    # レアアクセサリーの構造化データ
 ├── pages/                  # ページ原稿 (Markdown)
 │   ├── home.md
-│   ├── schedule.md         # イベント・販売スケジュール
+│   ├── schedule.md         # スケジュール
 │   ├── coupon.md
 │   ├── faq.md               # Q&A本文 (質問は見出し、回答はMarkdown)
 │   ├── invasion.md

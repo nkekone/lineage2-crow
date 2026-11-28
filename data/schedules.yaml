@@ -19,27 +19,27 @@ schedules:
     start: "2026-11-18"
     end: "2026-12-23"
 
-  -category: sale
-    name:"フォーチュンパッケージ"
+  - category: sale
+    name: "フォーチュンパッケージ"
     start: "2026-11-25"
     end: "2026-12-02"
 
-  -category: event
+  - category: event
     name: "THANKSミッション 第1期間"
     start: "2026-11-25"
     end: "2026-12-02"
 
- -category: event
+  - category: event
     name: "THANKSミッション 第2期間"
     start: "2026-12-02"
     end: "2026-12-09"
     
-  -category:sale
+  - category: sale
     name: "エヌシージャパン25周年記念パッケージ"
     start: "2026-11-25"
     end: "2026-12-09"
 
-  -category: sale
+  - category: sale
     name: "[11月]CROW PASS"
     start: "2026-11-01"
     end: "2026-11-30"
